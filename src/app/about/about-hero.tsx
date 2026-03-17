@@ -60,13 +60,13 @@ export default function AboutHero() {
 
             <div className="space-y-4 text-muted leading-relaxed">
               <p className="text-lg">
-                I&apos;ve spent three decades inside engineering organizations
+                I&apos;ve spent three decades inside product &amp; engineering organizations
                 during their most critical moments — the ones where the
                 technology has shifted, the org hasn&apos;t caught up, and
                 someone needs to go in and make it work.
               </p>
               <p>
-                That&apos;s what I do. I embed with engineering teams, rebuild
+                That&apos;s what I do. I embed with technology teams, rebuild
                 how they work, modernize what they&apos;ve built, and leave them
                 in a position to keep going without me. I&apos;ve done it at
                 BMW, Sony, Whitepages, and Universal Music Group. I&apos;ve done
