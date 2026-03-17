@@ -1,4 +1,5 @@
 import Hero from "@/components/hero";
+import LogoBar from "@/components/logo-bar";
 import Thesis from "@/components/thesis";
 import Services from "@/components/services";
 import ProofPoints from "@/components/proof-points";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <JsonLd />
       <Hero />
+      <LogoBar />
       <Thesis />
       <Services />
       <ProofPoints />

@@ -29,6 +29,10 @@ const jsonLd = {
         "Agentic Development Methodology",
         "Platform Modernization",
         "AI Due Diligence for Private Equity",
+        "MLOps & AI Operations",
+        "Pilot-to-Production AI Scaling",
+        "AI Readiness Assessment",
+        "Change Management for AI Adoption",
       ],
     },
     {
@@ -65,7 +69,7 @@ const jsonLd = {
               "@type": "Service",
               name: "Build",
               description:
-                "AI-embedded products, intelligent workflow automation, software platform development and modernization.",
+                "AI-embedded products, intelligent workflow automation, pilot-to-production scaling with MLOps, and platform modernization.",
             },
           },
           {

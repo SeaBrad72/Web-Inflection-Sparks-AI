@@ -58,6 +58,9 @@ export const metadata: Metadata = {
     description:
       "Fractional CTO and AI transformation for enterprise engineering organizations.",
   },
+  alternates: {
+    canonical: "https://inflectionsparks.ai",
+  },
   robots: {
     index: true,
     follow: true,
