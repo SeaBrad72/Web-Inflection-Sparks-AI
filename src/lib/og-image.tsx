@@ -23,121 +23,121 @@ export async function generateOgImage({ title, subtitle }: OgImageProps) {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           alignItems: "center",
-          backgroundColor: "#0A0A0B",
+          justifyContent: "center",
+          background: "linear-gradient(145deg, #0d1f15 0%, #0A0A0B 40%, #131315 70%, #0f1a12 100%)",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Accent bar at top */}
+        {/* Top accent bar - full width, thick */}
         <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             right: 0,
-            height: "6px",
+            height: "8px",
             background:
-              "linear-gradient(90deg, #1a6b3c, #38A169, #E8923F, #38A169, #1a6b3c)",
+              "linear-gradient(90deg, #E8923F, #38A169, #2F855A, #38A169, #E8923F)",
             display: "flex",
           }}
         />
 
-        {/* Background glow */}
+        {/* Large center glow behind logo */}
         <div
           style={{
             position: "absolute",
-            top: "-100px",
-            right: "50px",
-            width: "550px",
-            height: "550px",
+            top: "30px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "700px",
+            height: "500px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(56,161,105,0.1) 0%, transparent 70%)",
+              "radial-gradient(ellipse, rgba(56,161,105,0.15) 0%, rgba(232,146,63,0.05) 40%, transparent 70%)",
             display: "flex",
           }}
         />
 
-        {/* Logo - large, left side */}
+        {/* Logo - big and centered */}
+        <img
+          src={logoBase64}
+          width={180}
+          height={180}
+          style={{ marginBottom: "28px" }}
+        />
+
+        {/* Title - centered, massive */}
         <div
           style={{
+            fontSize: title.length > 30 ? "56px" : "66px",
+            fontWeight: 800,
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            textAlign: "center",
+            display: "flex",
+            letterSpacing: "-1px",
+            maxWidth: "1000px",
+            padding: "0 60px",
+          }}
+        >
+          {title}
+        </div>
+
+        {/* Divider line */}
+        <div
+          style={{
+            width: "80px",
+            height: "4px",
+            background: "linear-gradient(90deg, #38A169, #E8923F)",
+            margin: "24px 0",
+            borderRadius: "2px",
+            display: "flex",
+          }}
+        />
+
+        {/* Subtitle */}
+        <div
+          style={{
+            fontSize: "28px",
+            color: "#38A169",
+            lineHeight: 1.3,
+            textAlign: "center",
+            display: "flex",
+            fontWeight: 600,
+            maxWidth: "800px",
+          }}
+        >
+          {subtitle}
+        </div>
+
+        {/* Bottom bar with URL */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "48px",
+            backgroundColor: "rgba(56,161,105,0.1)",
+            borderTop: "1px solid rgba(56,161,105,0.2)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: "380px",
-            flexShrink: 0,
-            paddingLeft: "60px",
           }}
         >
-          <img src={logoBase64} width={300} height={300} />
-        </div>
-
-        {/* Text content - right side */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            flex: 1,
-            paddingRight: "70px",
-          }}
-        >
-          {/* Title */}
-          <div
+          <span
             style={{
-              fontSize: title.length > 30 ? "58px" : "68px",
-              fontWeight: 800,
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              marginBottom: "20px",
-              display: "flex",
-              letterSpacing: "-1px",
-            }}
-          >
-            {title}
-          </div>
-
-          {/* Subtitle - short and punchy */}
-          <div
-            style={{
-              fontSize: "30px",
-              color: "#38A169",
-              lineHeight: 1.3,
-              display: "flex",
+              fontSize: "20px",
+              color: "#A1A1AA",
               fontWeight: 600,
+              letterSpacing: "1px",
             }}
           >
-            {subtitle}
-          </div>
-
-          {/* URL branding */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginTop: "32px",
-              gap: "10px",
-            }}
-          >
-            <div
-              style={{
-                width: "28px",
-                height: "3px",
-                backgroundColor: "#E8923F",
-                display: "flex",
-              }}
-            />
-            <span
-              style={{
-                fontSize: "22px",
-                color: "#71717A",
-                fontWeight: 600,
-              }}
-            >
-              inflectionsparks.ai
-            </span>
-          </div>
+            inflectionsparks.ai
+          </span>
         </div>
       </div>
     ),
