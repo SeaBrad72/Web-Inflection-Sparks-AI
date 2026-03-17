@@ -50,13 +50,24 @@ export default function Nav() {
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
                 >
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm text-muted hover:text-foreground transition-colors">
+                  <button
+                    aria-haspopup="true"
+                    aria-expanded={servicesOpen}
+                    aria-controls="services-dropdown"
+                    onClick={() => setServicesOpen(!servicesOpen)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") setServicesOpen(false);
+                    }}
+                    className="flex items-center gap-1 px-4 py-2 text-sm text-muted hover:text-foreground transition-colors"
+                  >
                     {link.label}
                     <ChevronDown className="h-3.5 w-3.5" />
                   </button>
                   <AnimatePresence>
                     {servicesOpen && (
                       <motion.div
+                        id="services-dropdown"
+                        role="menu"
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
@@ -67,6 +78,7 @@ export default function Nav() {
                           <Link
                             key={child.label}
                             href={child.href}
+                            role="menuitem"
                             className="block rounded-lg px-4 py-3 hover:bg-background transition-colors group"
                           >
                             <span className="text-sm font-medium text-foreground group-hover:text-teal-light transition-colors">
@@ -114,6 +126,8 @@ export default function Nav() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             className="md:hidden p-2 text-muted hover:text-foreground transition-colors"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

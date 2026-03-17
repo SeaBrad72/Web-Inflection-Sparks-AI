@@ -274,7 +274,7 @@ export default function ContactForm() {
 
                 {/* Error message */}
                 {status === "error" && (
-                  <div className="flex items-center gap-2 text-sm text-red-400">
+                  <div role="alert" className="flex items-center gap-2 text-sm text-red-400">
                     <AlertCircle className="h-4 w-4 flex-shrink-0" />
                     {errorMsg}
                   </div>
