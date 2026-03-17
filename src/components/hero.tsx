@@ -59,10 +59,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <h1
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-6"
             >
               We don&apos;t sell AI strategy&nbsp;decks.{" "}
@@ -71,7 +68,7 @@ export default function Hero() {
               </span>
               , ship your products, and leave you{" "}
               <span className="text-gradient-orange">self&#8209;sufficient</span>.
-            </motion.h1>
+            </h1>
 
             {/* Subline */}
             <motion.p
