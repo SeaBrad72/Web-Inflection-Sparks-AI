@@ -28,116 +28,169 @@ export async function generateOgImage({
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "60px 80px",
+          flexDirection: "row",
           backgroundColor: "#0A0A0B",
           position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Teal accent bar at top */}
+        {/* Strong teal accent bar at top */}
         <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             right: 0,
-            height: "4px",
-            background: "linear-gradient(90deg, #2F855A, #38A169, #2F855A)",
+            height: "6px",
+            background: "linear-gradient(90deg, #1a6b3c, #38A169, #E8923F, #38A169, #1a6b3c)",
             display: "flex",
           }}
         />
 
-        {/* Subtle radial glow */}
+        {/* Background glow - teal */}
         <div
           style={{
             position: "absolute",
-            top: "-200px",
-            right: "-100px",
-            width: "600px",
-            height: "600px",
+            top: "-150px",
+            right: "-50px",
+            width: "500px",
+            height: "500px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(47,133,90,0.15) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(56,161,105,0.12) 0%, transparent 70%)",
             display: "flex",
           }}
         />
 
-        {/* Logo */}
-        <div style={{ display: "flex", marginBottom: "40px" }}>
-          <img src={logoBase64} width={64} height={64} />
-        </div>
+        {/* Background glow - orange */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-100px",
+            left: "200px",
+            width: "400px",
+            height: "400px",
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(232,146,63,0.08) 0%, transparent 70%)",
+            display: "flex",
+          }}
+        />
 
-        {/* Badge */}
-        {badge && (
+        {/* Left content area */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: "60px 60px 60px 70px",
+            flex: 1,
+            maxWidth: "820px",
+          }}
+        >
+          {/* Badge */}
+          {badge && (
+            <div
+              style={{
+                display: "flex",
+                marginBottom: "20px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#FFFFFF",
+                  textTransform: "uppercase",
+                  letterSpacing: "3px",
+                  backgroundColor: "rgba(56,161,105,0.25)",
+                  border: "1px solid rgba(56,161,105,0.5)",
+                  padding: "6px 16px",
+                  borderRadius: "4px",
+                }}
+              >
+                {badge}
+              </span>
+            </div>
+          )}
+
+          {/* Title */}
+          <div
+            style={{
+              fontSize: title.length > 35 ? "48px" : "56px",
+              fontWeight: 800,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              marginBottom: "24px",
+              display: "flex",
+              letterSpacing: "-1px",
+            }}
+          >
+            {title}
+          </div>
+
+          {/* Description */}
+          <div
+            style={{
+              fontSize: "24px",
+              color: "#D4D4D8",
+              lineHeight: 1.45,
+              display: "flex",
+              maxWidth: "680px",
+            }}
+          >
+            {description}
+          </div>
+
+          {/* Bottom branding */}
           <div
             style={{
               display: "flex",
-              marginBottom: "16px",
+              alignItems: "center",
+              marginTop: "auto",
+              paddingTop: "30px",
+              gap: "10px",
             }}
           >
+            <div
+              style={{
+                width: "3px",
+                height: "20px",
+                backgroundColor: "#38A169",
+                display: "flex",
+              }}
+            />
             <span
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
+                color: "#A1A1AA",
                 fontWeight: 600,
-                color: "#38A169",
-                textTransform: "uppercase",
-                letterSpacing: "2px",
+                letterSpacing: "0.5px",
               }}
             >
-              {badge}
+              inflectionsparks.ai
             </span>
           </div>
-        )}
-
-        {/* Title */}
-        <div
-          style={{
-            fontSize: title.length > 40 ? "44px" : "52px",
-            fontWeight: 700,
-            color: "#FAFAFA",
-            lineHeight: 1.15,
-            marginBottom: "20px",
-            display: "flex",
-            maxWidth: "900px",
-          }}
-        >
-          {title}
         </div>
 
-        {/* Description */}
+        {/* Right side - Large logo */}
         <div
           style={{
-            fontSize: "22px",
-            color: "#A1A1AA",
-            lineHeight: 1.5,
-            display: "flex",
-            maxWidth: "800px",
-          }}
-        >
-          {description}
-        </div>
-
-        {/* Bottom branding */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "40px",
-            left: "80px",
             display: "flex",
             alignItems: "center",
-            gap: "8px",
+            justifyContent: "center",
+            width: "380px",
+            paddingRight: "40px",
           }}
         >
-          <span
+          <img
+            src={logoBase64}
+            width={260}
+            height={260}
             style={{
-              fontSize: "16px",
-              color: "#52525B",
-              fontWeight: 500,
+              opacity: 0.9,
             }}
-          >
-            inflectionsparks.ai
-          </span>
+          />
         </div>
       </div>
     ),
