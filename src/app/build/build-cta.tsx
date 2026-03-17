@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function BuildCTA() {
   return (
@@ -40,6 +41,14 @@ export default function BuildCTA() {
               See Our Methodology
             </a>
           </div>
+
+          <Link
+            href="/work"
+            className="group inline-flex items-center gap-1.5 mt-8 text-sm text-muted-foreground hover:text-teal-light transition-colors"
+          >
+            View case studies from past builds
+            <ArrowUpRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>

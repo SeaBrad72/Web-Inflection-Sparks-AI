@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Org & Team Evolution",
   description:
     "Engineering and product org redesign for the AI era. We upskill your teams, modernize your processes, and design for self-sufficiency — not dependency.",
+  alternates: {
+    canonical: "https://inflectionsparks.ai/transform",
+  },
   openGraph: {
     title: "Transform — Org & Team Evolution | InflectionSparks.ai",
     description:

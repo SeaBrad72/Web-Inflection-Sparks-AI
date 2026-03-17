@@ -50,14 +50,14 @@ export default function ProofPoints() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Featured case study */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
-            className="lg:row-span-2 p-8 rounded-2xl border border-border-subtle bg-background"
+            className="lg:col-span-5 lg:row-span-2 p-8 rounded-2xl border border-border-subtle bg-background"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal/20 bg-teal/5 mb-6">
               <span className="text-[10px] font-medium text-teal-light uppercase tracking-wider">Featured</span>
@@ -96,26 +96,28 @@ export default function ProofPoints() {
           </motion.div>
 
           {/* Metric cards */}
-          {metrics.map((point, i) => (
-            <motion.div
-              key={point.metric + point.outcome}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: (i + 1) * 0.08 }}
-              className="p-6 rounded-xl border border-border-subtle bg-background hover:border-border transition-colors"
-            >
-              <div className="text-3xl sm:text-4xl font-bold font-mono tracking-tight text-gradient-teal mb-2">
-                {point.metric}
-              </div>
-              <div className="text-sm font-medium text-foreground mb-2">
-                {point.outcome}
-              </div>
-              <div className="text-xs text-muted-foreground leading-relaxed">
-                {point.context}
-              </div>
-            </motion.div>
-          ))}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {metrics.map((point, i) => (
+              <motion.div
+                key={point.metric + point.outcome}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: (i + 1) * 0.08 }}
+                className="p-6 rounded-xl border border-border-subtle bg-background hover:border-border transition-colors"
+              >
+                <div className="text-3xl sm:text-4xl font-bold font-mono tracking-tight text-gradient-teal mb-2">
+                  {point.metric}
+                </div>
+                <div className="text-sm font-medium text-foreground mb-2">
+                  {point.outcome}
+                </div>
+                <div className="text-xs text-muted-foreground leading-relaxed">
+                  {point.context}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

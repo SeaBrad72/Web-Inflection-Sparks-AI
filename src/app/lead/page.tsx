@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Fractional Leadership & AI Strategy",
   description:
     "Fractional CTO, CAIO, and CPO leadership for enterprise and PE-backed companies. AI strategy, governance, compliance, product roadmap, and executive advisory.",
+  alternates: {
+    canonical: "https://inflectionsparks.ai/lead",
+  },
   openGraph: {
     title: "Lead — Fractional Leadership & AI Strategy | InflectionSparks.ai",
     description:

@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { data, error: resendError } = await resend.emails.send({
+    const { error: resendError } = await resend.emails.send({
       from: "InflectionSparks.ai <contact@resend.inflectionsparksolutions.com>",
       to: process.env.CONTACT_EMAIL || "bradley@inflectionsparksolutions.com",
       replyTo: email,
@@ -48,7 +48,6 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("Resend success:", data);
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(

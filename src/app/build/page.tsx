@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Products, AI Engineering & Development",
   description:
     "AI-embedded products, intelligent workflow automation, and modern software platforms. From pilot to production with MLOps, agentic development, and AI-native engineering methodology.",
+  alternates: {
+    canonical: "https://inflectionsparks.ai/build",
+  },
   openGraph: {
     title: "Build — Products, AI Engineering & Development | InflectionSparks.ai",
     description:
