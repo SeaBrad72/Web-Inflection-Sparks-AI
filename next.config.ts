@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: "host",
-            value: "(www\\.)?inflectionsparksolutions\\.com",
+            value: "(www\\.)?(inflectionsparksolutions\\.com|inflectionsparks\\.com)",
           },
         ],
         destination: "https://inflectionsparks.ai/:path*",
