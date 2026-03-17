@@ -7,34 +7,34 @@ const caseStudies = [
     company: "INgrooves / Universal Music Group",
     context: "175-person engineering org, 65% of global independent music distribution",
     challenge:
-      "Siloed teams, bi-weekly releases, manual processes, and an engineering culture that couldn't keep pace with the market. The organization needed to ship faster without sacrificing quality — and the existing structure was the bottleneck.",
+      "Siloed teams, bi-weekly releases, manual processes, and an engineering culture that couldn't keep pace with the market. Turnover exceeded 50% within two years — the organization was bleeding institutional knowledge faster than it could ship.",
     actions: [
       "Restructured engineering organization around product-aligned squads",
-      "Introduced CI/CD pipelines and automated testing across all teams",
+      "Opened a dedicated engineering hub, scaling to 65 engineers locally plus 60 globally",
       "Transitioned from waterfall-influenced processes to modern agile practices",
       "Built cross-functional collaboration between engineering, product, and data",
     ],
     results: [
-      { metric: "3–4x", label: "Release velocity — bi-weekly to daily" },
+      { metric: "95%+", label: "Annual retention (from ~50%)" },
       { metric: "32%", label: "OpEx reduction while revenue grew 18%" },
-      { metric: "175", label: "Engineers transformed, zero attrition during transition" },
+      { metric: "175", label: "Engineers unified across six continents" },
     ],
   },
   {
-    company: "Matrix Medical Network",
-    context: "PE-backed healthcare technology, preparing for transaction",
+    company: "Whitepages",
+    context: "Post-spinoff platform rebuild, 25M+ monthly visits",
     challenge:
-      "11 fragmented engineering teams — 63 internal engineers, 26 contractors, ~40 offshore — operating under separate NDAs with no shared ownership. Monthly waterfall releases, chronic outages, and a board demanding transformation before sale.",
+      "Following a corporate split, Whitepages lost most of its engineering talent to the B2B spinoff. What remained were outdated Ruby and Python monoliths with severe technical debt, scalability issues, and declining conversion. Then COVID-19 hit mid-transformation.",
     actions: [
-      "Consolidated 11 teams into 4 autonomous, customer-centric agile squads",
-      "Embedded QA and DevOps within each squad for end-to-end ownership",
-      "Led knowledge transfer and offboarding of 26 contractors in 30 days",
-      "Managed rebadging of 63 engineers to offshore vendor — 61/63 transitioned successfully",
+      "Led zero-downtime migration from legacy monoliths to cloud-native microservices",
+      "Rebuilt and expanded engineering, QA, SRE, and product teams by 170%",
+      "Deployed ML-driven personalization and conversion optimization platform",
+      "Implemented GDPR/CCPA compliance frameworks protecting 300M+ user records",
     ],
     results: [
-      { metric: "47%", label: "OpEx reduction under PE governance" },
-      { metric: ">75%", label: "Reduction in production downtime" },
-      { metric: "87%", label: "Roadmap predictability (from <50%)" },
+      { metric: "170%", label: "Team growth across North and South America" },
+      { metric: "82%", label: "Increase in conversion rates" },
+      { metric: "45%+", label: "Improvement in search relevance" },
     ],
   },
 ];
@@ -54,9 +54,9 @@ export default function TransformProof() {
             Proof it works
           </h2>
           <p className="text-lg text-muted max-w-2xl">
-            Two organizations. Different industries, different pressures, same
-            principle: invest in the team, redesign the system, measure the
-            outcome.
+            Two organizations. Different industries, different crises, same
+            principle: rebuild around the people you have, not the people
+            you wish you had.
           </p>
         </motion.div>
 

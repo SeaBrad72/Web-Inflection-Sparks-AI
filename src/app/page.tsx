@@ -6,6 +6,7 @@ import ProofPoints from "@/components/proof-points";
 import Engagement from "@/components/engagement";
 import Founder from "@/components/founder";
 import Credentials from "@/components/credentials";
+import FAQ from "@/components/faq";
 import CTA from "@/components/cta";
 import JsonLd from "@/components/json-ld";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Engagement />
       <Founder />
       <Credentials />
+      <FAQ />
       <CTA />
     </>
   );

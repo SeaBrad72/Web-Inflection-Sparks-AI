@@ -6,19 +6,19 @@ import Link from "next/link";
 
 const metrics = [
   {
-    metric: "67%",
-    outcome: "Fleet operations cost reduction",
-    context: "IoT and ML-driven optimization for a global mobility platform. Increased revenue per vehicle while cutting ops cost.",
-  },
-  {
-    metric: "3–4x",
-    outcome: "Daily releases, up from bi-weekly",
-    context: "Stabilized a 175-person global engineering org. Shifted from bi-weekly releases to 3–4 deployments per day.",
-  },
-  {
     metric: "82%",
     outcome: "Lift in conversion rates",
     context: "NLP/ML-driven search optimization and personalization for a platform serving 25M+ visits per month.",
+  },
+  {
+    metric: "87%",
+    outcome: "Roadmap predictability (from <50%)",
+    context: "PE-backed healthcare org stabilized for transaction. Consolidated 11 teams into 4 domain-driven squads.",
+  },
+  {
+    metric: "95%+",
+    outcome: "Employee retention (from ~50%)",
+    context: "Unified 175 globally distributed engineers into a cohesive organization. Retention nearly doubled.",
   },
   {
     metric: "32%",
@@ -63,27 +63,27 @@ export default function ProofPoints() {
               <span className="text-[10px] font-medium text-teal-light uppercase tracking-wider">Featured</span>
             </div>
             <h3 className="text-xl font-bold mb-3">
-              PE-Backed Healthcare: Stabilized for Transaction
+              BMW / ReachNow: Mobility Platform Rescue to JV Launchpad
             </h3>
             <p className="text-sm text-muted leading-relaxed mb-4">
-              A PE-backed healthcare technology company needed to stabilize a fragmented 103-person
-              engineering org, reduce costs, and modernize their platform — all under board pressure
-              to prepare for sale. We consolidated 11 siloed teams into 4 domain-driven squads,
-              migrated to cloud-native infrastructure, and delivered the operational discipline
-              PE governance demanded.
+              BMW&apos;s car-sharing platform launched with outsourced technology, unreliable
+              IoT hardware, and a 1.4-star app. We secured Munich approval to rebuild
+              internally, engineered an IoT API Gateway around 6-year hardware constraints,
+              and deployed ML models that transformed fleet operations — turning a failing
+              product into the strategic hub for the BMW-Daimler joint venture.
             </p>
             <div className="space-y-3 mb-6">
               <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-bold font-mono text-gradient-teal">47%</span>
-                <span className="text-sm text-muted-foreground">reduction in OpEx</span>
+                <span className="text-2xl font-bold font-mono text-gradient-teal">67%</span>
+                <span className="text-sm text-muted-foreground">fleet operations cost reduction</span>
               </div>
               <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-bold font-mono text-gradient-teal">{">"}75%</span>
-                <span className="text-sm text-muted-foreground">less downtime</span>
+                <span className="text-2xl font-bold font-mono text-gradient-teal">1.4 → 4.8</span>
+                <span className="text-sm text-muted-foreground">iOS app ratings</span>
               </div>
               <div className="flex items-baseline gap-3">
-                <span className="text-2xl font-bold font-mono text-gradient-teal">87%</span>
-                <span className="text-sm text-muted-foreground">roadmap predictability (from &lt;50%)</span>
+                <span className="text-2xl font-bold font-mono text-gradient-teal">1:7 → 1:32</span>
+                <span className="text-sm text-muted-foreground">reservations requiring support</span>
               </div>
             </div>
             <Link

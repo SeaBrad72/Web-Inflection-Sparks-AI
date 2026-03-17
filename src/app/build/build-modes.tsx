@@ -52,11 +52,11 @@ const modes = [
       { icon: Search, text: "Knowledge base & document intelligence" },
     ],
     proof: {
-      metric: "67%",
-      description: "fleet operations cost reduction via IoT + ML",
-      context: "BMW / ReachNow — real-time vehicle intelligence",
+      metric: "9%",
+      description: "increase in monthly revenue per vehicle",
+      context: "BMW / ReachNow — ML-driven fleet intelligence",
       narrative:
-        "A global car-sharing fleet was bleeding operational costs. We built real-time IoT telemetry and ML-driven predictive maintenance that turned raw vehicle data into automated operational decisions.",
+        "ML models for demand forecasting and dynamic repositioning didn't just cut costs — they put vehicles where customers needed them. Revenue per vehicle climbed while support calls dropped from 1:7 to fewer than 1:32 reservations.",
     },
     accent: "teal",
   },
