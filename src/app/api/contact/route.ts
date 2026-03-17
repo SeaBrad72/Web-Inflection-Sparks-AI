@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-if (!process.env.RESEND_API_KEY) {
-  console.error("RESEND_API_KEY environment variable is not set");
+function getResendClient() {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("RESEND_API_KEY environment variable is not set");
+  }
+  return new Resend(process.env.RESEND_API_KEY);
 }
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const VALID_INTERESTS = [
   "Fractional CTO / CAIO / CPO",
@@ -69,6 +70,7 @@ export async function POST(req: Request) {
   const safeMessage = escapeHtml(message.trim());
 
   try {
+    const resend = getResendClient();
     const { error: resendError } = await resend.emails.send({
       from: "InflectionSparks.ai <contact@resend.inflectionsparksolutions.com>",
       to: process.env.CONTACT_EMAIL || "bradley@inflectionsparksolutions.com",
