@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "InflectionSparks.ai — Fractional CTO & AI Transformation",
     description:
-      "We embed with your teams, rebuild your engineering org, ship AI-powered products, and leave you self-sufficient.",
+      "We embed with your teams, uplevel your engineering org, ship AI-powered products, and leave you self-sufficient.",
     type: "website",
     siteName: "InflectionSparks.ai",
     locale: "en_US",
@@ -82,6 +82,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "InflectionSparks.ai",
+              url: "https://inflectionsparks.ai",
+              logo: "https://inflectionsparks.ai/logos/logo-dark.png",
+              description:
+                "Fractional CTO, CAIO, and CPO leadership for enterprise AI transformation.",
+              founder: {
+                "@type": "Person",
+                name: "Bradley James",
+                jobTitle: "Fractional CTO & AI Transformation Leader",
+              },
+              areaServed: "Worldwide",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Seattle",
+                addressRegion: "WA",
+                addressCountry: "US",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "sales",
+                url: "https://inflectionsparks.ai/contact",
+              },
+              sameAs: [
+                "https://www.linkedin.com/company/inflectionsparks",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased noise`}
       >
