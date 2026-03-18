@@ -104,6 +104,7 @@ export default function RootLayout({
                 "@type": "PostalAddress",
                 addressLocality: "Seattle",
                 addressRegion: "WA",
+                postalCode: "98126",
                 addressCountry: "US",
               },
               contactPoint: {
