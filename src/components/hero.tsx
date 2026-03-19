@@ -38,8 +38,8 @@ export default function Hero() {
       <div className="absolute inset-0 grid-pattern opacity-40" />
 
       {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 right-[10%] w-[600px] h-[600px] rounded-full bg-teal/[0.12] blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 left-[5%] w-[400px] h-[400px] rounded-full bg-orange/[0.06] blur-[100px]" />
+      <div className="absolute top-1/4 right-[10%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full bg-teal/[0.12] blur-[120px] animate-pulse" />
+      <div className="absolute bottom-1/4 left-[5%] w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-orange/[0.06] blur-[100px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

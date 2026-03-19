@@ -229,8 +229,8 @@ function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
       className="rounded-2xl border border-border-subtle bg-surface overflow-hidden"
     >
       {/* Header */}
-      <div className="p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="p-5 sm:p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Left: content — 3 cols */}
           <div className="lg:col-span-3">
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -279,7 +279,7 @@ function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
       {/* Expand toggle */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-center gap-2 px-8 py-3 border-t border-border-subtle text-sm text-muted-foreground hover:text-foreground hover:bg-surface-elevated transition-colors cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 px-5 sm:px-8 py-3 border-t border-border-subtle text-sm text-muted-foreground hover:text-foreground hover:bg-surface-elevated transition-colors cursor-pointer"
       >
         {expanded ? "Hide details" : "Read the full story"}
         <ChevronDown
@@ -299,7 +299,7 @@ function CaseCard({ cs, index }: { cs: CaseStudy; index: number }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-8 pb-8 pt-2 border-t border-border-subtle">
+            <div className="px-5 sm:px-8 pb-5 sm:pb-8 pt-2 border-t border-border-subtle">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div>
                   <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">

@@ -58,7 +58,7 @@ export default function LeadApproach() {
           className="rounded-2xl border border-border-subtle bg-surface overflow-hidden"
         >
           {/* Header */}
-          <div className="grid grid-cols-3 gap-4 px-6 py-4 border-b border-border-subtle bg-surface-elevated">
+          <div className="hidden sm:grid grid-cols-3 gap-4 px-6 py-4 border-b border-border-subtle bg-surface-elevated">
             <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
               Alternative
             </div>
@@ -74,7 +74,7 @@ export default function LeadApproach() {
           {differentiators.map((d, i) => (
             <div
               key={d.label}
-              className={`grid grid-cols-3 gap-4 px-6 py-5 ${
+              className={`grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 px-6 py-5 ${
                 i < differentiators.length - 1
                   ? "border-b border-border-subtle"
                   : ""
@@ -83,9 +83,11 @@ export default function LeadApproach() {
               <div className="text-sm font-medium text-foreground">
                 {d.label}
               </div>
-              <div className="text-sm text-muted-foreground">{d.trait}</div>
+              <div className="text-sm text-muted-foreground">
+                <span className="sm:hidden text-xs text-muted-foreground/60">Others: </span>{d.trait}
+              </div>
               <div className="text-sm text-teal-light font-medium">
-                {d.yours}
+                <span className="sm:hidden text-xs text-muted-foreground/60">Us: </span>{d.yours}
               </div>
             </div>
           ))}

@@ -94,7 +94,7 @@ export default function LeadPE() {
           <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-6">
             Results from PE-backed engagements
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {peMetrics.map((metric, i) => (
               <motion.div
                 key={metric.label}

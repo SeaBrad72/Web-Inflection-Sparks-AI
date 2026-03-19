@@ -82,7 +82,7 @@ export default function ContactForm() {
       <div className="absolute inset-0 grid-pattern opacity-30" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Left: Copy + Calendly */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -189,7 +189,7 @@ export default function ContactForm() {
                     required
                     value={form.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -209,7 +209,7 @@ export default function ContactForm() {
                     required
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
                     placeholder="you@company.com"
                   />
                 </div>
@@ -228,7 +228,7 @@ export default function ContactForm() {
                     name="company"
                     value={form.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
                     placeholder="Your company (optional)"
                   />
                 </div>
@@ -246,7 +246,7 @@ export default function ContactForm() {
                     name="interest"
                     value={form.interest}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border-subtle bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors"
                   >
                     <option value="">Select a topic (optional)</option>
                     {interests.map((interest) => (
@@ -272,7 +272,7 @@ export default function ContactForm() {
                     rows={4}
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-border-subtle bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal/50 transition-colors resize-none"
                     placeholder="Tell me about your situation and what you're looking to accomplish..."
                   />
                 </div>
