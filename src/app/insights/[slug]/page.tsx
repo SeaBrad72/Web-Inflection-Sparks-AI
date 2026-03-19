@@ -93,9 +93,10 @@ const portableTextComponents = {
   marks: {
     link: ({ children, value }: { children: React.ReactNode; value?: { href: string } }) => {
       const href = value?.href || "#";
+      const safeHref = /^(https?:|mailto:|\/|#)/.test(href) ? href : "#";
       return (
         <a
-          href={href}
+          href={safeHref}
           target={href.startsWith("http") ? "_blank" : undefined}
           rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
           className="text-teal-light hover:underline"
