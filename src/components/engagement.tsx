@@ -10,13 +10,17 @@ const steps = [
     title: "Diagnose",
     description:
       "We assess your AI readiness, engineering capabilities, and organizational structure. No generic frameworks. We find the real blockers.",
+    detail:
+      "Deliverables: AI readiness scorecard, technology & operations audit, 90-day roadmap.",
   },
   {
     icon: Rocket,
     phase: "Phase 02",
     title: "Embed & Build",
     description:
-      "We join your teams, not replace them. We build alongside your engineers, ship real products, and establish new workflows in the process.",
+      "We join your teams, not replace them. We build alongside your people, ship real products, and establish new workflows in the process.",
+    detail:
+      "2–3 days/week embedded with your leadership, product, and engineering teams.",
   },
   {
     icon: Users,
@@ -24,13 +28,17 @@ const steps = [
     title: "Transfer & Upskill",
     description:
       "Knowledge transfer isn't an afterthought. We train your teams on what we've built, document everything, and hand over full ownership.",
+    detail:
+      "Workshops, decision frameworks, and hands-on coaching — your people own every process and system.",
   },
   {
     icon: Flag,
     phase: "Phase 04",
     title: "Self-Sufficient",
     description:
-      "You don't need us anymore. That's the goal. We stay available for advisory, but your teams own the strategy, the code, and the process.",
+      "You don't need us anymore. That's the goal. We stay available for advisory, but your teams own the strategy, the operations, and the process.",
+    detail:
+      "Exit criteria: your teams operate independently, with playbooks, governance policies, and decision frameworks in place.",
   },
 ];
 
@@ -84,6 +92,7 @@ export default function Engagement() {
 
                 <h3 className="text-lg font-bold mb-2">{step.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{step.description}</p>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed italic">{step.detail}</p>
               </motion.div>
             ))}
           </div>
