@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Calendar } from "lucide-react";
 
@@ -61,6 +62,10 @@ export default function ContactForm() {
       }
 
       setStatus("success");
+      track("contact_form_submitted", {
+        interest: form.interest || "not specified",
+        hasCompany: !!form.company,
+      });
       setForm({ name: "", email: "", company: "", interest: "", message: "" });
     } catch (err) {
       setStatus("error");

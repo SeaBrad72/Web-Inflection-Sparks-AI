@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
+import { client } from "@/sanity/client";
+import { allArticlesQuery } from "@/sanity/queries";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://inflectionsparks.ai";
 
-  return [
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -53,4 +55,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
   ];
+
+  let articles: { slug: { current: string }; publishedAt: string }[] = [];
+  try {
+    articles = await client.fetch(allArticlesQuery);
+  } catch (err) {
+    console.error("[sitemap] Failed to fetch articles from Sanity:", err);
+  }
+
+  const articlePages: MetadataRoute.Sitemap = articles
+    .filter((a) => a.slug?.current && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(a.slug.current))
+    .map((article) => ({
+      url: `${baseUrl}/insights/${article.slug.current}`,
+      lastModified: new Date(article.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    }));
+
+  return [...staticPages, ...articlePages];
 }

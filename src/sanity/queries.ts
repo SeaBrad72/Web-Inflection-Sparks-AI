@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const allArticlesQuery = groq`
-  *[_type == "article"] | order(publishedAt desc) {
+  *[_type == "article" && defined(slug.current)] | order(publishedAt desc) {
     _id,
     title,
     slug,

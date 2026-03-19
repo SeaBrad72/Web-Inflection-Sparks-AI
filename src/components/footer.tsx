@@ -75,9 +75,17 @@ export default function Footer() {
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} InflectionSparks.ai. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Seattle-based, serving globally.
-          </p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              Terms
+            </Link>
+            <span className="text-xs text-muted-foreground">
+              Seattle-based, serving globally.
+            </span>
+          </div>
         </div>
       </div>
     </footer>
