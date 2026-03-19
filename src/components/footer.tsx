@@ -14,7 +14,7 @@ const footerLinks = {
   ],
   Connect: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/bpjames", external: true },
-    { label: "Book a Call", href: "https://calendly.com/inflectionsparksolutions/30min", external: true },
+    { label: "Book a Call", href: "https://calendly.com/inflectionsparks/30min", external: true },
   ],
 };
 

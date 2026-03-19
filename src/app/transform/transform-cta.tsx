@@ -39,7 +39,7 @@ export default function TransformCTA() {
               <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
-              href="https://calendly.com/inflectionsparksolutions/30min"
+              href="https://calendly.com/inflectionsparks/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-border text-muted hover:text-foreground hover:border-muted-foreground transition-all"

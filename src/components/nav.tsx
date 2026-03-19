@@ -115,7 +115,7 @@ export default function Nav() {
               Contact
             </Link>
             <a
-              href="https://calendly.com/inflectionsparksolutions/30min"
+              href="https://calendly.com/inflectionsparks/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-teal text-white text-sm font-medium hover:bg-teal-light transition-colors"
@@ -177,7 +177,7 @@ export default function Nav() {
               )}
               <div className="pt-4 border-t border-border-subtle">
                 <a
-                  href="https://calendly.com/inflectionsparksolutions/30min"
+                  href="https://calendly.com/inflectionsparks/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center px-4 py-2.5 rounded-lg bg-teal text-white text-sm font-medium"

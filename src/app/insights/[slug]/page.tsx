@@ -196,7 +196,7 @@ export default async function ArticlePage({
             Start the Conversation
           </Link>
           <a
-            href="https://calendly.com/inflectionsparksolutions/30min"
+            href="https://calendly.com/inflectionsparks/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border text-muted hover:text-foreground hover:border-muted-foreground transition-all"

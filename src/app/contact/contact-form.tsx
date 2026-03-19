@@ -137,7 +137,7 @@ export default function ContactForm() {
                 Skip the form and pick a time that works for you.
               </p>
               <a
-                href="https://calendly.com/inflectionsparksolutions/30min"
+                href="https://calendly.com/inflectionsparks/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-sm font-medium text-muted hover:text-foreground hover:border-muted-foreground transition-all"
