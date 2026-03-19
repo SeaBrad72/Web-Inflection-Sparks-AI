@@ -70,6 +70,11 @@ export default function PrivacyPage() {
             <li>
               <strong>Sanity</strong> — content management for our blog
             </li>
+            <li>
+              <strong>LinkedIn Insight Tag</strong> — website analytics and
+              audience insights (may use cookies; governed by LinkedIn&apos;s
+              privacy policy)
+            </li>
           </ul>
         </section>
 
@@ -78,11 +83,11 @@ export default function PrivacyPage() {
             Cookies
           </h2>
           <p>
-            This website does not use tracking cookies. Vercel Analytics is
-            privacy-focused and does not use cookies or collect personally
-            identifiable information. Essential cookies may be used by
-            third-party embeds (such as Calendly) when you interact with those
-            features.
+            Vercel Analytics is privacy-focused and does not use cookies or
+            collect personally identifiable information. The LinkedIn Insight
+            Tag may set cookies for audience analytics and ad measurement.
+            Essential cookies may also be used by third-party embeds (such as
+            Calendly) when you interact with those features.
           </p>
         </section>
 
