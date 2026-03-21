@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "How is this different from hiring a consulting firm?",
     answer:
-      "Consulting firms deliver a strategy deck and leave. We embed with your teams, write code alongside your engineers, restructure your organization from the inside, and stay accountable for outcomes — not deliverables. We don't bill by the hour for recommendations. We're measured by what your team can do after we're gone.",
+      "Consulting firms deliver a strategy deck and leave. We embed with your teams, build the systems and processes that scale alongside your people, restructure your organization from the inside, and stay accountable for outcomes — not deliverables. We don't bill by the hour for recommendations. We're measured by what your team can do after we're gone.",
   },
   {
     question: "What does \"fractional\" actually mean?",

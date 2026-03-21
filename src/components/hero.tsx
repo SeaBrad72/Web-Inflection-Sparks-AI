@@ -54,7 +54,7 @@ export default function Hero() {
             >
               <div className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
               <span className="text-xs font-medium text-teal-light tracking-wide">
-                Fractional CTO &middot; AI Strategy &middot; Engineering Leadership
+                Fractional CTO &middot; AI Transformation &middot; Engineering &amp; Org Leadership
               </span>
             </motion.div>
 

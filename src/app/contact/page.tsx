@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact | InflectionSparks.ai",
     description:
-      "Whether you're evaluating AI strategy or ready to transform your engineering organization — it starts with a conversation.",
+      "Whether you're evaluating AI strategy or ready to transform your organization — it starts with a conversation.",
   },
   alternates: {
     canonical: "https://inflectionsparks.ai/contact",

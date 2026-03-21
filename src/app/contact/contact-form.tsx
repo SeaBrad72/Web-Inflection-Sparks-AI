@@ -102,7 +102,7 @@ export default function ContactForm() {
             </h1>
             <p className="text-lg text-muted leading-relaxed mb-8">
               Whether you&apos;re evaluating AI strategy, considering fractional
-              leadership, or ready to transform your engineering organization —
+              leadership, or ready to transform your organization —
               it starts with a conversation.
             </p>
 

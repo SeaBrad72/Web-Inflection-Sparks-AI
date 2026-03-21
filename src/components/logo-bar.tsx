@@ -25,7 +25,7 @@ export default function LogoBar() {
           transition={{ duration: 0.8 }}
         >
           <p className="text-xs font-medium text-muted-foreground/70 uppercase tracking-[0.2em] mb-6 text-center">
-            Trusted by engineering teams at
+            Trusted by leadership &amp; engineering teams at
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {clients.map((client, i) => (

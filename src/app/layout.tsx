@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | InflectionSparks.ai",
   },
   description:
-    "Fractional CTO, CAIO, and CPO leadership for enterprise AI transformation. We embed with your teams, ship AI-powered products, restructure engineering orgs, and leave you self-sufficient.",
+    "Fractional CTO, CAIO, and CPO leadership for enterprise AI transformation. We embed with your teams, ship AI-powered products, restructure organizations for AI, and leave you self-sufficient.",
   keywords: [
     "fractional CTO",
     "fractional CAIO",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "InflectionSparks.ai — Fractional CTO & AI Transformation",
     description:
-      "We embed with your teams, uplevel your engineering org, ship AI-powered products, and leave you self-sufficient.",
+      "We embed with your teams, uplevel your organization, ship AI-powered products, and leave you self-sufficient.",
     type: "website",
     siteName: "InflectionSparks.ai",
     locale: "en_US",
