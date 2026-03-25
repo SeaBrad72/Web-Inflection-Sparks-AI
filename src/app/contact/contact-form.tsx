@@ -66,6 +66,12 @@ export default function ContactForm() {
         interest: form.interest || "not specified",
         hasCompany: !!form.company,
       });
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", {
+          event_category: "contact",
+          event_label: form.interest || "not specified",
+        });
+      }
       setForm({ name: "", email: "", company: "", interest: "", message: "" });
     } catch (err) {
       setStatus("error");

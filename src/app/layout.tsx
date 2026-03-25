@@ -127,6 +127,19 @@ export default function RootLayout({
         <main className="pt-16">{children}</main>
         <Footer />
         <Analytics />
+        {/* Google Analytics (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-027LYKKCX4"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-027LYKKCX4');
+          `}
+        </Script>
         {/* LinkedIn Insight Tag */}
         <Script id="linkedin-insight" strategy="afterInteractive">
           {`

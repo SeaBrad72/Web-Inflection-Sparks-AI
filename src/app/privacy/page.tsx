@@ -27,9 +27,10 @@ export default function PrivacyPage() {
           <p>
             When you use our contact form, we collect the information you
             provide: your name, email address, company name (optional), area of
-            interest, and message content. We also collect basic analytics data
-            (page views, referral source, device type) through Vercel Analytics
-            to understand how visitors use our site.
+            interest, and message content. We also collect analytics data
+            (page views, referral source, device type, session duration) through
+            Vercel Analytics and Google Analytics to understand how visitors use
+            our site and to improve our services.
           </p>
         </section>
 
@@ -71,6 +72,20 @@ export default function PrivacyPage() {
               <strong>Sanity</strong> — content management for our blog
             </li>
             <li>
+              <strong>Google Analytics (GA4)</strong> — website analytics,
+              audience insights, and conversion tracking (uses cookies;
+              governed by Google&apos;s{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-light hover:underline"
+              >
+                privacy policy
+              </a>
+              )
+            </li>
+            <li>
               <strong>LinkedIn Insight Tag</strong> — website analytics and
               audience insights (may use cookies; governed by LinkedIn&apos;s
               privacy policy)
@@ -84,10 +99,21 @@ export default function PrivacyPage() {
           </h2>
           <p>
             Vercel Analytics is privacy-focused and does not use cookies or
-            collect personally identifiable information. The LinkedIn Insight
-            Tag may set cookies for audience analytics and ad measurement.
-            Essential cookies may also be used by third-party embeds (such as
-            Calendly) when you interact with those features.
+            collect personally identifiable information. Google Analytics uses
+            cookies (such as _ga and _ga_*) to distinguish unique visitors and
+            track sessions; you can opt out via{" "}
+            <a
+              href="https://tools.google.com/dlpage/gaoptout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-light hover:underline"
+            >
+              Google&apos;s browser add-on
+            </a>
+            . The LinkedIn Insight Tag may set cookies for audience analytics
+            and ad measurement. Essential cookies may also be used by
+            third-party embeds (such as Calendly) when you interact with those
+            features.
           </p>
         </section>
 
