@@ -1,8 +1,44 @@
-import { Section, Wrap, Eyebrow, H2, Lead, Callout } from "./sparkwright-ui";
+import type { ReactNode } from "react";
+import { Section, Wrap, Eyebrow, H2, Lead, Callout, Kbd } from "./sparkwright-ui";
 import { SPARKWRIGHT } from "@/content/sparkwright";
 import LifecycleLoop from "./lifecycle-loop";
 
+/** Groups harnesses that share an identical level + note so they render as one clause. */
+function groupHarnesses(harnesses: typeof SPARKWRIGHT.harnesses) {
+  const groups: { names: string[]; level: string; note: string }[] = [];
+  for (const h of harnesses) {
+    const existing = groups.find((g) => g.level === h.level && g.note === h.note);
+    if (existing) {
+      existing.names.push(h.name);
+    } else {
+      groups.push({ names: [h.name], level: h.level, note: h.note });
+    }
+  }
+  return groups;
+}
+
+/** Joins items into a natural, Oxford-comma list: "A", "A and B", or "A, B, and C". */
+function joinOxford(items: ReactNode[]): ReactNode {
+  if (items.length === 1) return items[0];
+  if (items.length === 2) {
+    return (
+      <>
+        {items[0]} and {items[1]}
+      </>
+    );
+  }
+  return (
+    <>
+      {items.slice(0, -1).map((item, i) => (
+        <span key={i}>{item}, </span>
+      ))}
+      and {items[items.length - 1]}
+    </>
+  );
+}
+
 export default function SparkwrightCoverage() {
+  const harnessGroups = groupHarnesses(SPARKWRIGHT.harnesses);
   return (
     <Section id="coverage">
       <Wrap>
@@ -32,11 +68,22 @@ export default function SparkwrightCoverage() {
           <Callout>
             <p>
               <strong>Works with your agent.</strong>{" "}
-              {SPARKWRIGHT.harnesses.map((h) => (
-                <span key={h.name}>
-                  <strong>{h.name}</strong> — {h.level}. {h.note}{" "}
-                </span>
-              ))}
+              {harnessGroups.map((g, i) => {
+                const isLast = i === harnessGroups.length - 1;
+                const nameNodes: ReactNode[] = g.names.map((n) => <strong key={n}>{n}</strong>);
+                if (isLast && harnessGroups.length > 1) {
+                  nameNodes.push(
+                    <span key="any-other">
+                      any other <Kbd>AGENTS.md</Kbd>-reading agent
+                    </span>,
+                  );
+                }
+                return (
+                  <span key={g.level + g.note}>
+                    {joinOxford(nameNodes)} — {g.level}. {g.note}{" "}
+                  </span>
+                );
+              })}
               Each harness is certified to the level it has actually reached
               — not claimed at blanket parity.
             </p>
