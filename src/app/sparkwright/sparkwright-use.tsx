@@ -15,11 +15,11 @@ export default function SparkwrightUse() {
 
         <ol className="mt-8 max-w-[720px]">
           <li className="border-t border-border-subtle py-5 flex gap-5">
-            <div className="font-mono text-teal-light">01</div>
+            <div className="font-mono text-teal-light" aria-hidden="true">01</div>
             <div>
-              <h4 className="text-base font-semibold tracking-tight mb-1.5">
+              <h3 className="text-base font-semibold tracking-tight mb-1.5">
                 Create your project <em>from</em> the kit
-              </h4>
+              </h3>
               <p className="text-sm text-muted leading-relaxed">
                 Clone a throwaway copy and run one script that produces a
                 clean, CI-ready project of your own — pruned of the
@@ -29,11 +29,11 @@ export default function SparkwrightUse() {
             </div>
           </li>
           <li className="border-t border-border-subtle py-5 flex gap-5">
-            <div className="font-mono text-teal-light">02</div>
+            <div className="font-mono text-teal-light" aria-hidden="true">02</div>
             <div>
-              <h4 className="text-base font-semibold tracking-tight mb-1.5">
+              <h3 className="text-base font-semibold tracking-tight mb-1.5">
                 Let it guide you through Inception (Phase 0)
-              </h4>
+              </h3>
               <p className="text-sm text-muted leading-relaxed">
                 Open the project in your AI coding tool and say{" "}
                 <Kbd>&ldquo;Walk me through START-HERE.&rdquo;</Kbd> You
@@ -50,11 +50,11 @@ export default function SparkwrightUse() {
             </div>
           </li>
           <li className="border-t border-border-subtle py-5 flex gap-5">
-            <div className="font-mono text-teal-light">03</div>
+            <div className="font-mono text-teal-light" aria-hidden="true">03</div>
             <div>
-              <h4 className="text-base font-semibold tracking-tight mb-1.5">
+              <h3 className="text-base font-semibold tracking-tight mb-1.5">
                 Enter the loop
-              </h4>
+              </h3>
               <p className="text-sm text-muted leading-relaxed">
                 Each backlog item flows through the delivery cycle. You, the
                 human, sit on the gates — approve the design, make the

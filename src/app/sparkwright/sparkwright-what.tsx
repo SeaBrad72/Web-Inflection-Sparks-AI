@@ -39,7 +39,7 @@ export default function SparkwrightWhat() {
               differentiator.
             </p>
           </Card>
-          <Card title="Complements, doesn't replace">
+          <Card title="Complements, doesn’t replace">
             <p className="text-sm text-muted leading-relaxed">
               No UI, no catalog, no token broker. It layers assurance onto
               whatever platform you already run, sitting beside your CI and IDP
