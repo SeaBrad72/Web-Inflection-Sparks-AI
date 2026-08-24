@@ -16,6 +16,17 @@ const navLinks = [
       { label: "Transform", href: "/transform", description: "Org & Team Evolution" },
     ],
   },
+  {
+    label: "Products",
+    href: "#products",
+    children: [
+      {
+        label: "Sparkwright",
+        href: "/sparkwright",
+        description: "The agentic SDLC kit",
+      },
+    ],
+  },
   { label: "Work", href: "/work" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
@@ -23,7 +34,7 @@ const navLinks = [
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle bg-background/80 backdrop-blur-xl">
@@ -48,16 +59,16 @@ export default function Nav() {
                 <div
                   key={link.label}
                   className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={() => setOpenMenu(link.label)}
+                  onMouseLeave={() => setOpenMenu(null)}
                 >
                   <button
                     aria-haspopup="true"
-                    aria-expanded={servicesOpen}
-                    aria-controls="services-dropdown"
-                    onClick={() => setServicesOpen(!servicesOpen)}
+                    aria-expanded={openMenu === link.label}
+                    aria-controls={`${link.label.toLowerCase()}-dropdown`}
+                    onClick={() => setOpenMenu(openMenu === link.label ? null : link.label)}
                     onKeyDown={(e) => {
-                      if (e.key === "Escape") setServicesOpen(false);
+                      if (e.key === "Escape") setOpenMenu(null);
                     }}
                     className="flex items-center gap-1 px-4 py-2 text-sm text-muted hover:text-foreground transition-colors"
                   >
@@ -65,9 +76,9 @@ export default function Nav() {
                     <ChevronDown className="h-3.5 w-3.5" />
                   </button>
                   <AnimatePresence>
-                    {servicesOpen && (
+                    {openMenu === link.label && (
                       <motion.div
-                        id="services-dropdown"
+                        id={`${link.label.toLowerCase()}-dropdown`}
                         role="menu"
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
