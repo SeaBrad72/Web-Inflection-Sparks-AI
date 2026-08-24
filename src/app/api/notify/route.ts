@@ -31,6 +31,11 @@ export function hitsSize(): number {
   return hits.size;
 }
 
+/** Test-only seeding of the map. Not used by production logic. */
+export function __seedHitsForTest(ip: string, timestamps: number[]): void {
+  hits.set(ip, timestamps);
+}
+
 function sweepExpired(now: number): void {
   for (const [candidateIp, timestamps] of hits) {
     const stillRecent = timestamps.filter((t) => now - t < RATE_WINDOW_MS);

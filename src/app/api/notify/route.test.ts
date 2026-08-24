@@ -7,7 +7,7 @@ vi.mock("resend", () => ({
   }),
 }));
 
-import { POST, hitsSize } from "./route";
+import { POST, hitsSize, __seedHitsForTest } from "./route";
 
 function post(body: unknown, ip = "203.0.113.1") {
   return new Request("https://inflectionsparks.ai/api/notify", {
@@ -86,5 +86,18 @@ describe("POST /api/notify", () => {
       await POST(post({ email: "flood@example.com" }, `10.0.${Math.floor(i / 250)}.${i % 250}`));
     }
     expect(hitsSize()).toBeLessThanOrEqual(MAX_TRACKED_IPS);
+  });
+
+  it("fails closed for a brand-new IP once the map is genuinely full of live entries", async () => {
+    const MAX_TRACKED_IPS = 5000;
+    const now = Date.now();
+    for (let i = 0; i < MAX_TRACKED_IPS; i++) {
+      __seedHitsForTest(`seed-${i}`, [now]);
+    }
+    expect(hitsSize()).toBeGreaterThanOrEqual(MAX_TRACKED_IPS);
+
+    const res = await POST(post({ email: "newcomer@example.com" }, "203.0.113.250"));
+    expect(res.status).toBe(429);
+    expect(sendMock).not.toHaveBeenCalled();
   });
 });
