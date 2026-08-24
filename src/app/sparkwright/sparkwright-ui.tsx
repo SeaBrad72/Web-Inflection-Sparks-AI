@@ -61,9 +61,10 @@ export interface CardProps {
   title: ReactNode;
   children: ReactNode;
   accent?: boolean;
+  num?: string;
 }
 
-export function Card({ title, children, accent = false }: CardProps) {
+export function Card({ title, children, accent = false, num }: CardProps) {
   return (
     <div
       className={
@@ -72,7 +73,14 @@ export function Card({ title, children, accent = false }: CardProps) {
           : "rounded-xl border border-border bg-surface p-6"
       }
     >
-      <h3 className="text-lg font-semibold tracking-tight mb-2.5">{title}</h3>
+      <h3 className="text-lg font-semibold tracking-tight mb-2.5 flex items-center gap-2.5">
+        {num !== undefined && (
+          <span className="font-mono text-sm text-teal-light border border-teal/30 rounded-lg min-w-[30px] h-[30px] px-2.5 inline-flex items-center justify-center flex-none bg-teal/[0.08]">
+            {num}
+          </span>
+        )}
+        {title}
+      </h3>
       {children}
     </div>
   );
