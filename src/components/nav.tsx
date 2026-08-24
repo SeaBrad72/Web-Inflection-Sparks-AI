@@ -52,10 +52,21 @@ export default function Nav() {
   // that label's own wrapper.
   const suppressReopenRef = useRef<Record<string, boolean>>({});
 
-  function closeMenu(label: string, options?: { returnFocus?: boolean }) {
+  function closeMenu(
+    label: string,
+    options?: { returnFocus?: boolean; armSuppression?: boolean }
+  ) {
     setOpenMenu((current) => (current === label ? null : current));
     setOpenMethod(null);
-    suppressReopenRef.current[label] = true;
+    // Only arm the reopen guard when the close happened while a pointer was,
+    // by construction, over the trigger (the click-to-close path). Escape
+    // can fire with no pointer anywhere near the trigger, so arming it there
+    // would silently block the very next hover of that same label until an
+    // unrelated mouseleave cleared it — a confusing glitch with no
+    // protective purpose, since there is nothing hovering to suppress.
+    if (options?.armSuppression) {
+      suppressReopenRef.current[label] = true;
+    }
     if (options?.returnFocus) {
       triggerRefs.current[label]?.focus();
     }
@@ -63,7 +74,7 @@ export default function Nav() {
 
   function toggleMenu(label: string) {
     if (openMenu === label) {
-      closeMenu(label);
+      closeMenu(label, { armSuppression: true });
     } else {
       setOpenMenu(label);
       setOpenMethod("explicit");
