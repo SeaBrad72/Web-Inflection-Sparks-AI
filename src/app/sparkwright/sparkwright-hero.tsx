@@ -9,7 +9,7 @@ export default function SparkwrightHero() {
   const animate = prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
 
   return (
-    <section className="relative overflow-hidden">
+    <section id="top" className="relative overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,_rgba(47,133,90,0.25)_0%,_transparent_60%)]"
@@ -83,7 +83,7 @@ export default function SparkwrightHero() {
             className="mt-8 flex flex-wrap gap-2.5"
           >
             <span className="font-mono text-xs text-muted px-2.5 py-1.5 rounded-md border border-border bg-white/[0.015]">
-              <b className="text-teal font-medium">{SPARKWRIGHT.version}</b>
+              <b className="text-teal-light font-medium">{SPARKWRIGHT.version}</b>
             </span>
             <span className="font-mono text-xs text-muted px-2.5 py-1.5 rounded-md border border-border bg-white/[0.015]">
               {SPARKWRIGHT.license}

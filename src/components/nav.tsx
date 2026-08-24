@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -35,6 +35,37 @@ const navLinks = [
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  // Tracks the dropdown that was just closed by an explicit action (click or
+  // Escape) so a still-hovering pointer's onMouseEnter doesn't immediately
+  // reopen it. Cleared after a short window.
+  const justClosedRef = useRef<string | null>(null);
+  const justClosedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function closeMenu(label: string, options?: { returnFocus?: boolean }) {
+    setOpenMenu((current) => (current === label ? null : current));
+    justClosedRef.current = label;
+    if (justClosedTimeoutRef.current) clearTimeout(justClosedTimeoutRef.current);
+    justClosedTimeoutRef.current = setTimeout(() => {
+      justClosedRef.current = null;
+    }, 400);
+    if (options?.returnFocus) {
+      triggerRefs.current[label]?.focus();
+    }
+  }
+
+  function toggleMenu(label: string) {
+    if (openMenu === label) {
+      closeMenu(label);
+    } else {
+      setOpenMenu(label);
+    }
+  }
+
+  function handleTriggerMouseEnter(label: string) {
+    if (justClosedRef.current === label) return;
+    setOpenMenu(label);
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle bg-background/80 backdrop-blur-xl">
@@ -59,17 +90,23 @@ export default function Nav() {
                 <div
                   key={link.label}
                   className="relative"
-                  onMouseEnter={() => setOpenMenu(link.label)}
+                  onMouseEnter={() => handleTriggerMouseEnter(link.label)}
                   onMouseLeave={() => setOpenMenu(null)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape" && openMenu === link.label) {
+                      e.stopPropagation();
+                      closeMenu(link.label, { returnFocus: true });
+                    }
+                  }}
                 >
                   <button
+                    ref={(el) => {
+                      triggerRefs.current[link.label] = el;
+                    }}
                     aria-haspopup="true"
                     aria-expanded={openMenu === link.label}
                     aria-controls={`${link.label.toLowerCase()}-dropdown`}
-                    onClick={() => setOpenMenu(openMenu === link.label ? null : link.label)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Escape") setOpenMenu(null);
-                    }}
+                    onClick={() => toggleMenu(link.label)}
                     className="flex items-center gap-1 px-4 py-2 text-sm text-muted hover:text-foreground transition-colors"
                   >
                     {link.label}
