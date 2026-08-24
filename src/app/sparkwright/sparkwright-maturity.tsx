@@ -5,12 +5,14 @@ import { SPARKWRIGHT } from "@/content/sparkwright";
 const STAGE_LABELS = ["pre-adoption", "release-candidate", "adopted"] as const;
 
 export default function SparkwrightMaturity() {
-  const currentLabel = `${SPARKWRIGHT.maturity} · now`;
-
-  const stages: Stage[] = STAGE_LABELS.map((s) => ({
-    label: s === SPARKWRIGHT.maturity ? `${s} · now` : s,
-    tone: s === SPARKWRIGHT.maturity ? "once" : undefined,
-  }));
+  const stages: Stage[] = STAGE_LABELS.map((s) => {
+    const isCurrent = s === SPARKWRIGHT.maturity;
+    return {
+      label: isCurrent ? `${s} · now` : s,
+      tone: isCurrent ? "once" : undefined,
+      current: isCurrent,
+    };
+  });
 
   return (
     <Section id="maturity">
@@ -27,7 +29,6 @@ export default function SparkwrightMaturity() {
         <LifecycleLoop
           label={`Maturity stages, currently at ${SPARKWRIGHT.maturity}`}
           stages={stages}
-          current={currentLabel}
         />
 
         <p className="mt-7 text-[17.5px] text-muted max-w-[720px] leading-relaxed">
