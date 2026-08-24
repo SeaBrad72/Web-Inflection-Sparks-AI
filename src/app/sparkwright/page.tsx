@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import SparkwrightHero from "./sparkwright-hero";
 import SparkwrightWhat from "./sparkwright-what";
 import SparkwrightWhy from "./sparkwright-why";
+import SparkwrightUse from "./sparkwright-use";
+import SparkwrightPrinciples from "./sparkwright-principles";
 
 export const metadata: Metadata = {
   title: "Sparkwright — The agentic SDLC kit",
@@ -21,6 +23,8 @@ export default function SparkwrightPage() {
       <SparkwrightHero />
       <SparkwrightWhat />
       <SparkwrightWhy />
+      <SparkwrightUse />
+      <SparkwrightPrinciples />
     </>
   );
 }
