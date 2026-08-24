@@ -35,20 +35,23 @@ const navLinks = [
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  // How the currently-open menu was opened: hovering in (pointer) only
+  // closes on mouseleave; opening it explicitly (click, or keyboard
+  // activation of the trigger button, which fires the same click handler)
+  // means mouseleave must NOT close it — only another click, Escape, or
+  // focus leaving the menu should.
+  const [openMethod, setOpenMethod] = useState<"pointer" | "explicit" | null>(null);
   const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  // Tracks the dropdown that was just closed by an explicit action (click or
-  // Escape) so a still-hovering pointer's onMouseEnter doesn't immediately
-  // reopen it. Cleared after a short window.
-  const justClosedRef = useRef<string | null>(null);
-  const justClosedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Deterministic guard (no timer): set true the instant a menu is closed
+  // explicitly (click or Escape) so a pointer that is still hovering over
+  // the trigger doesn't immediately reopen it via onMouseEnter. Cleared the
+  // moment the pointer actually leaves the wrapper.
+  const suppressReopenRef = useRef(false);
 
   function closeMenu(label: string, options?: { returnFocus?: boolean }) {
     setOpenMenu((current) => (current === label ? null : current));
-    justClosedRef.current = label;
-    if (justClosedTimeoutRef.current) clearTimeout(justClosedTimeoutRef.current);
-    justClosedTimeoutRef.current = setTimeout(() => {
-      justClosedRef.current = null;
-    }, 400);
+    setOpenMethod(null);
+    suppressReopenRef.current = true;
     if (options?.returnFocus) {
       triggerRefs.current[label]?.focus();
     }
@@ -59,12 +62,22 @@ export default function Nav() {
       closeMenu(label);
     } else {
       setOpenMenu(label);
+      setOpenMethod("explicit");
     }
   }
 
   function handleTriggerMouseEnter(label: string) {
-    if (justClosedRef.current === label) return;
+    if (suppressReopenRef.current) return;
     setOpenMenu(label);
+    setOpenMethod("pointer");
+  }
+
+  function handleTriggerMouseLeave(label: string) {
+    suppressReopenRef.current = false;
+    if (openMenu === label && openMethod === "pointer") {
+      setOpenMenu(null);
+      setOpenMethod(null);
+    }
   }
 
   return (
@@ -91,11 +104,25 @@ export default function Nav() {
                   key={link.label}
                   className="relative"
                   onMouseEnter={() => handleTriggerMouseEnter(link.label)}
-                  onMouseLeave={() => setOpenMenu(null)}
+                  onMouseLeave={() => handleTriggerMouseLeave(link.label)}
                   onKeyDown={(e) => {
                     if (e.key === "Escape" && openMenu === link.label) {
                       e.stopPropagation();
                       closeMenu(link.label, { returnFocus: true });
+                    }
+                  }}
+                  onBlur={(e) => {
+                    // Tabbing (or otherwise moving focus) out of the trigger
+                    // and the whole open panel closes the menu — covers the
+                    // "focus leaving the menu" close path for
+                    // explicitly-opened menus, without a general state
+                    // machine.
+                    if (
+                      openMenu === link.label &&
+                      !e.currentTarget.contains(e.relatedTarget as Node | null)
+                    ) {
+                      setOpenMenu(null);
+                      setOpenMethod(null);
                     }
                   }}
                 >
