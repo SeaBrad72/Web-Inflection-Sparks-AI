@@ -3,14 +3,20 @@ export type Stage = { label: string; tone?: "once" | "highlight" };
 export default function LifecycleLoop({
   stages,
   label,
+  current,
 }: {
   stages: Stage[];
   label: string;
+  current?: string;
 }) {
   return (
     <ol aria-label={label} className="mt-8 flex flex-wrap items-center gap-2">
       {stages.map((stage, i) => (
-        <li key={stage.label} className="flex items-center gap-2">
+        <li
+          key={stage.label}
+          className="flex items-center gap-2"
+          aria-current={stage.label === current ? "step" : undefined}
+        >
           <span
             className={`rounded-full border px-4 py-2 text-sm font-medium ${
               stage.tone === "once"
