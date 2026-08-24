@@ -197,8 +197,11 @@ out of true while the version badge stays fresh.
 
 ### 5.2 Attribution guardrail
 
-The stat cards cite DORA 2025, Veracode 2025, and CodeScene 2026 as *industry
-findings about the problem*, explicitly **not** Sparkwright's results. The
+The section cites DORA 2025, Veracode 2025, and CodeScene 2026 as *industry
+findings about the problem*, explicitly **not** Sparkwright's results. Precisely:
+there are **three stat cards** — CodeScene (+30%), Veracode (45%), and a third
+whose source is openly *"Sparkwright's governing lens"*. DORA appears in the
+section's prose and the sources footnote, **not** as a stat card. The
 source HTML is careful about this and the port must preserve that framing
 verbatim — every stat card renders its `source` line, and the section retains
 the "not Sparkwright's results" sentence. This is a correctness requirement, not
