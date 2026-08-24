@@ -3,6 +3,7 @@ import LogoBar from "@/components/logo-bar";
 import Thesis from "@/components/thesis";
 import Services from "@/components/services";
 import ProofPoints from "@/components/proof-points";
+import SparkwrightStrip from "@/components/sparkwright-strip";
 import Engagement from "@/components/engagement";
 import Founder from "@/components/founder";
 import Credentials from "@/components/credentials";
@@ -19,6 +20,7 @@ export default function Home() {
       <Thesis />
       <Services />
       <ProofPoints />
+      <SparkwrightStrip />
       <Engagement />
       <Founder />
       <Credentials />
