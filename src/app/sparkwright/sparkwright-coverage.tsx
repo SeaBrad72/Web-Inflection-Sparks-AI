@@ -3,9 +3,11 @@ import { Section, Wrap, Eyebrow, H2, Lead, Callout, Kbd } from "./sparkwright-ui
 import { SPARKWRIGHT } from "@/content/sparkwright";
 import LifecycleLoop from "./lifecycle-loop";
 
+type HarnessLevel = (typeof SPARKWRIGHT.harnesses)[number]["level"];
+
 /** Groups harnesses that share an identical level + note so they render as one clause. */
 function groupHarnesses(harnesses: typeof SPARKWRIGHT.harnesses) {
-  const groups: { names: string[]; level: string; note: string }[] = [];
+  const groups: { names: string[]; level: HarnessLevel; note: string }[] = [];
   for (const h of harnesses) {
     const existing = groups.find((g) => g.level === h.level && g.note === h.note);
     if (existing) {
@@ -68,10 +70,10 @@ export default function SparkwrightCoverage() {
           <Callout>
             <p>
               <strong>Works with your agent.</strong>{" "}
-              {harnessGroups.map((g, i) => {
-                const isLast = i === harnessGroups.length - 1;
+              {harnessGroups.map((g) => {
+                const isEnforcementFloor = g.level === ("enforcement floor" satisfies HarnessLevel);
                 const nameNodes: ReactNode[] = g.names.map((n) => <strong key={n}>{n}</strong>);
-                if (isLast && harnessGroups.length > 1) {
+                if (isEnforcementFloor) {
                   nameNodes.push(
                     <span key="any-other">
                       any other <Kbd>AGENTS.md</Kbd>-reading agent
