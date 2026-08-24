@@ -7,7 +7,7 @@ vi.mock("resend", () => ({
   }),
 }));
 
-import { POST } from "./route";
+import { POST, hitsSize } from "./route";
 
 function post(body: unknown, ip = "203.0.113.1") {
   return new Request("https://inflectionsparks.ai/api/notify", {
@@ -77,5 +77,14 @@ describe("POST /api/notify", () => {
     delete process.env.RESEND_API_KEY;
     const res = await POST(post({ email: "dev@example.com" }, "203.0.113.20"));
     expect(res.status).toBe(500);
+  });
+
+  it("does not let the rate-limit map grow without bound", async () => {
+    const MAX_TRACKED_IPS = 5000;
+    const attempts = MAX_TRACKED_IPS + 500;
+    for (let i = 0; i < attempts; i++) {
+      await POST(post({ email: "flood@example.com" }, `10.0.${Math.floor(i / 250)}.${i % 250}`));
+    }
+    expect(hitsSize()).toBeLessThanOrEqual(MAX_TRACKED_IPS);
   });
 });

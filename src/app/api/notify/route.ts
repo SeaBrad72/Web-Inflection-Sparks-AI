@@ -20,15 +20,51 @@ function escapeHtml(str: string): string {
 
 const RATE_LIMIT = 5;
 const RATE_WINDOW_MS = 60 * 60 * 1000;
+// Upper bound on distinct IPs tracked at once. Reaching this triggers a
+// sweep of fully-expired entries instead of a full sweep on every request,
+// keeping the amortised per-request cost O(1).
+const MAX_TRACKED_IPS = 5000;
 const hits = new Map<string, number[]>();
+
+/** Test-only visibility into map growth. Not used by production logic. */
+export function hitsSize(): number {
+  return hits.size;
+}
+
+function sweepExpired(now: number): void {
+  for (const [candidateIp, timestamps] of hits) {
+    const stillRecent = timestamps.filter((t) => now - t < RATE_WINDOW_MS);
+    if (stillRecent.length === 0) {
+      // Self-clean: an IP with no timestamps left in the window is dropped
+      // entirely rather than kept as an empty array.
+      hits.delete(candidateIp);
+    } else if (stillRecent.length !== timestamps.length) {
+      hits.set(candidateIp, stillRecent);
+    }
+  }
+}
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+  const isKnownIp = hits.has(ip);
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+
   if (recent.length >= RATE_LIMIT) {
     hits.set(ip, recent);
     return true;
   }
+
+  if (!isKnownIp && hits.size >= MAX_TRACKED_IPS) {
+    sweepExpired(now);
+    if (hits.size >= MAX_TRACKED_IPS) {
+      // Cap still full after sweeping expired entries: a real flood across
+      // many distinct IPs, not just stale bookkeeping. Fail CLOSED for
+      // unseen IPs so the map can never grow past the cap, rather than
+      // throwing or silently allowing unlimited signups.
+      return true;
+    }
+  }
+
   recent.push(now);
   hits.set(ip, recent);
   return false;
