@@ -42,16 +42,20 @@ export default function Nav() {
   // focus leaving the menu should.
   const [openMethod, setOpenMethod] = useState<"pointer" | "explicit" | null>(null);
   const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  // Deterministic guard (no timer): set true the instant a menu is closed
-  // explicitly (click or Escape) so a pointer that is still hovering over
-  // the trigger doesn't immediately reopen it via onMouseEnter. Cleared the
-  // moment the pointer actually leaves the wrapper.
-  const suppressReopenRef = useRef(false);
+  // Deterministic guard (no timer): set true for a given label the instant
+  // THAT dropdown is closed explicitly (click or Escape) so a pointer still
+  // hovering its trigger doesn't immediately reopen it via onMouseEnter.
+  // Scoped per-label (not a single shared boolean) so closing one dropdown
+  // — including via Escape, which may fire with no pointer over any
+  // trigger at all — can never suppress a hover-open on a DIFFERENT
+  // dropdown. Cleared for a label the moment the pointer actually leaves
+  // that label's own wrapper.
+  const suppressReopenRef = useRef<Record<string, boolean>>({});
 
   function closeMenu(label: string, options?: { returnFocus?: boolean }) {
     setOpenMenu((current) => (current === label ? null : current));
     setOpenMethod(null);
-    suppressReopenRef.current = true;
+    suppressReopenRef.current[label] = true;
     if (options?.returnFocus) {
       triggerRefs.current[label]?.focus();
     }
@@ -67,13 +71,13 @@ export default function Nav() {
   }
 
   function handleTriggerMouseEnter(label: string) {
-    if (suppressReopenRef.current) return;
+    if (suppressReopenRef.current[label]) return;
     setOpenMenu(label);
     setOpenMethod("pointer");
   }
 
   function handleTriggerMouseLeave(label: string) {
-    suppressReopenRef.current = false;
+    suppressReopenRef.current[label] = false;
     if (openMenu === label && openMethod === "pointer") {
       setOpenMenu(null);
       setOpenMethod(null);
