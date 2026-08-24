@@ -1,0 +1,42 @@
+name: Sync Sparkwright release
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - id: sync
+        run: node scripts/sync-sparkwright.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: steps.sync.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-sparkwright
+          title: "chore: sync sparkwright to ${{ steps.sync.outputs.version }}"
+          commit-message: "chore: sync sparkwright to ${{ steps.sync.outputs.version }}"
+          body: |
+            Automated sync from the sparkwright repo's latest release.
+
+            **This PR updates facts only** — `version` and `lastReleaseAt`.
+
+            Narrative claims are NOT updated automatically. Before merging, check
+            whether this release changes anything in:
+            - the harness certification levels (`harnesses`)
+            - the maturity stage (`maturity`)
+            - the mutation-testing and guardrails prose
+
+            If the narrative still reads true, bump `lastReviewed` to today in
+            the same PR to reset the 90-day staleness clock.
