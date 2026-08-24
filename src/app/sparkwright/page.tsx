@@ -4,6 +4,8 @@ import SparkwrightWhat from "./sparkwright-what";
 import SparkwrightWhy from "./sparkwright-why";
 import SparkwrightUse from "./sparkwright-use";
 import SparkwrightPrinciples from "./sparkwright-principles";
+import SparkwrightSpine from "./sparkwright-spine";
+import SparkwrightCoverage from "./sparkwright-coverage";
 
 export const metadata: Metadata = {
   title: "Sparkwright — The agentic SDLC kit",
@@ -25,6 +27,8 @@ export default function SparkwrightPage() {
       <SparkwrightWhy />
       <SparkwrightUse />
       <SparkwrightPrinciples />
+      <SparkwrightSpine />
+      <SparkwrightCoverage />
     </>
   );
 }
