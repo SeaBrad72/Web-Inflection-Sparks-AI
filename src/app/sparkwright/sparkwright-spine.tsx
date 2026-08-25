@@ -1,4 +1,4 @@
-import { Section, Wrap, Eyebrow, H2, Lead, Card } from "./sparkwright-ui";
+import { Section, Wrap, Eyebrow, H2, Lead, Card, Callout } from "./sparkwright-ui";
 
 export default function SparkwrightSpine() {
   return (
@@ -37,15 +37,21 @@ export default function SparkwrightSpine() {
           check still passes. The checks <em>run</em>, on the kit&rsquo;s own
           tree, on every push — and the kit is built with the very loop it
           prescribes, holding itself to the same Definition of Done it gives
-          you. It even tests its own tests: <strong>
-            every check registered in the kit&rsquo;s control set is itself
-            mutation-tested
-          </strong>{" "}
-          — a green that can&rsquo;t be made to go red is caught and fixed,
-          and checks <em>outside</em> that control set are surfaced as
-          uncovered rather than silently counted. So the gates are real, not
-          decorative.
+          you.
         </p>
+        <Callout>
+          <p>
+            <strong>It tests its own tests.</strong>{" "}
+            Every check registered in
+            the kit&rsquo;s control set is itself{" "}
+            <strong>mutation-tested</strong>{" "}
+            &mdash; a green that cannot be
+            made to go red is caught and fixed, and checks <em>outside</em>{" "}
+            that control set are surfaced as uncovered rather than silently
+            counted. Most tooling never proves its own gates are capable of
+            failing. That is the difference between a gate and a decoration.
+          </p>
+        </Callout>
       </Wrap>
     </Section>
   );

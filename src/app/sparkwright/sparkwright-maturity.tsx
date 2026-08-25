@@ -1,4 +1,4 @@
-import { Section, Wrap, Eyebrow, H2, Lead, Kbd } from "./sparkwright-ui";
+import { Section, Wrap, Eyebrow, H2, Lead, Kbd, Callout } from "./sparkwright-ui";
 import LifecycleLoop, { type Stage } from "./lifecycle-loop";
 import { SPARKWRIGHT } from "@/content/sparkwright";
 
@@ -36,11 +36,20 @@ export default function SparkwrightMaturity() {
           <strong>built with its own loop</strong>, holding itself to the
           same Definition of Done, separation of duties, and mutation-tested
           gates it gives you — on every change. Run end-to-end to build and
-          deploy real software, its <Kbd>builder &ne; reviewer</Kbd> review
-          layer caught real, high-severity fail-open bugs an agent had
-          shipped <em>as passing tests</em>: a production path that failed
-          open, and a gate that was green only because it had been skipped.
+          deploy real software.
         </p>
+        <Callout tone="orange">
+          <p>
+            <strong>What its own review layer caught.</strong>{" "}
+            Run end to end,
+            the kit&rsquo;s <Kbd>builder &ne; reviewer</Kbd> layer found real,
+            high-severity <strong>fail-open</strong> bugs an agent had shipped{" "}
+            <em>as passing tests</em>: a production path that failed open, and
+            a gate that was green only because it had been skipped. Both are
+            the exact failure this page argues against &mdash; a green that
+            never could have gone red &mdash; caught by the process on itself.
+          </p>
+        </Callout>
         <p className="mt-4 text-[17.5px] text-muted max-w-[720px] leading-relaxed">
           The next stage — <strong>adopted</strong> — is earned when an
           external team ships real software through the loop; the kit is
