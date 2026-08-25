@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { SPARKWRIGHT } from "@/content/sparkwright";
+import SparkwrightMark from "./sparkwright-mark";
 
 export default function SparkwrightHero() {
   const prefersReducedMotion = useReducedMotion();
@@ -22,6 +23,15 @@ export default function SparkwrightHero() {
             initial={initial}
             animate={animate}
             transition={{ duration: 0.5 }}
+            className="mb-7"
+          >
+            <SparkwrightMark />
+          </motion.div>
+
+          <motion.div
+            initial={initial}
+            animate={animate}
+            transition={{ duration: 0.5, delay: 0.05 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal/20 bg-teal/5 mb-8"
           >
             <div aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
