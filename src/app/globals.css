@@ -47,7 +47,16 @@
 }
 
 html {
+  /* Site nav is fixed at 4rem. */
   scroll-padding-top: 5rem;
+}
+
+/* The Sparkwright page adds a sticky sub-nav (3rem) below the site nav from
+   the md breakpoint up, so anchor targets must clear 4rem + 3rem of chrome. */
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 8rem;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

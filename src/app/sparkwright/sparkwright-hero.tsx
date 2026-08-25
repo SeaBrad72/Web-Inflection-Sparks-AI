@@ -23,7 +23,7 @@ export default function SparkwrightHero() {
             initial={initial}
             animate={animate}
             transition={{ duration: 0.5 }}
-            className="mb-7"
+            className="mb-7 md:hidden"
           >
             <SparkwrightMark />
           </motion.div>

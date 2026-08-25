@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SparkwrightSubnav from "./sparkwright-subnav";
 import SparkwrightHero from "./sparkwright-hero";
 import SparkwrightWhat from "./sparkwright-what";
 import SparkwrightWhy from "./sparkwright-why";
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
 export default function SparkwrightPage() {
   return (
     <>
+      <SparkwrightSubnav />
       <SparkwrightHero />
       <SparkwrightWhat />
       <SparkwrightWhy />
