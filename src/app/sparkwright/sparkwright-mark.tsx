@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import SparkGlyph from "@/components/spark-glyph";
 
 /**
  * The Sparkwright product mark: the gradient spark plus the wordmark.
@@ -29,24 +30,7 @@ export default function SparkwrightMark({
 
   return (
     <div className={`flex items-center ${size === "sm" ? "gap-2" : "gap-2.5"}`}>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        className={`flex-none ${glyph}`}
-      >
-        <path
-          d="M12 1.5l2.1 6.3a2 2 0 001.3 1.3L21.7 11l-6.3 2.1a2 2 0 00-1.3 1.3L12 20.7l-2.1-6.3a2 2 0 00-1.3-1.3L2.3 11l6.3-2.1a2 2 0 001.3-1.3L12 1.5z"
-          fill={`url(#${gradientId})`}
-        />
-        <defs>
-          <linearGradient id={gradientId} x1="2" y1="2" x2="22" y2="22">
-            <stop stopColor="#F97316" />
-            <stop offset="1" stopColor="#38A169" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <SparkGlyph className={glyph} gradientId={gradientId} />
       <span className={`font-bold tracking-[-0.02em] ${word}`}>
         <span className="text-foreground">Spark</span>
         <span className="text-teal-light">wright</span>

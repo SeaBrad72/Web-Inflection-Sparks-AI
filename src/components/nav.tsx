@@ -1,12 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import SparkGlyph from "./spark-glyph";
 
-const navLinks = [
+type NavChild = {
+  label: string;
+  href: string;
+  description: string;
+  /** Optional product mark shown beside the label. */
+  icon?: ReactNode;
+};
+type NavLink = { label: string; href: string; children?: NavChild[] };
+
+const navLinks: NavLink[] = [
   {
     label: "Services",
     href: "#services",
@@ -24,6 +34,7 @@ const navLinks = [
         label: "Sparkwright",
         href: "/sparkwright",
         description: "The agentic SDLC kit",
+        icon: <SparkGlyph className="h-4 w-4" gradientId="nav-spark-gradient" />,
       },
     ],
   },
@@ -172,7 +183,8 @@ export default function Nav() {
                             role="menuitem"
                             className="block rounded-lg px-4 py-3 hover:bg-background transition-colors group"
                           >
-                            <span className="text-sm font-medium text-foreground group-hover:text-teal-light transition-colors">
+                            <span className="flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-teal-light transition-colors">
+                              {child.icon}
                               {child.label}
                             </span>
                             <span className="block text-xs text-muted-foreground mt-0.5">
@@ -249,7 +261,10 @@ export default function Nav() {
                         onClick={() => setMobileOpen(false)}
                         className="block px-3 py-2 text-sm text-muted hover:text-foreground transition-colors"
                       >
-                        {child.label}
+                        <span className="flex items-center gap-2">
+                          {child.icon}
+                          {child.label}
+                        </span>
                         <span className="block text-xs text-muted-foreground">{child.description}</span>
                       </Link>
                     ))}
