@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Products
+
+`/sparkwright` is a product page for the Sparkwright kit. All of its volatile facts —
+version, maturity, license, harness certification levels, stats — live in
+`src/content/sparkwright.ts`, the single source of truth; no component hardcodes them.
+A daily GitHub Action (`.github/workflows/sync-sparkwright.yml`) syncs the `version` and
+`lastReleaseAt` fields against the sparkwright repo's latest release and opens a PR — it
+never touches narrative content (harness levels, maturity stage, prose), which requires
+human review.
+
+See [`RUNBOOK.md`](./RUNBOOK.md) for local setup, environment variables, how to edit
+Sparkwright content by hand, how the sync workflow behaves, and deploy/rollback.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

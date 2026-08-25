@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SPARKWRIGHT } from "@/content/sparkwright";
 
 const footerLinks = {
   Services: [
     { label: "Lead", href: "/lead" },
     { label: "Build", href: "/build" },
     { label: "Transform", href: "/transform" },
+  ],
+  Products: [
+    { label: "Sparkwright", href: "/sparkwright" },
+    { label: "Sparkwright on GitHub", href: SPARKWRIGHT.repoUrl, external: true },
   ],
   Company: [
     { label: "About", href: "/about" },
@@ -22,7 +27,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <Image
