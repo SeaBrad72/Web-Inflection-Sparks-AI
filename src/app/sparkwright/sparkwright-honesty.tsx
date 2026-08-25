@@ -41,7 +41,8 @@ export default function SparkwrightHonesty() {
               only what it actually tests, never more — so the kit labels
               every capability <em>enforced</em> (a live gate blocks it),{" "}
               <em>advisory</em> (a nudge that doesn&rsquo;t), or{" "}
-              <em>declared</em> (an attestation it can&rsquo;t observe at
+              <em>declared</em>{" "}
+              (an attestation it can&rsquo;t observe at
               runtime). You always know what blocks and what merely nudges.
             </p>
           </Callout>

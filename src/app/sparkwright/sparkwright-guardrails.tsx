@@ -87,7 +87,8 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Proportional promotion</strong> — rigor proportional to
+              <strong>Proportional promotion</strong>{" "}
+              &mdash; rigor proportional to
               change-class × rung: relax the safe majority, harden the
               dangerous minority. A change&rsquo;s class is{" "}
               <em>derived</em>{" "}
