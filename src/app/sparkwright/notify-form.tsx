@@ -7,7 +7,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 export default function NotifyForm() {
   const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
+  const [fax, setFax] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -22,7 +22,7 @@ export default function NotifyForm() {
       const res = await fetch("/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, company }),
+        body: JSON.stringify({ email, fax }),
       });
 
       const data = await res.json().catch(() => ({}));
@@ -81,9 +81,9 @@ export default function NotifyForm() {
               {/* Honeypot: hidden from sighted and keyboard users, visible to bots. */}
               <input
                 type="text"
-                name="company"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
+                name="fax"
+                value={fax}
+                onChange={(e) => setFax(e.target.value)}
                 tabIndex={-1}
                 autoComplete="off"
                 aria-hidden="true"

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SPARKWRIGHT } from "@/content/sparkwright";
 
 const footerLinks = {
   Services: [
@@ -9,7 +10,7 @@ const footerLinks = {
   ],
   Products: [
     { label: "Sparkwright", href: "/sparkwright" },
-    { label: "Sparkwright on GitHub", href: "https://github.com/SeaBrad72/sparkwright", external: true },
+    { label: "Sparkwright on GitHub", href: SPARKWRIGHT.repoUrl, external: true },
   ],
   Company: [
     { label: "About", href: "/about" },

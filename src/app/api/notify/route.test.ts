@@ -7,7 +7,7 @@ vi.mock("resend", () => ({
   }),
 }));
 
-import { POST, hitsSize, __seedHitsForTest } from "./route";
+import { POST, hitsSize, __seedHitsForTest, __resetHitsForTest } from "./route";
 
 function post(body: unknown, ip = "203.0.113.1") {
   return new Request("https://inflectionsparks.ai/api/notify", {
@@ -58,7 +58,7 @@ describe("POST /api/notify", () => {
 
   it("rejects a honeypot submission without sending mail", async () => {
     const res = await POST(
-      post({ email: "dev@example.com", company: "spam" }, "203.0.113.15")
+      post({ email: "dev@example.com", fax: "spam" }, "203.0.113.15")
     );
     expect(res.status).toBe(200);
     expect(sendMock).not.toHaveBeenCalled();
@@ -88,7 +88,8 @@ describe("POST /api/notify", () => {
     expect(hitsSize()).toBeLessThanOrEqual(MAX_TRACKED_IPS);
   });
 
-  it("fails closed for a brand-new IP once the map is genuinely full of live entries", async () => {
+  it("evicts the oldest entry and admits a newcomer once the map is genuinely full of live entries", async () => {
+    __resetHitsForTest();
     const MAX_TRACKED_IPS = 5000;
     const now = Date.now();
     for (let i = 0; i < MAX_TRACKED_IPS; i++) {
@@ -97,7 +98,11 @@ describe("POST /api/notify", () => {
     expect(hitsSize()).toBeGreaterThanOrEqual(MAX_TRACKED_IPS);
 
     const res = await POST(post({ email: "newcomer@example.com" }, "203.0.113.250"));
-    expect(res.status).toBe(429);
-    expect(sendMock).not.toHaveBeenCalled();
+    expect(res.status).toBe(200);
+    expect(sendMock).toHaveBeenCalledOnce();
+    // The map never grows past the cap: the oldest live entry was evicted
+    // to make room for the newcomer, rather than the newcomer being
+    // rejected.
+    expect(hitsSize()).toBeLessThanOrEqual(MAX_TRACKED_IPS);
   });
 });

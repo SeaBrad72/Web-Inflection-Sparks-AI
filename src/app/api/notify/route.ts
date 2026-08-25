@@ -36,6 +36,11 @@ export function __seedHitsForTest(ip: string, timestamps: number[]): void {
   hits.set(ip, timestamps);
 }
 
+/** Test-only reset of the map. Not used by production logic. */
+export function __resetHitsForTest(): void {
+  hits.clear();
+}
+
 function sweepExpired(now: number): void {
   for (const [candidateIp, timestamps] of hits) {
     const stillRecent = timestamps.filter((t) => now - t < RATE_WINDOW_MS);
@@ -55,6 +60,10 @@ function isRateLimited(ip: string): boolean {
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
 
   if (recent.length >= RATE_LIMIT) {
+    // Re-insert (delete + set) so Map insertion order tracks recency of
+    // last hit, not just first-seen order. This keeps the eviction below
+    // O(1)-amortised: the oldest entry is always the Map's first key.
+    hits.delete(ip);
     hits.set(ip, recent);
     return true;
   }
@@ -62,14 +71,28 @@ function isRateLimited(ip: string): boolean {
   if (!isKnownIp && hits.size >= MAX_TRACKED_IPS) {
     sweepExpired(now);
     if (hits.size >= MAX_TRACKED_IPS) {
-      // Cap still full after sweeping expired entries: a real flood across
-      // many distinct IPs, not just stale bookkeeping. Fail CLOSED for
-      // unseen IPs so the map can never grow past the cap, rather than
-      // throwing or silently allowing unlimited signups.
-      return true;
+      // Cap still full after sweeping expired entries: evict the oldest
+      // live entry (the Map's first key — see the re-insert-on-update
+      // comment above) and admit the newcomer, instead of failing closed.
+      //
+      // `x-forwarded-for` is attacker-controlled: fail-closed here would
+      // let ~5,000 cheap forged-header POSTs fill the map with live
+      // entries and lock out every genuinely new visitor for up to an
+      // hour on this instance, with nothing to alert on it — turning a
+      // spam control into a denial-of-service lever. Fail-open (skip the
+      // cap entirely) would allow unbounded memory growth. Eviction keeps
+      // the O(1) memory cap AND keeps the service available to honest
+      // users. A rotating-IP attacker was never stoppable by per-IP
+      // limiting in the first place — that's a documented known
+      // limitation, not something this change is meant to solve.
+      const oldestIp = hits.keys().next().value;
+      if (oldestIp !== undefined) {
+        hits.delete(oldestIp);
+      }
     }
   }
 
+  hits.delete(ip);
   recent.push(now);
   hits.set(ip, recent);
   return false;
@@ -78,29 +101,26 @@ function isRateLimited(ip: string): boolean {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
-  let payload: { email?: string; company?: string };
+  let payload: { email?: string; fax?: string };
   try {
     payload = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { email, company } = payload;
+  const { email, fax } = payload;
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
 
-  // Honeypot: `company` is a hidden field no human fills in. Accept silently
-  // so bots get a 200 and learn nothing, but send nothing.
-  if (company) {
+  // Honeypot: `fax` is a hidden field no human fills in (chosen because it's
+  // not a field name autofillers target, unlike `company`). Accept silently
+  // so bots get a 200 and learn nothing, but send nothing. Checked before
+  // validation and rate limiting so a bot never consumes a real user's quota.
+  if (fax) {
     return NextResponse.json({ ok: true });
   }
 
-  if (isRateLimited(ip)) {
-    return NextResponse.json(
-      { error: "Too many requests. Please try again later." },
-      { status: 429 }
-    );
-  }
-
+  // Validate before consuming rate-limit budget: a typo'd address should
+  // not burn an honest user's hourly quota.
   if (!email?.trim()) {
     return NextResponse.json({ error: "Email is required." }, { status: 400 });
   }
@@ -111,6 +131,13 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { error: "Please provide a valid email address." },
       { status: 400 }
+    );
+  }
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
     );
   }
 
@@ -127,7 +154,10 @@ export async function POST(req: Request) {
              <p><strong>Current release:</strong> ${SPARKWRIGHT.version} (${SPARKWRIGHT.maturity})</p>`,
     });
   } catch (err) {
-    console.error("[api/notify] Failed to send notification:", err);
+    console.error(
+      "[api/notify] Failed to send notification:",
+      err instanceof Error ? err.message : String(err)
+    );
     return NextResponse.json(
       { error: "Could not process signup. Please try again." },
       { status: 500 }
