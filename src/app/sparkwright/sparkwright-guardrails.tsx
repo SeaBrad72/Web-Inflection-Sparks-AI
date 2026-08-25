@@ -19,6 +19,19 @@ export default function SparkwrightGuardrails() {
               the git + CI chokepoints below.
             </p>
           </li>
+          <li className="relative pl-6 text-[15.5px] text-muted">
+            <span
+              aria-hidden="true"
+              className="absolute left-0 top-[9px] h-2 w-2 rounded-sm bg-gradient-to-br from-teal to-teal-light"
+            />
+            <strong>Every gate can explain itself</strong>{" "}
+            &mdash; each one
+            records the risk it answers and why paying its cost beats the
+            alternative, queryable from the CLI with{" "}
+            <Kbd>sparkwright explain &lt;topic&gt;</Kbd>. A guardrail nobody can
+            justify becomes bureaucracy; this is how the kit keeps them
+            accountable to a reason.
+          </li>
           <li className="flex gap-3">
             <span
               aria-hidden="true"
@@ -89,7 +102,7 @@ export default function SparkwrightGuardrails() {
             <p className="text-sm text-muted leading-relaxed">
               <strong>Proportional promotion</strong>{" "}
               &mdash; rigor proportional to
-              change-class × rung: relax the safe majority, harden the
+              change-class × rung (how risky the change is, by how far it is being promoted): relax the safe majority, harden the
               dangerous minority. A change&rsquo;s class is{" "}
               <em>derived</em>{" "}
               at promotion, defaulting higher when

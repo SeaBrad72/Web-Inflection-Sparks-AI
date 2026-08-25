@@ -32,12 +32,8 @@ export default function SparkwrightWhat() {
             </p>
           </Card>
           <Card title="Honesty as a feature">
-            <p className="text-sm text-muted leading-relaxed">
-              It tells you exactly how strong each guarantee is — a live gate
-              that blocks (enforced), a nudge that doesn&rsquo;t (advisory), or
-              an attestation it can&rsquo;t observe (declared). Candor as the
-              differentiator.
-            </p>
+            It tells you exactly how strong each guarantee is, and labels every
+            control accordingly. Candor as the differentiator.
           </Card>
           <Card title="Complements, doesn’t replace">
             <p className="text-sm text-muted leading-relaxed">

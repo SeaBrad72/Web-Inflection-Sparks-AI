@@ -28,7 +28,7 @@ export default function SparkwrightHonesty() {
               </strong>
               : nothing merges unsafely, on any harness, and what shipped is
               proven equal to what was approved (<Kbd>shipped == approved</Kbd>,
-              by tree equality). Containment — an egress allowlist, a
+              by tree equality &mdash; the merged tree matches the reviewed one). Containment — an egress allowlist, a
               sandboxed filesystem, scoped tokens — is the platform boundary,
               which the kit ships references for and verifies is wired. Each
               layer does one job; the load-bearing one is real enforcement.
@@ -54,10 +54,15 @@ export default function SparkwrightHonesty() {
               hardlink-alias routes, branch-protection overrides — under
               adversarial review, and it enforces a deny-by-default{" "}
               <strong>MCP capability gate</strong>{" "}
-              in-process. A kit that
-              tells you precisely what&rsquo;s enforced versus advisory
-              versus declared is more trustworthy than one that claims
-              magic.
+              in-process (real enforcement, by tool name). The kit publishes
+              its own <strong>threat model</strong> — 45 deny rules, and the
+              residual risks it has <em>not</em>{" "}
+              closed, named in public. One
+              check was built and withdrawn on the grounds that shipping a
+              check whose claim register was demonstrably false is worse than
+              shipping none. A kit that tells you precisely what&rsquo;s
+              enforced versus advisory versus declared is more trustworthy
+              than one that claims magic.
             </p>
           </Callout>
         </div>
