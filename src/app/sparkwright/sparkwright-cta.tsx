@@ -35,22 +35,6 @@ export default function SparkwrightCTA() {
             </a>
           </div>
         </div>
-
-        <div className="border-t border-border-subtle mt-12 pt-10 text-center">
-          <h3 className="text-lg font-semibold tracking-tight">
-            Want this run in your org?
-          </h3>
-          <p className="mt-2 text-sm text-muted max-w-[60ch] mx-auto leading-relaxed">
-            If you&rsquo;re weighing a rollout, staged conformance, or
-            compliance mapping, let&rsquo;s talk it through.
-          </p>
-          <a
-            href="/contact"
-            className="mt-5 inline-flex items-center justify-center gap-2 text-sm font-medium text-teal-light hover:text-teal transition-colors"
-          >
-            Get in touch →
-          </a>
-        </div>
       </Wrap>
     </Section>
   );

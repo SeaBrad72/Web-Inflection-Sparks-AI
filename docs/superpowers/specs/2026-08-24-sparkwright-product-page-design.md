@@ -137,6 +137,16 @@ The three asks must not compete. Enforced by placement and weight:
    `/contact`, visually divided by a section border so it reads as a distinct
    offer rather than a fourth product CTA.
 
+> **AMENDED 2026-08-24 — tier 3 REMOVED.** The advisory block ("Want this run
+> in your org?" → `/contact`) has been deleted from `sparkwright-cta.tsx` at
+> the owner's direction. He holds a full-time role, and this is new content —
+> an offer of consulting services on it could read as soliciting business.
+> The pre-existing site pages predate that role and are unaffected.
+>
+> **Do not reinstate this block.** The page's CTA tiers are now: hero GitHub
+> button (primary) → mid-page release-notify strip (quiet). There is no
+> third tier, and `/sparkwright` links to `/contact` nowhere.
+
 ### 4.3 Release-notify endpoint
 
 `POST /api/notify`, modeled directly on `src/app/api/contact/route.ts`:
