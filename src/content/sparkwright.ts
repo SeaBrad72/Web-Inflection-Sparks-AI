@@ -65,7 +65,8 @@ export const SPARKWRIGHT = {
     },
     {
       figure: "45%",
-      label: "of AI-generated code shipped an OWASP Top-10 security flaw",
+      label:
+        "of AI-generated code samples contained an OWASP Top-10 security flaw",
       source: "Veracode · 100+ models · 2025",
       tone: "risk",
     },
