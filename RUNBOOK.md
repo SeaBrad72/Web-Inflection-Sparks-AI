@@ -78,11 +78,12 @@ To hand-edit narrative content:
    pushing.
 4. Open a PR as normal (feature branch, CI must pass, review, squash-merge).
 
-the sync workflow’s staleness check (also in `src/content/sparkwright.ts`) returns `true` once
-`lastReviewed` is more than 90 days old. **Nothing currently calls this at build time or
-in CI** — it is not wired into a gate, deliberately (see §6). It exists for a future
-caller (e.g. a scheduled check) to consume. If you're doing a periodic content review,
-this is the function to check.
+`lastReviewed` records when a human last confirmed the *narrative* copy still reads
+true — harness certification levels, the maturity stage, the mutation-testing and
+guardrails prose, the compliance crosswalk. The sync script (§5) checks its age on
+every daily run and, past 90 days, emits a `::warning::` annotation on the Actions run
+and banners it into the sync PR body. Bump `lastReviewed` when you have actually
+re-read those claims — not merely because the warning is noisy.
 
 ## 5. The Sparkwright sync workflow
 
@@ -190,10 +191,10 @@ regardless of local tooling.
   each other's validation shape, and migrating only one would leave two different
   validation philosophies live at once. If this gets fixed, migrate both routes in the
   same PR.
-- **No build-time staleness gate.** the sync workflow’s staleness check exists and is tested but nothing
-  calls it in CI or at build time — wiring it in would fail deploys purely because a
-  date rolled over, which is worse than a stale content warning. The 90-day reminder
-  lives only in the sync PR body (§5).
+- **No build-time staleness gate, by design.** The 90-day narrative-review check runs
+  in the daily sync workflow, not in the build. Failing a deploy purely because a date
+  rolled over is worse than the stale copy it would be guarding against, so it warns
+  (Actions annotation + sync PR banner) rather than blocks.
 
 ## 8. Outstanding manual verification (pre-merge checklist)
 
