@@ -27,15 +27,15 @@ export default function Footer() {
   return (
     <footer className="border-t border-border-subtle bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-12">
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 lg:col-span-2">
             <Image
               src="/logos/banner-light.png"
               alt="InflectionSparks.ai"
               width={280}
               height={42}
-              className="h-10 w-auto mb-4"
+              className="mb-4 h-auto w-full max-w-[270px]"
             />
             <p className="text-sm text-muted-foreground leading-relaxed">
               We lead, build, and transform technology organizations for the AI era.
