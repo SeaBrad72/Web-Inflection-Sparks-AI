@@ -24,6 +24,7 @@ jobs:
       - if: steps.sync.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
+          base: ${{ github.ref_name }}
           branch: chore/sync-sparkwright
           title: "chore: sync sparkwright to ${{ steps.sync.outputs.version }}"
           commit-message: "chore: sync sparkwright to ${{ steps.sync.outputs.version }}"
