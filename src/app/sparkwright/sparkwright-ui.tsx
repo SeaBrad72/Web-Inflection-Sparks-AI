@@ -18,7 +18,7 @@ export interface WrapProps {
 }
 
 export function Wrap({ children }: WrapProps) {
-  return <div className="mx-auto max-w-7xl px-6 lg:px-8">{children}</div>;
+  return <div className="mx-auto max-w-6xl px-6 lg:px-8">{children}</div>;
 }
 
 export interface EyebrowProps {
@@ -39,7 +39,7 @@ export interface H2Props {
 
 export function H2({ children }: H2Props) {
   return (
-    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.12] max-w-[20ch]">
+    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.12] max-w-[26ch]">
       {children}
     </h2>
   );

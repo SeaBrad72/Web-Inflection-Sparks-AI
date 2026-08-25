@@ -17,7 +17,7 @@ export default function SparkwrightHero() {
       />
       <div aria-hidden="true" className="absolute inset-0 grid-pattern opacity-30" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-32 w-full">
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8 py-16 md:py-28 w-full">
         <div className="max-w-3xl">
           <motion.div
             initial={initial}
@@ -44,7 +44,7 @@ export default function SparkwrightHero() {
             initial={initial}
             animate={animate}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-6 max-w-[16ch]"
+            className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-6 max-w-[20ch]"
           >
             Let anyone build{" "}
             <span className="text-teal-light">production-grade software</span> with

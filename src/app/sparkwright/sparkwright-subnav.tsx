@@ -57,7 +57,7 @@ export default function SparkwrightSubnav() {
       aria-label="Sparkwright page sections"
       className="sticky top-16 z-40 hidden border-b border-border-subtle bg-background/80 backdrop-blur-xl md:block"
     >
-      <div className="mx-auto flex h-12 max-w-7xl items-center justify-between gap-6 px-6 lg:px-8">
+      <div className="mx-auto flex h-12 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
         <SparkwrightMark size="sm" gradientId="sparkwright-subnav-gradient" />
 
         <ul className="flex items-center gap-1">
