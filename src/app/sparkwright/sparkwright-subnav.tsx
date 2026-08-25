@@ -21,8 +21,8 @@ const SECTIONS = [
   { id: "use", label: "Use it" },
   { id: "principles", label: "Foundations" },
   { id: "guardrails", label: "Guardrails" },
-  { id: "enterprise", label: "Enterprise" },
   { id: "honesty", label: "Honesty" },
+  { id: "enterprise", label: "Enterprise" },
 ] as const;
 
 export default function SparkwrightSubnav() {

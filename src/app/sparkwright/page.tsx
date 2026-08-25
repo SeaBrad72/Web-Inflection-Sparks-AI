@@ -39,8 +39,8 @@ export default function SparkwrightPage() {
       <SparkwrightCoverage />
       <NotifyForm />
       <SparkwrightGuardrails />
-      <SparkwrightEnterprise />
       <SparkwrightHonesty />
+      <SparkwrightEnterprise />
       <SparkwrightMaturity />
       <SparkwrightCTA />
     </>
