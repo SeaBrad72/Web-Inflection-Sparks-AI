@@ -13,7 +13,8 @@ export default function SparkwrightPrinciples() {
         <div className="mt-6">
           <Callout>
             <p>
-              <strong>The governing lens.</strong> Agent effort is cheap;
+              <strong>The governing lens.</strong>{" "}
+              Agent effort is cheap;
               human attention and integration risk are the scarce resources.
               Every practice in the kit is justified against that lens — or
               it doesn&rsquo;t ship.

@@ -90,7 +90,8 @@ export default function SparkwrightGuardrails() {
               <strong>Proportional promotion</strong> — rigor proportional to
               change-class × rung: relax the safe majority, harden the
               dangerous minority. A change&rsquo;s class is{" "}
-              <em>derived</em> at promotion, defaulting higher when
+              <em>derived</em>{" "}
+              at promotion, defaulting higher when
               uncertain, so it can&rsquo;t be understated.
             </p>
           </li>

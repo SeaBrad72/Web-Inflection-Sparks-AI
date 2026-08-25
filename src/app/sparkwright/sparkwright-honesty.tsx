@@ -52,7 +52,8 @@ export default function SparkwrightHonesty() {
               guard has closed real bypass classes — symlink- and
               hardlink-alias routes, branch-protection overrides — under
               adversarial review, and it enforces a deny-by-default{" "}
-              <strong>MCP capability gate</strong> in-process. A kit that
+              <strong>MCP capability gate</strong>{" "}
+              in-process. A kit that
               tells you precisely what&rsquo;s enforced versus advisory
               versus declared is more trustworthy than one that claims
               magic.

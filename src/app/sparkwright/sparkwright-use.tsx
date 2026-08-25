@@ -122,7 +122,8 @@ export default function SparkwrightUse() {
 
         <p className="mt-[30px] text-[17.5px] text-muted max-w-[720px] leading-relaxed">
           <strong>The shape, in one line:</strong> a project is{" "}
-          <em>born</em> through Inception and <em>evolves</em> through a
+          <em>born</em> through Inception and <em>evolves</em>{" "}
+          through a
           closed loop, with humans as a thin layer of judgment at the gates
           and agents doing the volume between them. In a typical feature —
           say, &ldquo;add CSV export&rdquo; — humans touch it at exactly

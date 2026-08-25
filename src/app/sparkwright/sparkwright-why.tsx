@@ -44,7 +44,8 @@ export default function SparkwrightWhy() {
           workflows, roles, governance, and cultural expectations,&rdquo; AI
           stays &ldquo;an isolated boost in an otherwise unchanged
           system.&rdquo; That is the whole case for Sparkwright: agents move
-          fast <em>inside</em> enforced boundaries, so the speed is real and
+          fast <em>inside</em>{" "}
+          enforced boundaries, so the speed is real and
           the instability isn&rsquo;t. Human attention and integration risk are
           the scarce resources; the kit spends the cheap one freely and
           protects the expensive ones.

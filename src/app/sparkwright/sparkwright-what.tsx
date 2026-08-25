@@ -48,7 +48,8 @@ export default function SparkwrightWhat() {
           </Card>
         </div>
         <p className="mt-[34px] text-[17.5px] text-muted max-w-[720px] leading-relaxed">
-          <strong>Who it&rsquo;s for.</strong> Any team — humans, agents, or
+          <strong>Who it&rsquo;s for.</strong>{" "}
+          Any team — humans, agents, or
           both — that wants production-grade discipline without inventing a
           process from scratch, whether they&rsquo;re starting a new project or
           bringing the kit to an existing codebase. Adopt it as-is, or hand it
