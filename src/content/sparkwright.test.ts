@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { SPARKWRIGHT, sparkwrightSchema, isContentStale } from "./sparkwright";
+import { SPARKWRIGHT, sparkwrightSchema } from "./sparkwright";
 
 describe("SPARKWRIGHT content module", () => {
   it("validates against its own schema", () => {
@@ -29,15 +29,5 @@ describe("SPARKWRIGHT content module", () => {
     expect(() => sparkwrightSchema.parse(bad)).toThrow();
   });
 
-  it("reports content as fresh within 90 days of lastReviewed", () => {
-    const reviewed = new Date(SPARKWRIGHT.lastReviewed);
-    const thirtyDaysLater = new Date(reviewed.getTime() + 30 * 86_400_000);
-    expect(isContentStale(thirtyDaysLater)).toBe(false);
-  });
 
-  it("reports content as stale more than 90 days after lastReviewed", () => {
-    const reviewed = new Date(SPARKWRIGHT.lastReviewed);
-    const ninetyOneDaysLater = new Date(reviewed.getTime() + 91 * 86_400_000);
-    expect(isContentStale(ninetyOneDaysLater)).toBe(true);
-  });
 });

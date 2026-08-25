@@ -77,12 +77,3 @@ export const SPARKWRIGHT = {
     },
   ],
 } as const satisfies Sparkwright;
-
-const STALE_AFTER_DAYS = 90;
-
-/** True when the narrative copy has not been human-reviewed in over 90 days. */
-export function isContentStale(now: Date = new Date()): boolean {
-  const reviewed = new Date(SPARKWRIGHT.lastReviewed);
-  const ageDays = (now.getTime() - reviewed.getTime()) / 86_400_000;
-  return ageDays > STALE_AFTER_DAYS;
-}

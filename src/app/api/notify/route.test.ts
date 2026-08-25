@@ -7,7 +7,8 @@ vi.mock("resend", () => ({
   }),
 }));
 
-import { POST, hitsSize, __seedHitsForTest, __resetHitsForTest } from "./route";
+import { POST } from "./route";
+import { hitsSize, __seedHitsForTest, __resetHitsForTest } from "./rate-limit";
 
 function post(body: unknown, ip = "203.0.113.1") {
   return new Request("https://inflectionsparks.ai/api/notify", {

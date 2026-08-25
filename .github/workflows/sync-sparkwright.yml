@@ -24,11 +24,14 @@ jobs:
       - if: steps.sync.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
+          base: ${{ github.ref_name }}
           branch: chore/sync-sparkwright
           title: "chore: sync sparkwright to ${{ steps.sync.outputs.version }}"
           commit-message: "chore: sync sparkwright to ${{ steps.sync.outputs.version }}"
           body: |
             Automated sync from the sparkwright repo's latest release.
+
+            ${{ steps.sync.outputs.stale == 'true' && format('> ⚠️ **Narrative copy is {0} days past review** (last reviewed {1}). Re-read the items below and bump `lastReviewed` in this PR.', steps.sync.outputs.reviewAgeDays, steps.sync.outputs.lastReviewed) || '' }}
 
             **This PR updates facts only** — `version` and `lastReleaseAt`.
 

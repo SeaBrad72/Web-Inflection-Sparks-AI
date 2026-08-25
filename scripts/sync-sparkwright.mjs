@@ -41,6 +41,21 @@ function writeOutput(name, value) {
   }
 }
 
+/**
+ * Narrative claims — harness certification levels, the maturity stage, the
+ * mutation-testing and guardrails prose, the compliance crosswalk — are never
+ * updated by this script. `lastReviewed` records when a human last confirmed
+ * they still read true. Surface it here, the one place that runs on a schedule
+ * and can actually act on it.
+ */
+const STALE_AFTER_DAYS = 90;
+
+function reviewAgeDays(source, now) {
+  const m = source.match(/^\s*lastReviewed: "(\d{4}-\d{2}-\d{2})",$/m);
+  if (!m) return null;
+  return { date: m[1], days: Math.floor((now - Date.parse(m[1] + "T00:00:00Z")) / 86400000) };
+}
+
 async function fetchLatestRelease() {
   const headers = { Accept: "application/vnd.github+json" };
   if (process.env.GITHUB_TOKEN) {
@@ -101,6 +116,22 @@ function main() {
       );
     }
     const currentVersion = currentVersionMatch[0].match(/"v[\d.]+"/)[0].slice(1, -1);
+
+    const review = reviewAgeDays(source, Date.now());
+    if (review && review.days > STALE_AFTER_DAYS) {
+      // ::warning:: surfaces on the Actions run summary.
+      console.log(
+        `::warning::Sparkwright narrative copy last human-reviewed ${review.date} ` +
+          `(${review.days} days ago). Harness certification levels, the maturity stage, ` +
+          `and the guardrails/compliance prose are never auto-updated — re-read them and ` +
+          `bump lastReviewed in src/content/sparkwright.ts.`,
+      );
+      writeOutput("stale", "true");
+      writeOutput("lastReviewed", review.date);
+      writeOutput("reviewAgeDays", String(review.days));
+    } else {
+      writeOutput("stale", "false");
+    }
 
     if (currentVersion === tag) {
       console.log(`[sync-sparkwright] No change — already at ${tag}.`);
