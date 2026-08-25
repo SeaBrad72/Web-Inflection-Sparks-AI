@@ -11,8 +11,9 @@ export default function SparkwrightWhy() {
           By 2025, ~90% of developers use AI in their workflow (DORA 2025) — so
           the question isn&rsquo;t whether agents write your code, it&rsquo;s
           whether they do it safely. Recent, independent research on ungoverned
-          AI is the warning. These are industry findings about the problem,{" "}
-          <strong>not Sparkwright&rsquo;s results</strong>:
+          AI is the warning. Every figure below carries its source: the
+          research is industry findings about the problem,{" "}
+          <strong>not Sparkwright&rsquo;s results</strong>.
         </Lead>
         <div className="mt-8 flex flex-wrap gap-4">
           {SPARKWRIGHT.stats.map((stat) => (
