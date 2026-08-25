@@ -78,7 +78,7 @@ To hand-edit narrative content:
    pushing.
 4. Open a PR as normal (feature branch, CI must pass, review, squash-merge).
 
-`isContentStale()` (also in `src/content/sparkwright.ts`) returns `true` once
+the sync workflow’s staleness check (also in `src/content/sparkwright.ts`) returns `true` once
 `lastReviewed` is more than 90 days old. **Nothing currently calls this at build time or
 in CI** — it is not wired into a gate, deliberately (see §6). It exists for a future
 caller (e.g. a scheduled check) to consume. If you're doing a periodic content review,
@@ -190,7 +190,7 @@ regardless of local tooling.
   each other's validation shape, and migrating only one would leave two different
   validation philosophies live at once. If this gets fixed, migrate both routes in the
   same PR.
-- **No build-time staleness gate.** `isContentStale()` exists and is tested but nothing
+- **No build-time staleness gate.** the sync workflow’s staleness check exists and is tested but nothing
   calls it in CI or at build time — wiring it in would fail deploys purely because a
   date rolled over, which is worse than a stale content warning. The 90-day reminder
   lives only in the sync PR body (§5).

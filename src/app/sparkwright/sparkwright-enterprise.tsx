@@ -40,7 +40,10 @@ export default function SparkwrightEnterprise() {
           </Card>
         </div>
 
-        <details className="mt-6 rounded-xl border border-border bg-surface overflow-hidden group">
+        <details
+          open
+          className="mt-6 rounded-xl border border-border bg-surface overflow-hidden group"
+        >
           <summary className="cursor-pointer list-none px-6 py-4 font-semibold flex items-center justify-between hover:bg-white/[0.015] [&::-webkit-details-marker]:hidden">
             <span>Compliance crosswalk — framework by framework</span>
             <span
