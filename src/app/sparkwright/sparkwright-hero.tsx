@@ -70,19 +70,26 @@ export default function SparkwrightHero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
+            {/*
+              Order and emphasis match the product's own design: "See how it
+              works" is the filled primary, the repo link is the ghost. The
+              GitHub ask is not weakened by this — the sticky sub-nav carries a
+              filled "View on GitHub" button that stays visible on every scroll
+              position, which the hero button did not.
+            */}
+            <a
+              href="#use"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-teal text-white font-medium hover:bg-teal-light transition-all hover:shadow-lg hover:shadow-teal/20"
+            >
+              See how it works
+            </a>
             <a
               href={SPARKWRIGHT.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-teal text-white font-medium hover:bg-teal-light transition-all hover:shadow-lg hover:shadow-teal/20"
-            >
-              Explore the repo
-            </a>
-            <a
-              href="#use"
               className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border text-muted hover:text-foreground hover:border-muted-foreground transition-all"
             >
-              See how it works
+              Explore the repo
             </a>
           </motion.div>
 
