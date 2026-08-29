@@ -55,8 +55,8 @@ export default function SparkwrightHonesty() {
               adversarial review, and it enforces a deny-by-default{" "}
               <strong>MCP capability gate</strong>{" "}
               in-process (real enforcement, by tool name). The kit publishes
-              its own <strong>threat model</strong> — 45 deny rules, and the
-              residual risks it has <em>not</em>{" "}
+              its own <strong>threat model</strong> — the guard&rsquo;s deny
+              set, and the residual risks it has <em>not</em>{" "}
               closed, named in public. One
               check was built and withdrawn on the grounds that shipping a
               check whose claim register was demonstrably false is worse than
