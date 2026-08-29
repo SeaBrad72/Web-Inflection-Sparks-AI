@@ -34,9 +34,12 @@ export default function SparkwrightMaturity() {
         <p className="mt-7 text-[17.5px] text-muted max-w-[720px] leading-relaxed">
           The discipline is proven, not asserted: the kit is{" "}
           <strong>built with its own loop</strong>, holding itself to the
-          same Definition of Done, separation of duties, and mutation-tested
-          gates it gives you — on every change. Run end-to-end to build and
-          deploy real software.
+          same Definition of Done and mutation-tested gates it gives you — on
+          every change, run end-to-end to build and deploy real software.
+          Where it cannot hold itself to a standard, it says so: on the
+          kit&rsquo;s own repository <Kbd>agent &ne; ratifier</Kbd> is
+          enforced, but two-person human review is <em>absent</em>{" "}
+          — and declared as absent — because the kit is maintained solo.
         </p>
         <Callout tone="orange">
           <p>
