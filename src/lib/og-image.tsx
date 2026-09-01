@@ -73,7 +73,7 @@ export async function generateOgImage({ title, subtitle }: OgImageProps) {
           }}
         />
 
-        {/* Text - right side, just the title */}
+        {/* Text — right side: title, then subtitle */}
         <div
           style={{
             display: "flex",
@@ -95,6 +95,21 @@ export async function generateOgImage({ title, subtitle }: OgImageProps) {
           >
             {title}
           </div>
+          {subtitle ? (
+            <div
+              style={{
+                marginTop: "22px",
+                fontSize: "30px",
+                fontWeight: 500,
+                color: "#A1A1AA",
+                lineHeight: 1.3,
+                display: "flex",
+                letterSpacing: "-0.5px",
+              }}
+            >
+              {subtitle}
+            </div>
+          ) : null}
         </div>
       </div>
     ),
