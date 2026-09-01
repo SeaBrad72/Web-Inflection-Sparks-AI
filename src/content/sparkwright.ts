@@ -28,12 +28,12 @@ export const sparkwrightSchema = z.object({
 export type Sparkwright = z.infer<typeof sparkwrightSchema>;
 
 export const SPARKWRIGHT = {
-  version: "v3.219.0",
+  version: "v3.221.0",
   maturity: "release-candidate",
   license: "Apache-2.0",
   repoUrl: "https://github.com/SeaBrad72/sparkwright",
-  lastReleaseAt: "2026-08-28",
-  lastReviewed: "2026-08-28",
+  lastReleaseAt: "2026-09-01",
+  lastReviewed: "2026-09-01",
   harnesses: [
     {
       name: "Claude Code",
@@ -71,8 +71,9 @@ export const SPARKWRIGHT = {
       tone: "risk",
     },
     {
-      figure: "cheap",
-      label: "agent effort itself — the resource to spend freely, once it's governed",
+      figure: "Capacity ≠ safety",
+      label:
+        "Agents produce more change than your review process can absorb. Governance is what closes the gap.",
       source: "Sparkwright's governing lens",
       tone: "green",
     },
