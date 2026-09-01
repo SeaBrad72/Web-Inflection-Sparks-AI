@@ -50,6 +50,10 @@ export default function SparkwrightSpine() {
             that control set are surfaced as uncovered rather than silently
             counted. Most tooling never proves its own gates are capable of
             failing. That is the difference between a gate and a decoration.
+            And it publishes the limit of that proof rather than leaving you to
+            find it: the sweep proves a check <em>can</em> fail, not that it
+            catches everything. You are told the shape of the guarantee, not
+            sold the strongest reading of it.
           </p>
         </Callout>
       </Wrap>

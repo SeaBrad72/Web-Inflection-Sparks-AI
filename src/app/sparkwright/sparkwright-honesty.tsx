@@ -62,7 +62,11 @@ export default function SparkwrightHonesty() {
               check whose claim register was demonstrably false is worse than
               shipping none. A kit that tells you precisely what&rsquo;s
               enforced versus advisory versus declared is more trustworthy
-              than one that claims magic.
+              than one that claims magic. And it does not ask you to take that
+              on faith: <strong>the kit&rsquo;s own headline claims are a
+              registry</strong>, each one backed by an executable verifier and
+              pinned so a claim cannot quietly disappear. The claims on this
+              page are checkable in the repository &mdash; run them.
             </p>
           </Callout>
         </div>

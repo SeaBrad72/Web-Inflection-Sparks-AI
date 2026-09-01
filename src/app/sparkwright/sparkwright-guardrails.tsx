@@ -14,8 +14,8 @@ export default function SparkwrightGuardrails() {
             />
             <p className="text-sm text-muted leading-relaxed">
               <strong>The guard</strong> — a <Kbd>PreToolUse</Kbd> deny-matrix
-              that intercepts destructive and control-plane actions before
-              they land: a fast first layer in front of the real boundary,
+              that intercepts destructive actions, and changes to the rules
+              governing the agents themselves, before they land: a fast first layer in front of the real boundary,
               the git + CI chokepoints below.
             </p>
           </li>
@@ -39,7 +39,7 @@ export default function SparkwrightGuardrails() {
             />
             <p className="text-sm text-muted leading-relaxed">
               <strong>Eight required CI quality gates</strong> on every push
-              — lint, type-check, test + coverage, build, secret-scan,
+              — nothing merges without them. Lint, type-check, test + coverage, build, secret-scan,
               dependency-scan, SBOM, and SAST — plus build-provenance (SLSA),
               license-policy, and AI-eval gates that activate by context.
             </p>
@@ -51,7 +51,8 @@ export default function SparkwrightGuardrails() {
             />
             <p className="text-sm text-muted leading-relaxed">
               <strong>Separation of duties, enforced</strong> — builder ≠
-              reviewer ≠ ratifier. Control-plane changes need an independent
+              reviewer ≠ ratifier, the last being whoever signs off that a
+              governing change may ship. Those changes need an independent
               ratifier, and the merge is a recorded go/no-go bound to the
               reviewed commit (<Kbd>shipped == approved</Kbd>, verified by
               tree equality). The agent actuates the mechanics; the judgment
@@ -101,9 +102,9 @@ export default function SparkwrightGuardrails() {
             />
             <p className="text-sm text-muted leading-relaxed">
               <strong>Proportional promotion</strong>{" "}
-              &mdash; rigor proportional to
-              change-class × rung (how risky the change is, by how far it is being promoted): relax the safe majority, harden the
-              dangerous minority. A change&rsquo;s class is{" "}
+              &mdash; rigor scales with how risky a
+              change is and how far it is being promoted. Safe changes move
+              fast; dangerous ones get slowed down. A change&rsquo;s class is{" "}
               <em>derived</em>{" "}
               at promotion, defaulting higher when
               uncertain, so it can&rsquo;t be understated.
