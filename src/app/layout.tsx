@@ -83,8 +83,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const showInsights = await hasPublishedArticles();
+  // `data-scroll-behavior="smooth"` is required by Next, not decorative.
+  // globals.css sets `scroll-behavior: smooth` on <html> for anchor links.
+  // Without this attribute Next cannot temporarily disable that during a route
+  // transition, so its scroll-to-top gets smooth-animated and often does not
+  // complete — every client-side navigation lands partway down the page.
+  // Initial loads are unaffected because the browser positions those.
+  // See next/dist/shared/lib/router/utils/disable-smooth-scroll.js
+
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" data-scroll-behavior="smooth">
       <head>
         <script
           type="application/ld+json"
