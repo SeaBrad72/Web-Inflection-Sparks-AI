@@ -175,6 +175,23 @@ The Vercel CLI was not available in this environment to verify `vercel` commands
 end-to-end, so this section documents the dashboard flow, which is authoritative
 regardless of local tooling.
 
+## 7a. Dependency posture (Sanity)
+
+`sanity` and `@sanity/vision` are **devDependencies**. They are needed only to build the
+embedded Studio at `/studio`, which is a client component bundled at build time — Vercel
+installs devDependencies during builds, so the Studio still works. Runtime content fetching
+uses `next-sanity` and `@sanity/image-url`, which stay in `dependencies`.
+
+`/studio` is gated behind `ENABLE_STUDIO=true` and returns 404 without it. To work on the
+Studio locally: `npm run build && ENABLE_STUDIO=true npm start`, then open `/studio`.
+
+**Known residual: `npm audit --omit=dev` reports ~9 findings, 4 of them high.** All four are
+the Sanity Studio CLI toolchain (`@sanity/cli`, `@sanity/runtime-cli`, `adm-zip`, `js-yaml`),
+reached because `next-sanity` declares `sanity` as a *peer* dependency — npm counts peers of a
+production package in the production tree even though we install it as a devDependency. None
+of that code executes in the deployed application; it is CLI and build tooling. This is down
+from 40 findings including 1 critical and 20 high before the v13 upgrade.
+
 ## 7. Known limitations
 
 - **`/api/notify` rate limiting is in-memory and per-instance.** It tracks up to 5000 IPs
