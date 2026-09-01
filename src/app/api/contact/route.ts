@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { contactSchema, parseBody } from "../validation";
 
 function getResendClient() {
   if (!process.env.RESEND_API_KEY) {
@@ -7,16 +8,6 @@ function getResendClient() {
   }
   return new Resend(process.env.RESEND_API_KEY);
 }
-
-const VALID_INTERESTS = [
-  "Fractional CTO / CAIO / CPO",
-  "AI Strategy & Roadmap",
-  "Engineering Org Transformation",
-  "AI-Embedded Product Development",
-  "Technology Due Diligence",
-  "Board & Executive Advisory",
-  "Something else",
-];
 
 function escapeHtml(str: string): string {
   return str
@@ -28,46 +19,17 @@ function escapeHtml(str: string): string {
 }
 
 export async function POST(req: Request) {
-  const { name, email, company, interest, message } = await req.json();
-
-  // Basic server-side validation
-  if (!name?.trim() || !email?.trim() || !message?.trim()) {
-    return NextResponse.json(
-      { error: "Name, email, and message are required." },
-      { status: 400 }
-    );
+  const parsed = await parseBody(req, contactSchema);
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.message }, { status: 400 });
   }
+  const { name, email, company, interest, message } = parsed.data;
 
-  // Length limits
-  if (name.length > 100 || email.length > 254 || (company && company.length > 200) || message.length > 5000) {
-    return NextResponse.json(
-      { error: "One or more fields exceed the maximum length." },
-      { status: 400 }
-    );
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email) || /[\r\n]/.test(email)) {
-    return NextResponse.json(
-      { error: "Please provide a valid email address." },
-      { status: 400 }
-    );
-  }
-
-  // Validate interest field against allowed values
-  if (interest && !VALID_INTERESTS.includes(interest)) {
-    return NextResponse.json(
-      { error: "Invalid interest selection." },
-      { status: 400 }
-    );
-  }
-
-  // Escape all user inputs for safe HTML rendering
-  const safeName = escapeHtml(name.trim());
-  const safeEmail = escapeHtml(email.trim());
-  const safeCompany = company ? escapeHtml(company.trim()) : "";
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeCompany = company ? escapeHtml(company) : "";
   const safeInterest = interest ? escapeHtml(interest) : "";
-  const safeMessage = escapeHtml(message.trim());
+  const safeMessage = escapeHtml(message);
 
   try {
     const resend = getResendClient();
