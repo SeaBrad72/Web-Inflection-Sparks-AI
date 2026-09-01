@@ -67,7 +67,9 @@ function BannerContent({
             display: "flex",
           }}
         />
-        <img src={logoBase64} width={320} height={320} />
+        {/* Satori renders this JSX to SVG at build time; next/image is not available in that pipeline. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt="" src={logoBase64} width={320} height={320} />
         <div
           style={{
             display: "flex",
@@ -171,7 +173,9 @@ function BannerContent({
           paddingLeft: isTall ? "60px" : "40px",
         }}
       >
-        <img
+        {/* Satori renders this JSX to SVG at build time; next/image is not available in that pipeline. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt=""
           src={logoBase64}
           width={isTall ? 260 : 200}
           height={isTall ? 260 : 200}
