@@ -9,7 +9,7 @@ export default defineConfig({
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     coverage: {
       provider: "v8",
-      include: ["src/content/**", "src/app/api/notify/**"],
+      include: ["src/content/**", "src/app/api/**"],
       thresholds: { lines: 80, functions: 80, branches: 80, statements: 80 },
     },
   },
