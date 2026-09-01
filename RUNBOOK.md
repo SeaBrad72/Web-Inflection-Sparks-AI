@@ -216,22 +216,30 @@ You do **not** need to redeploy. Two things are now automatic:
    contact CTA. The gate fails closed: if Sanity is unreachable the link stays hidden
    rather than pointing at a page that may not render.
 
-### Optional: a hosted Studio you can use from anywhere
+### A hosted Studio you can use from anywhere
 
-To write from a phone or without running the dev server, deploy a Studio to
-`*.sanity.studio`. This needs a `sanity.cli.ts` at the repo root, which does not exist
-yet — the Studio here is embedded-only:
+`sanity.cli.ts` and `sanity.config.ts` exist at the repo root for this. The root
+config re-exports `src/sanity/studio-config.ts`, so there is one schema definition
+with two entry points — the embedded `/studio` route and the CLI.
 
-```typescript
-// sanity.cli.ts
-import { defineCliConfig } from "sanity/cli";
-export default defineCliConfig({
-  api: { projectId: "pt4tkl68", dataset: "production" },
-});
+```bash
+npx sanity@latest deploy      # prompts for a hostname -> <name>.sanity.studio
 ```
 
-Then `npx sanity@latest deploy` and choose a hostname. It prompts interactively, so
-run it yourself rather than in CI. `npx sanity@latest undeploy` removes it.
+It prompts interactively, so run it yourself rather than in CI. After that you can
+write from any browser, including a phone, with no dev server. `npx sanity@latest
+undeploy` frees the hostname again.
+
+### What you fill in for an article
+
+`coverImage` is **optional** — both the index and the article page guard for its
+absence — but if you add one, its alt text is required. Required fields are title,
+slug (auto-derived from the title), excerpt (max 200 chars), publishedAt, and
+category. Category is a fixed list: AI Strategy, Engineering Leadership, Product
+Development, Org Transformation, Industry Insights. Body supports H2/H3, quote,
+bold/italic/code and links.
+
+Hit **Publish**, not just save — a draft is not visible to the site.
 
 ## 7a. Dependency posture (Sanity)
 
