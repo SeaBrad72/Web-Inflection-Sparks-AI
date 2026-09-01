@@ -175,6 +175,72 @@ The Vercel CLI was not available in this environment to verify `vercel` commands
 end-to-end, so this section documents the dashboard flow, which is authoritative
 regardless of local tooling.
 
+## 6b. Publishing an article (Sanity)
+
+### Where the editor actually is
+
+Sanity has three surfaces and only one of them edits content:
+
+| | What it is |
+|---|---|
+| [sanity.io/manage](https://www.sanity.io/manage) | Project console — datasets, tokens, members, CORS. **Not a content editor.** |
+| **Sanity Studio** | The editor. It is an app that must be hosted — by Sanity at `*.sanity.studio`, or by you. |
+| [sanity.io/welcome](https://www.sanity.io/welcome) | Dashboard. Only lists studios that are *registered*; ours is not. |
+
+**This project has no deployed Studio.** It is embedded at `/studio` in this app and
+gated behind `ENABLE_STUDIO`, so there is no hosted URL to log into. Run it locally.
+
+### Publish (works today, no setup)
+
+```bash
+ENABLE_STUDIO=true npm run dev
+# open http://localhost:3000/studio and sign in with your Sanity account
+```
+
+`http://localhost:3000` is already an allowed CORS origin on project `pt4tkl68`, so
+this authenticates immediately. Create an **Article**, fill in title, slug, excerpt,
+category, publishedAt and body, then hit **Publish** (not just save — a draft is not
+visible to the site).
+
+### What happens after you publish
+
+You do **not** need to redeploy. Two things are now automatic:
+
+1. `/insights` and the article pages carry `export const revalidate = 300`, so new
+   content appears on the live site within about five minutes. Before this they were
+   generated once at build and frozen — publishing would have changed nothing until
+   the next deploy.
+2. **Insights re-appears in the nav and the sitemap by itself** on first publish. It
+   is hidden while nothing is published (see `src/sanity/has-articles.ts`) because an
+   empty Insights section costs credibility, and while empty its only content was a
+   contact CTA. The gate fails closed: if Sanity is unreachable the link stays hidden
+   rather than pointing at a page that may not render.
+
+### A hosted Studio you can use from anywhere
+
+`sanity.cli.ts` and `sanity.config.ts` exist at the repo root for this. The root
+config re-exports `src/sanity/studio-config.ts`, so there is one schema definition
+with two entry points — the embedded `/studio` route and the CLI.
+
+```bash
+npx sanity@latest deploy      # prompts for a hostname -> <name>.sanity.studio
+```
+
+It prompts interactively, so run it yourself rather than in CI. After that you can
+write from any browser, including a phone, with no dev server. `npx sanity@latest
+undeploy` frees the hostname again.
+
+### What you fill in for an article
+
+`coverImage` is **optional** — both the index and the article page guard for its
+absence — but if you add one, its alt text is required. Required fields are title,
+slug (auto-derived from the title), excerpt (max 200 chars), publishedAt, and
+category. Category is a fixed list: AI Strategy, Engineering Leadership, Product
+Development, Org Transformation, Industry Insights. Body supports H2/H3, quote,
+bold/italic/code and links.
+
+Hit **Publish**, not just save — a draft is not visible to the site.
+
 ## 7a. Dependency posture (Sanity)
 
 `sanity` and `@sanity/vision` are **devDependencies**. They are needed only to build the

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { hasPublishedArticles } from "@/sanity/has-articles";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/nav";
@@ -76,11 +77,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const showInsights = await hasPublishedArticles();
   return (
     <html lang="en" className="dark">
       <head>
@@ -123,7 +125,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased noise`}
       >
-        <Nav />
+        <Nav showInsights={showInsights} />
         <main className="pt-16">{children}</main>
         <Footer />
         <Analytics />

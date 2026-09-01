@@ -39,11 +39,16 @@ const navLinks: NavLink[] = [
     ],
   },
   { label: "Work", href: "/work" },
-  { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
 ];
 
-export default function Nav() {
+export default function Nav({ showInsights = false }: { showInsights?: boolean }) {
+  // Insights is hidden until something is published — see src/sanity/has-articles.ts
+  const links = showInsights
+    ? navLinks.flatMap((l) =>
+        l.label === "Work" ? [l, { label: "Insights", href: "/insights" }] : [l]
+      )
+    : navLinks;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   // How the currently-open menu was opened: hovering in (pointer) only
@@ -124,7 +129,7 @@ export default function Nav() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) =>
+            {links.map((link) =>
               link.children ? (
                 <div
                   key={link.label}
@@ -248,7 +253,7 @@ export default function Nav() {
             className="md:hidden border-t border-border-subtle bg-background overflow-hidden"
           >
             <div className="px-6 py-4 space-y-1">
-              {navLinks.map((link) =>
+              {links.map((link) =>
                 link.children ? (
                   <div key={link.label} className="space-y-1">
                     <span className="block px-3 py-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">

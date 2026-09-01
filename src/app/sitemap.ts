@@ -49,12 +49,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/insights`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -69,6 +63,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("[sitemap] Failed to fetch articles from Sanity:", err);
   }
 
+  // Only advertise the Insights index once it has something on it — a sitemap
+  // entry for an empty page is a crawl budget cost and an SEO signal we do not
+  // want to send twice.
+  const insightsPages: MetadataRoute.Sitemap =
+    articles.length > 0
+      ? [
+          {
+            url: `${baseUrl}/insights`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.7,
+          },
+        ]
+      : [];
+
   const articlePages: MetadataRoute.Sitemap = articles
     .filter((a) => a.slug?.current && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(a.slug.current))
     .map((article) => ({
@@ -78,5 +87,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
 
-  return [...staticPages, ...articlePages];
+  return [...staticPages, ...insightsPages, ...articlePages];
 }
