@@ -71,8 +71,9 @@ export const SPARKWRIGHT = {
       tone: "risk",
     },
     {
-      figure: "cheap",
-      label: "agent effort itself — the resource to spend freely, once it's governed",
+      figure: "Capacity ≠ safety",
+      label:
+        "Agents produce more change than your review process can absorb. Governance is what closes the gap.",
       source: "Sparkwright's governing lens",
       tone: "green",
     },
