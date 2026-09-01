@@ -5,6 +5,13 @@ import { client } from "@/sanity/client";
 import { allArticlesQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 
+/**
+ * Without this the page is generated once at build and frozen: publishing in
+ * the Studio would not surface until the next deploy. 5 minutes is well inside
+ * "publish and go look at it" while staying cheap.
+ */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Insights — AI Strategy & Engineering Leadership",
   description:
