@@ -202,12 +202,6 @@ from 40 findings including 1 critical and 20 high before the v13 upgrade.
   expired entries doesn't free space, new IPs are rejected outright rather than allowed
   through unlimited. Adequate for current traffic; if abused, move to a shared store
   (e.g. Redis/Upstash) keyed the same way.
-- **`/api/notify` and `/api/contact` hand-roll regex validation** (`EMAIL_RE`, length
-  checks) instead of Zod, which is inconsistent with this project's "Zod at boundaries"
-  standard. This is deliberate, not an oversight: the two routes intentionally mirror
-  each other's validation shape, and migrating only one would leave two different
-  validation philosophies live at once. If this gets fixed, migrate both routes in the
-  same PR.
 - **No build-time staleness gate, by design.** The 90-day narrative-review check runs
   in the daily sync workflow, not in the build. Failing a deploy purely because a date
   rolled over is worse than the stale copy it would be guarding against, so it warns

@@ -128,21 +128,20 @@ describe("POST /api/contact", () => {
   });
 
   /**
-   * KNOWN GAP, deliberately asserted rather than hidden.
-   *
-   * `/api/notify` wraps `req.json()` and returns a clean 400 on a malformed
-   * body. This route does not, so a bad body rejects out of the handler and
-   * Next surfaces a generic 500. Migrating both routes to Zod (#6) is where
-   * this gets fixed; this test pins the current behaviour so that change is
-   * visible rather than silent.
+   * This previously asserted that a malformed body THREW out of the handler,
+   * surfacing as a generic 500 — a gap pinned on purpose so the Zod migration
+   * (#6) would change it visibly rather than silently. It did: this was the
+   * only test that failed during the migration, and it now asserts the fixed
+   * behaviour. Both routes return a clean 400.
    */
-  it("currently throws on a malformed JSON body (see #6)", async () => {
+  it("returns 400 on a malformed JSON body", async () => {
     const bad = new Request("https://inflectionsparks.ai/api/contact", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: "{ not json",
     });
-    await expect(POST(bad)).rejects.toThrow();
+    const res = await POST(bad);
+    expect(res.status).toBe(400);
     expect(sendMock).not.toHaveBeenCalled();
   });
 });

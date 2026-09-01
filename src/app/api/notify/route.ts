@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SPARKWRIGHT } from "@/content/sparkwright";
 import { isRateLimited } from "./rate-limit";
+import { emailField, notifyEnvelopeSchema, parseBody } from "../validation";
 
 function getResendClient() {
   if (!process.env.RESEND_API_KEY) {
@@ -19,41 +20,34 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#039;");
 }
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: Request) {
-  let payload: { email?: string; fax?: string };
-  try {
-    payload = await req.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+  const parsed = await parseBody(req, notifyEnvelopeSchema);
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.message }, { status: 400 });
   }
-
-  const { email, fax } = payload;
+  const { email: rawEmail, fax } = parsed.data;
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
 
   // Honeypot: `fax` is a hidden field no human fills in (chosen because it's
   // not a field name autofillers target, unlike `company`). Accept silently
-  // so bots get a 200 and learn nothing, but send nothing. Checked before
-  // validation and rate limiting so a bot never consumes a real user's quota.
+  // so bots get a 200 and learn nothing, but send nothing. Answered before
+  // validation and rate limiting so a bot never consumes a real user's quota,
+  // and never learns which field it got wrong.
   if (fax) {
     return NextResponse.json({ ok: true });
   }
 
   // Validate before consuming rate-limit budget: a typo'd address should
   // not burn an honest user's hourly quota.
-  if (!email?.trim()) {
-    return NextResponse.json({ error: "Email is required." }, { status: 400 });
-  }
-  if (email.length > 254) {
-    return NextResponse.json({ error: "Email is too long." }, { status: 400 });
-  }
-  if (!EMAIL_RE.test(email) || /[\r\n]/.test(email)) {
+  const emailResult = emailField.safeParse(rawEmail);
+  if (!emailResult.success) {
     return NextResponse.json(
-      { error: "Please provide a valid email address." },
+      { error: emailResult.error.issues[0]?.message ?? "Invalid request body." },
       { status: 400 }
     );
   }
+  const email = emailResult.data;
 
   if (isRateLimited(ip)) {
     return NextResponse.json(
