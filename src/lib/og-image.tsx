@@ -55,7 +55,9 @@ export async function generateOgImage({ title, subtitle }: OgImageProps) {
             flexShrink: 0,
           }}
         >
-          <img src={logoBase64} width={360} height={360} />
+          {/* Satori renders this JSX to SVG at build time; next/image is not available in that pipeline. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt="" src={logoBase64} width={360} height={360} />
         </div>
 
         {/* Vertical divider */}

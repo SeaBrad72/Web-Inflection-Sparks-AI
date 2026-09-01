@@ -157,6 +157,9 @@ export default function RootLayout({
           `}
         </Script>
         <noscript>
+          {/* A 1x1 tracking pixel inside <noscript>: next/image needs the client
+              runtime, which is precisely what this fallback exists to work without. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             height="1"
             width="1"

@@ -3,7 +3,6 @@ import { projectId, dataset } from "./config";
 
 const builder = createImageUrlBuilder({ projectId, dataset });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function urlFor(source: any) {
   return builder.image(source);
 }

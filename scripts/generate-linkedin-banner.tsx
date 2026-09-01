@@ -79,7 +79,9 @@ async function generateBanner() {
           }}
         >
           {/* Banner logo */}
-          <img src={bannerBase64} height={90} />
+          {/* Satori renders this JSX to SVG at build time; next/image is not available in that pipeline. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt="" src={bannerBase64} height={90} />
         </div>
 
         {/* Tagline below */}
