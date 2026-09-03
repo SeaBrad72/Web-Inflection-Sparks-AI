@@ -28,12 +28,12 @@ export const sparkwrightSchema = z.object({
 export type Sparkwright = z.infer<typeof sparkwrightSchema>;
 
 export const SPARKWRIGHT = {
-  version: "v3.221.0",
+  version: "v3.222.1",
   maturity: "release-candidate",
   license: "Apache-2.0",
   repoUrl: "https://github.com/SeaBrad72/sparkwright",
-  lastReleaseAt: "2026-09-01",
-  lastReviewed: "2026-09-01",
+  lastReleaseAt: "2026-09-03",
+  lastReviewed: "2026-09-02",
   harnesses: [
     {
       name: "Claude Code",
