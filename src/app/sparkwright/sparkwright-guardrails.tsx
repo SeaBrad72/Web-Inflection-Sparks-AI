@@ -55,7 +55,9 @@ export default function SparkwrightGuardrails() {
               governing change may ship. Those changes need an independent
               ratifier, and the merge is a recorded go/no-go bound to the
               reviewed commit (<Kbd>shipped == approved</Kbd>, verified by
-              tree equality). The agent actuates the mechanics; the judgment
+              tree equality). Branch protection carries the rule down to the
+              merge button itself: the last hand on the code is never the hand
+              that approves it. The agent actuates the mechanics; the judgment
               is the control, not the keystroke.
             </p>
           </li>

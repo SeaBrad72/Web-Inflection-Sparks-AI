@@ -8,6 +8,9 @@ const eslintConfig = [
       ".next/**",
       "out/**",
       "build/**",
+      // Sanity Studio build output from `sanity deploy` (gitignored, but
+      // flat config does not read .gitignore) — linting it OOMs the process.
+      "dist/**",
       "next-env.d.ts",
       "coverage/**",
     ],
