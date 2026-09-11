@@ -1,4 +1,4 @@
-import { Section, Wrap, Eyebrow, H2, Lead, Card, Callout, Kbd } from "./sparkwright-ui";
+import { Section, Wrap, Eyebrow, H2, Lead, Card, Callout } from "./sparkwright-ui";
 
 /**
  * The agent team, and what meters it.
@@ -16,7 +16,7 @@ const SEATS = [
   {
     name: "Orchestrator",
     hat: "Lead / EM",
-    body: "Slices the epic, assigns each task its model tier and fan-out, spawns builders into isolated worktrees, integrates, convenes the reviewers. It assigns work — it never reviews or ratifies its own output.",
+    body: "Slices the epic, assigns each task its model tier, spawns the builders, integrates the results. It assigns the work — it never reviews or ratifies its own output.",
   },
   {
     name: "Engineer",
@@ -26,7 +26,7 @@ const SEATS = [
   {
     name: "Reviewer",
     hat: "Independent",
-    body: "Correctness and standards review of the diff, by a seat that did not write it. This is the builder ≠ reviewer line, made structural.",
+    body: "Correctness and standards review of the diff, by a seat that did not write it. This is where builder ≠ reviewer stops being a policy and becomes structure.",
   },
   {
     name: "Security",
@@ -42,10 +42,8 @@ export default function SparkwrightTeam() {
         <Eyebrow>The team you get</Eyebrow>
         <H2>Four seats, and a governor on the whole run.</H2>
         <Lead>
-          A small standing team does the building between the gates &mdash; few
-          agents, many skills, by design. A seat exists only where the work
-          needs distinct tools or genuine parallelism; everything else
-          (design, planning, TDD, evals, discovery) is a skill a seat invokes.
+          A small standing team does the building between the gates. Four
+          seats, each with a job that another seat cannot quietly absorb.
         </Lead>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -66,24 +64,10 @@ export default function SparkwrightTeam() {
               into isolated git worktrees so two slices cannot collide on the
               same file, each comes back through an independent review, and
               integration is a serial merge queue rather than a free-for-all.
-              The whole run sits under a runaway kill-switch with token, step,
-              and agent ceilings &mdash; and{" "}
-              <strong>raising one of those ceilings is itself a ratified act</strong>
-              , so an agent cannot vote itself more rope.
-            </p>
-          </Callout>
-        </div>
-
-        <div className="mt-6">
-          <Callout tone="orange">
-            <p className="text-sm text-muted leading-relaxed">
-              <strong>The honest ceiling.</strong> This is proven at
-              task-level fan-out &mdash; one epic, sliced. Parallel epics, a
-              worker pool, and a merge queue at scale are roadmap work, not
-              shipped capability. The kit names the serial review-and-integrate
-              tail as its own measured bottleneck, which is the thing that
-              would have to move first. Verified against{" "}
-              <Kbd>docs/CAPABILITIES.md</Kbd> §6.
+              The whole run sits under a kill-switch with token, step, and
+              agent ceilings &mdash; and{" "}
+              <strong>raising one is itself a ratified act</strong>, so an
+              agent cannot vote itself more rope.
             </p>
           </Callout>
         </div>

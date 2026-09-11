@@ -23,8 +23,8 @@ export default function SparkwrightStacks() {
         <Lead>
           The gate contract does not change when the language does. Every
           profile ships the same eight required checks and the same branch
-          protection; what changes underneath is the tooling native to that
-          stack.
+          protection &mdash; what changes underneath is the tooling native to
+          your stack.
         </Lead>
 
         <div className="mt-10 max-w-[760px] overflow-x-auto rounded-xl border border-border">
@@ -97,21 +97,13 @@ export default function SparkwrightStacks() {
         <div className="mt-10">
           <Callout>
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Parity is a gate, not a promise.</strong> The seven
-              service stacks are held to the full Definition-of-Done capability
-              set &mdash; feature flags, smoke test, DR drill, observability,
-              test pyramid, health check, deploy and rollback &mdash; by a
-              conformance check that fails on a missing capability. The three
-              specialist profiles are exempt for the stated reason above,
-              because they have no service surface to hold. A gap may be
-              tracked, but never untracked:{" "}
-              <strong>
-                a profile carrying a known hole with no board reference fails
-                the check
-              </strong>
-              , and a newly added profile that lands in no set at all fails it
-              too, so a stack cannot be quietly admitted. As of{" "}
-              <Kbd>{SPARKWRIGHT.version}</Kbd> the tracked-gap set is empty.
+              <strong>Parity is a gate, not a promise.</strong> Every service
+              stack is held to the same Definition of Done &mdash; feature
+              flags, smoke test, DR drill, observability, test pyramid, health
+              check, deploy and rollback &mdash; by a check that fails on a
+              missing capability. A stack cannot be quietly admitted, and a
+              gap cannot go untracked. As of <Kbd>{SPARKWRIGHT.version}</Kbd>{" "}
+              there are none.
             </p>
           </Callout>
         </div>

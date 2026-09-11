@@ -1,4 +1,4 @@
-import { Section, Wrap, Eyebrow, H2, Card, Callout, Kbd } from "./sparkwright-ui";
+import { Section, Wrap, Eyebrow, H2, Card, Kbd } from "./sparkwright-ui";
 
 export default function SparkwrightEnterprise() {
   return (
@@ -28,16 +28,17 @@ export default function SparkwrightEnterprise() {
             <p className="text-sm text-muted leading-relaxed">
               Vendor-neutral, stack-neutral, model-neutral, POSIX-clean. It
               sits alongside your internal developer platform and CI, not
-              instead of them.
+              instead of them. GitHub Actions throughout, plus a verified
+              GitLab pipeline for TypeScript/Node.
             </p>
           </Card>
-          <Card title="Works with your tracker">
+          <Card title="Runs on your toolchain">
             <p className="text-sm text-muted leading-relaxed">
-              The loop drives <strong>Jira</strong>, <strong>GitHub Issues
-              &amp; Projects</strong>, <strong>Azure DevOps Boards</strong>,{" "}
-              <strong>Linear</strong>, or <strong>GitLab</strong> &mdash; or a
-              file in the repo, which is the reference every adapter is
-              measured against. Bring your own by meeting the contract.
+              Drives <strong>Jira</strong>, <strong>GitHub Issues &amp;
+              Projects</strong>, <strong>Azure DevOps</strong>,{" "}
+              <strong>Linear</strong>, <strong>GitLab</strong>, or a file in
+              the repo. On Jira it goes furthest &mdash; a server-side
+              condition makes double-claiming a work item impossible.
             </p>
           </Card>
           <Card title="A staged rollout">
@@ -47,37 +48,6 @@ export default function SparkwrightEnterprise() {
               (secret-scan, branch-protection) always hold.
             </p>
           </Card>
-        </div>
-
-        <div className="mt-8 space-y-4">
-          <Callout>
-            <p className="text-sm text-muted leading-relaxed">
-              <strong>One caveat worth knowing before you plan a rollout.</strong>{" "}
-              Only <strong>Jira</strong> can make a double-claim actually
-              impossible &mdash; it is the one tracker with a server-side
-              condition to enforce it, and only once you configure that
-              transition. On GitHub, Azure DevOps, Linear and GitLab,
-              assignment is last-writer-wins, so two agents can both read an
-              empty owner and both write. The kit narrows that race rather
-              than pretending to close it: claim only when the field is empty,
-              then re-read to detect a lost race. Worth knowing which tier you
-              are buying.
-            </p>
-          </Callout>
-
-          <Callout tone="orange">
-            <p className="text-sm text-muted leading-relaxed">
-              <strong>GitHub is the reference forge.</strong> GitLab is a
-              declared reference for <strong>one stack</strong> &mdash;
-              TypeScript/Node &mdash; where all eight required gates are
-              present and verified with no adoption work. The other nine
-              stacks <em>refuse GitLab at inception</em> rather than degrade
-              quietly, and parity across the full matrix is neither claimed
-              nor scheduled. Branch-protection verification is GitHub-only. If
-              you run GitLab at scale, read that ceiling before you plan
-              around it.
-            </p>
-          </Callout>
         </div>
 
         <details

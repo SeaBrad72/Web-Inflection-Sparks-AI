@@ -21,10 +21,9 @@ export default function SparkwrightUse() {
                 Create your project <em>from</em> the kit
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                Clone a throwaway copy and run one script that produces a
-                clean, CI-ready project of your own — pruned of the
-                kit&rsquo;s internal scaffolding, but keeping every stack
-                profile so your stack stays a decision, not a default.
+                One script turns a throwaway clone into a clean, CI-ready
+                project of your own — with every stack profile still on the
+                table, so your stack stays a decision, not a default.
               </p>
             </div>
           </li>
@@ -76,7 +75,7 @@ export default function SparkwrightUse() {
           </div>
           <code className="block font-mono text-[13.5px] leading-[1.7] text-foreground/85">
             <span className="text-muted-foreground">
-              # Clone a throwaway copy — used only to create your project
+              # A throwaway clone — used only to create your project
             </span>
             {"\n"}
             <span className="text-teal-light">
@@ -84,7 +83,7 @@ export default function SparkwrightUse() {
             </span>
             {"\n\n"}
             <span className="text-muted-foreground">
-              # Create your new project from it — name it whatever you like
+              # Your new project
             </span>
             {"\n"}
             <span className="text-teal-light">
@@ -108,11 +107,10 @@ export default function SparkwrightUse() {
             <p>
               <strong>New codebase or existing one.</strong> The path above
               is greenfield — one guided command bootstraps the repo.
-              Adopting into an <em>existing</em> codebase (brownfield) is a
-              guided procedure instead: merge the kit into the repo you
-              already have, bring any failing gates up to the bar on a
-              tracked, time-boxed waiver ramp, and keep every existing
-              safeguard. Any developer comfortable with git and CI can follow
+              Adopting into an <em>existing</em> codebase is a guided
+              procedure instead: merge the kit in, bring failing gates up to
+              the bar on a tracked ramp, and keep every safeguard you already
+              have. Any developer comfortable with git and CI can follow
               it — the one deliberately hand-performed step, merging the
               runtime guard so agents never operate on a live system
               unprotected, is where care matters most.

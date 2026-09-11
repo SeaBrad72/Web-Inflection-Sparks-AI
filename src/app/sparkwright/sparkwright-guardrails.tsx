@@ -24,13 +24,10 @@ export default function SparkwrightGuardrails() {
               aria-hidden="true"
               className="absolute left-0 top-[9px] h-2 w-2 rounded-sm bg-gradient-to-br from-teal to-teal-light"
             />
-            <strong>Every gate can explain itself</strong>{" "}
-            &mdash; each one
-            records the risk it answers and why paying its cost beats the
-            alternative, queryable from the CLI with{" "}
-            <Kbd>sparkwright explain &lt;topic&gt;</Kbd>. A guardrail nobody can
-            justify becomes bureaucracy; this is how the kit keeps them
-            accountable to a reason.
+            <strong>Every gate can explain itself</strong> &mdash; ask it
+            why it exists and it tells you, from the CLI:{" "}
+            <Kbd>sparkwright explain &lt;topic&gt;</Kbd>. A guardrail nobody
+            can justify becomes bureaucracy.
           </li>
           <li className="flex gap-3">
             <span
@@ -52,15 +49,12 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Separation of duties, enforced</strong> — builder ≠
-              reviewer ≠ ratifier, the last being whoever signs off that a
-              governing change may ship. Those changes need an independent
-              ratifier, and the merge is a recorded go/no-go bound to the
-              reviewed commit (<Kbd>shipped == approved</Kbd>, verified by
-              tree equality). Branch protection carries the rule down to the
-              merge button itself: the last hand on the code is never the hand
-              that approves it. The agent actuates the mechanics; the judgment
-              is the control, not the keystroke.
+              <strong>Separation of duties, enforced</strong> &mdash; builder
+              ≠ reviewer ≠ ratifier. A governing change needs an independent
+              sign-off, and the merge is bound to the commit that was actually
+              reviewed (<Kbd>shipped == approved</Kbd>). Branch protection
+              carries it to the merge button: the last hand on the code is
+              never the hand that approves it.
             </p>
           </li>
           <li className="flex gap-3">
@@ -69,11 +63,10 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Model tiering</strong> — each agent seat runs at an
-              abstract tier: judgment and review seats pinned to the top
-              model, builders free to run cheaper where the task allows,
-              high-stakes work floored to the top. You declare the
-              tier→model map for your provider — opinionated about{" "}
+              <strong>Model tiering</strong> &mdash; judgment and review
+              seats run on your top model, builders run cheaper where the task
+              allows, high-stakes work is floored back to the top. You map
+              tiers to your own provider: opinionated about{" "}
               <em>structure</em>, neutral about <em>which model</em>.
             </p>
           </li>
