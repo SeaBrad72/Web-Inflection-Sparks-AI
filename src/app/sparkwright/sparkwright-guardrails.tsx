@@ -39,9 +39,11 @@ export default function SparkwrightGuardrails() {
             />
             <p className="text-sm text-muted leading-relaxed">
               <strong>Eight required CI quality gates</strong> on every push
-              — nothing merges without them. Lint, type-check, test + coverage, build, secret-scan,
-              dependency-scan, SBOM, and SAST — plus build-provenance (SLSA),
-              license-policy, and AI-eval gates that activate by context.
+              — nothing merges without them, in every stack profile. Lint,
+              type-check, test + coverage, build, secret-scan,
+              dependency-scan, SBOM, and build-provenance (SLSA) — plus
+              container scanning, SAST, license-policy, and AI-eval gates that
+              activate by context.
             </p>
           </li>
           <li className="flex gap-3">

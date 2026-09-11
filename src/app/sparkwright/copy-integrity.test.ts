@@ -55,6 +55,24 @@ describe("page copy integrity", () => {
     expect(why).toMatch(/not Sparkwright&rsquo;s results/);
   });
 
+  it("keeps build-provenance in the required gates and SAST in the contextual ones", () => {
+    const guardrails = readFileSync(join(DIR, "sparkwright-guardrails.tsx"), "utf8");
+    // Measured against the kit at v3.226.0: `gate-provenance` is present in
+    // all ten stack profiles, `gate-sast` in only two (typescript-node and
+    // java-spring). The page had these swapped — claiming SAST as universal
+    // and demoting SLSA provenance to "activates by context" — which
+    // overstated the security posture of eight profiles and undersold the
+    // fact a compliance reviewer actually wants. Re-verify against
+    // profiles/*/ci.yml before editing this sentence.
+    const required = guardrails.slice(
+      guardrails.indexOf("Eight required CI quality gates"),
+      guardrails.indexOf("activate by context")
+    );
+    const beforeDash = required.slice(0, required.indexOf("— plus"));
+    expect(beforeDash).toMatch(/build-provenance \(SLSA\)/);
+    expect(beforeDash).not.toMatch(/SAST/);
+  });
+
   it("does not reintroduce an advisory or consulting CTA", () => {
     // Deliberately removed: the owner holds a full-time role elsewhere and this
     // page must not read as soliciting business. See spec §4.2.
