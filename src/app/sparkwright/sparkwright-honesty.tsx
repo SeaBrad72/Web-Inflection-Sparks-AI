@@ -54,10 +54,10 @@ export default function SparkwrightHonesty() {
               hardlink-alias routes, branch-protection overrides — under
               adversarial review, and it enforces a deny-by-default{" "}
               <strong>MCP capability gate</strong>{" "}
-              in-process (real enforcement, by tool name). The kit publishes
-              its own <strong>threat model</strong> — the guard&rsquo;s deny
-              set, and the residual risks it has <em>not</em>{" "}
-              closed, named in public. One
+              in-process (real enforcement, by tool name). The kit names in
+              public what it has <em>not</em> closed — the{" "}
+              <strong>residual risks</strong>, and the controls it declines to
+              claim, stated as plainly as the ones it enforces. One
               check was built and withdrawn on the grounds that shipping a
               check whose claim register was demonstrably false is worse than
               shipping none. A kit that tells you precisely what&rsquo;s
