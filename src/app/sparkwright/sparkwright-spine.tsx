@@ -43,9 +43,9 @@ export default function SparkwrightSpine() {
             kit&rsquo;s control set is <strong>mutation-tested</strong> &mdash;
             a green that cannot be made to go red is caught and fixed. Most
             tooling never proves its own gates are capable of failing, and that
-            is the difference between a gate and a decoration. The kit&rsquo;s
-            headline claims are a registry of{" "}
-            <strong>72 rows, each with an executable verifier</strong>, pinned
+            is the difference between a gate and a decoration. And its
+            headline claims are a registry &mdash;{" "}
+            <strong>every row carrying an executable verifier</strong>, pinned
             so a claim cannot quietly disappear.
           </p>
         </Callout>
