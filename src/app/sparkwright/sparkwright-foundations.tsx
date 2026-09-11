@@ -66,10 +66,6 @@ const FOUNDATIONS = [
     body: "An AI system card per feature — risk classified, human oversight named — plus prompt-injection defense and schema-validated output.",
   },
   {
-    name: "Agent budget governance",
-    body: "Token, step and agent ceilings halt a runaway flow, with a declared, attested spend posture behind them — the platform holds the hard ceiling, and the kit says so rather than pretending otherwise.",
-  },
-  {
     name: "Methodology as skills",
     body: "Planning, design, TDD, review, verification, evals and operating ship as executable skills an agent invokes — not prose it might ignore.",
   },
