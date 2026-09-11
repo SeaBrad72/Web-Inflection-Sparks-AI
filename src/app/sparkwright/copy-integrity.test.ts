@@ -87,6 +87,12 @@ describe("page copy integrity", () => {
       for (const m of src.matchAll(/\bid="([a-z-]+)"/g)) ids.add(m[1]);
       for (const m of src.matchAll(/href="#([a-z-]+)"/g))
         targets.push({ file, id: m[1] });
+      // The sub-nav builds its hrefs from a template literal (`#${id}`), so
+      // the literal scan above cannot see them — and it is the most likely
+      // thing to rot, because renaming a section means editing its SECTIONS
+      // list by hand. Resolve those ids too.
+      for (const m of src.matchAll(/\{\s*id:\s*"([a-z-]+)",\s*label:/g))
+        targets.push({ file, id: m[1] });
     }
     expect(targets.length).toBeGreaterThan(0);
     const dead = targets.filter((t) => !ids.has(t.id));
