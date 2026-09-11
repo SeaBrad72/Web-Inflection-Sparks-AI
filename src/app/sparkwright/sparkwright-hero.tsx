@@ -78,7 +78,7 @@ export default function SparkwrightHero() {
               position, which the hero button did not.
             */}
             <a
-              href="#use"
+              href="#how"
               className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-teal text-white font-medium hover:bg-teal-light transition-all hover:shadow-lg hover:shadow-teal/20"
             >
               See how it works
