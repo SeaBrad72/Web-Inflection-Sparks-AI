@@ -34,17 +34,12 @@ export default function SparkwrightUse() {
                 Let it guide you through Inception (Phase 0)
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                Open the project in your AI coding tool and say{" "}
-                <Kbd>&ldquo;Walk me through START-HERE.&rdquo;</Kbd> You
-                write a charter, <strong>
-                  choose your stack and record it as ADR-000
-                </strong>{" "}
-                — the one step that decides what you build it with — stand up
-                CI, and get a{" "}
-                <strong>
-                  green pipeline on the empty project before any feature work
-                </strong>
-                . You build on working software, not an empty repo.
+                Open it in your AI tool and say{" "}
+                <Kbd>&ldquo;Walk me through START-HERE.&rdquo;</Kbd> A charter,{" "}
+                <strong>your stack decision recorded as an ADR</strong>, CI
+                stood up &mdash; and a{" "}
+                <strong>green pipeline before any feature work</strong>, so you
+                build on working software, not an empty repo.
               </p>
             </div>
           </li>
@@ -55,10 +50,8 @@ export default function SparkwrightUse() {
                 Enter the loop
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                Each backlog item flows through the delivery cycle. You, the
-                human, sit on the gates — approve the design, make the
-                go/no-go at release, accept the increment. The agents do the
-                building between the gates, at machine speed.
+                Every backlog item runs the loop, and your team holds the
+                three gates.
               </p>
             </div>
           </li>

@@ -82,10 +82,12 @@ export default function SparkwrightStacks() {
             <p className="text-sm text-muted leading-relaxed">
               <strong>Your agent, and your model.</strong> Any harness that
               reads <Kbd>AGENTS.md</Kbd> works, with curated adapters shipped
-              and <Kbd>new-adapter.sh</Kbd> for the rest. Models bind by
-              abstract tier rather than by name, so judgment seats run on your
-              best model and builders run cheaper &mdash; and changing provider
-              is a mapping change, not a migration.
+              and <Kbd>new-adapter.sh</Kbd> for the rest &mdash; each certified
+              to the level it has actually reached, measured or declared,
+              rather than claimed at blanket parity. Models bind by abstract
+              tier rather than by name, so judgment seats run on your best model
+              and builders run cheaper; changing provider is a mapping change,
+              not a migration.
             </p>
           </Callout>
 

@@ -50,13 +50,9 @@ export default function SparkwrightHonesty() {
               its own <strong>threat model</strong> — its real posture, not a
               template — naming the guard&rsquo;s deny set and the residual
               risks it has <em>not</em> closed. One check was built and then
-              withdrawn, on the grounds that shipping a check whose claims
-              were demonstrably false is worse than shipping none. And none of
-              it asks for faith:{" "}
-              <strong>the kit&rsquo;s headline claims are a registry</strong>,
-              each backed by an executable verifier and pinned so a claim
-              cannot quietly disappear. The claims on this page are checkable
-              in the repository &mdash; run them.
+              withdrawn, on the grounds that shipping a check whose claims were
+              demonstrably false is worse than shipping none. The claims on
+              this page are checkable in the repository &mdash; run them.
             </p>
           </Callout>
         </div>

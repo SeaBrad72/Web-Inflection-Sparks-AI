@@ -4,6 +4,7 @@ import SparkwrightHero from "./sparkwright-hero";
 import SparkwrightWhat from "./sparkwright-what";
 import SparkwrightProcess from "./sparkwright-process";
 import SparkwrightStacks from "./sparkwright-stacks";
+import SparkwrightFoundations from "./sparkwright-foundations";
 import SparkwrightBar from "./sparkwright-bar";
 import SparkwrightWhy from "./sparkwright-why";
 import SparkwrightUse from "./sparkwright-use";
@@ -35,18 +36,19 @@ export default function SparkwrightPage() {
       <SparkwrightSubnav />
       <SparkwrightHero />
       <SparkwrightWhat />
-      <SparkwrightProcess />
-      <SparkwrightStacks />
       <SparkwrightWhy />
-      <SparkwrightUse />
-      <SparkwrightSpine />
       <SparkwrightCoverage />
-      <SparkwrightTeam />
-      <NotifyForm />
+      <SparkwrightProcess />
       <SparkwrightBar />
       <SparkwrightGuardrails />
+      <SparkwrightTeam />
+      <SparkwrightStacks />
+      <SparkwrightFoundations />
+      <SparkwrightSpine />
+      <NotifyForm />
       <SparkwrightHonesty />
       <SparkwrightEnterprise />
+      <SparkwrightUse />
       <SparkwrightMaturity />
       <SparkwrightCTA />
     </>
