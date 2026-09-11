@@ -12,14 +12,18 @@ import SparkwrightMark from "./sparkwright-mark";
  * InflectionSparks.ai shell, it sits *below* the site nav (`top-16`, matching
  * `<main className="pt-16">`) rather than replacing it.
  *
- * Desktop only. Two stacked sticky bars would eat ~112px of a 375px viewport,
- * so on mobile the hero carries the mark instead and this is not rendered.
+ * Desktop only, and `lg` rather than `md`: at 768px the eight section links
+ * wrap onto two lines and push the GitHub button off the edge — measured, not
+ * assumed. Below `lg` the hero carries the mark instead and this is not
+ * rendered, which also spares a 375px viewport ~112px of stacked sticky bars.
  */
 
 const SECTIONS = [
   { id: "what", label: "What it is" },
+  { id: "stacks", label: "Stacks" },
   { id: "use", label: "Use it" },
   { id: "principles", label: "Foundations" },
+  { id: "team", label: "Team" },
   { id: "guardrails", label: "Guardrails" },
   { id: "honesty", label: "Honesty" },
   { id: "enterprise", label: "Enterprise" },
@@ -55,7 +59,7 @@ export default function SparkwrightSubnav() {
   return (
     <nav
       aria-label="Sparkwright page sections"
-      className="sticky top-16 z-40 hidden border-b border-border-subtle bg-background/80 backdrop-blur-xl md:block"
+      className="sticky top-16 z-40 hidden border-b border-border-subtle bg-background/80 backdrop-blur-xl lg:block"
     >
       <div className="mx-auto flex h-12 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
         <SparkwrightMark size="sm" gradientId="sparkwright-subnav-gradient" />

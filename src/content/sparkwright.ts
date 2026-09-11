@@ -6,6 +6,24 @@ const harnessSchema = z.object({
   note: z.string().min(1),
 });
 
+/**
+ * A stack profile the kit ships. `tier` mirrors the kit's own parity fence
+ * (conformance/profile-parity.sh): "service" profiles are its FILLED set and
+ * must ship the full Definition-of-Done capability set; "specialist" profiles
+ * are EXEMPT with a stated reason, because they have no service surface.
+ * The kit's PENDING set — a tracked gap — is empty as of the reviewed release;
+ * if it ever isn't, that profile needs a third tier here rather than a quiet
+ * promotion to "service".
+ */
+const stackSchema = z.object({
+  name: z.string().min(1),
+  tier: z.enum(["service", "specialist"]),
+  /** Stack-native tooling the templated CI runs for this profile. */
+  tools: z.string().min(1),
+  /** Specialist profiles only: why the kit exempts them, in its own terms. */
+  exemptReason: z.string().min(1).optional(),
+});
+
 const statSchema = z.object({
   figure: z.string().min(1),
   label: z.string().min(1),
@@ -22,6 +40,9 @@ export const sparkwrightSchema = z.object({
   lastReleaseAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   lastReviewed: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   harnesses: z.array(harnessSchema).min(1),
+  stacks: z.array(stackSchema).min(1),
+  /** Tooling every profile runs, regardless of stack. */
+  universalTools: z.array(z.string().min(1)).min(1),
   stats: z.array(statSchema).min(1),
 });
 
@@ -56,6 +77,34 @@ export const SPARKWRIGHT = {
       note: "Routing + a pre-push hook + a CI backstop. Experimental until exercised.",
     },
   ],
+  stacks: [
+    { name: "TypeScript / Node", tier: "service", tools: "tsc · ESLint · Vitest · npm audit" },
+    { name: "Python", tier: "service", tools: "ruff · mypy · pytest · uv · pip-audit" },
+    { name: "Go", tier: "service", tools: "golangci-lint · gosec · govulncheck" },
+    { name: "Rust", tier: "service", tools: "cargo · clippy" },
+    { name: "Java / Spring", tier: "service", tools: "Maven · SpotBugs · Semgrep" },
+    { name: "Kotlin", tier: "service", tools: "Gradle · detekt" },
+    { name: ".NET", tier: "service", tools: "dotnet · Trivy · Syft" },
+    {
+      name: "ML",
+      tier: "specialist",
+      tools: "ruff · mypy · pytest · uv",
+      exemptReason: "ships its own evals-harness obligation",
+    },
+    {
+      name: "Data engineering",
+      tier: "specialist",
+      tools: "ruff · mypy · pytest · uv",
+      exemptReason: "pipeline + data-quality obligations of its own design",
+    },
+    {
+      name: "Terraform",
+      tier: "specialist",
+      tools: "tflint · Checkov",
+      exemptReason: "plan/validate/policy obligations of its own design",
+    },
+  ],
+  universalTools: ["gitleaks", "CycloneDX SBOM", "signed build provenance"],
   stats: [
     {
       figure: "+30%",
