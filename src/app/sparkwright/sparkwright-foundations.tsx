@@ -15,7 +15,15 @@ import { Section, Wrap, Eyebrow, H2, Lead } from "./sparkwright-ui";
 const FOUNDATIONS = [
   {
     name: "Test-driven by default",
-    body: "Tests written with the code, never after — 80% floor, 100% on critical paths. For AI features, evals gate the same way.",
+    body: "Tests written with the code, never after — 80% floor, 100% on critical paths.",
+  },
+  {
+    name: "The whole test pyramid",
+    body: "Unit, property-based, integration, API contract, end-to-end, smoke, load and stress, and security tests against every auth and data boundary — each with a defined point in the lifecycle where it starts being owed.",
+  },
+  {
+    name: "Evals as tests for AI",
+    body: "Model and prompt quality, regression, and red-team sets — written alongside the feature, run in CI, and gating exactly like tests.",
   },
   {
     name: "15-factor architecture",
