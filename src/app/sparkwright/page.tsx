@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import SparkwrightSubnav from "./sparkwright-subnav";
 import SparkwrightHero from "./sparkwright-hero";
 import SparkwrightWhat from "./sparkwright-what";
+import SparkwrightProcess from "./sparkwright-process";
 import SparkwrightStacks from "./sparkwright-stacks";
+import SparkwrightBar from "./sparkwright-bar";
 import SparkwrightWhy from "./sparkwright-why";
 import SparkwrightUse from "./sparkwright-use";
-import SparkwrightPrinciples from "./sparkwright-principles";
 import SparkwrightSpine from "./sparkwright-spine";
 import SparkwrightCoverage from "./sparkwright-coverage";
 import SparkwrightTeam from "./sparkwright-team";
@@ -34,14 +35,15 @@ export default function SparkwrightPage() {
       <SparkwrightSubnav />
       <SparkwrightHero />
       <SparkwrightWhat />
+      <SparkwrightProcess />
       <SparkwrightStacks />
       <SparkwrightWhy />
       <SparkwrightUse />
-      <SparkwrightPrinciples />
       <SparkwrightSpine />
       <SparkwrightCoverage />
       <SparkwrightTeam />
       <NotifyForm />
+      <SparkwrightBar />
       <SparkwrightGuardrails />
       <SparkwrightHonesty />
       <SparkwrightEnterprise />

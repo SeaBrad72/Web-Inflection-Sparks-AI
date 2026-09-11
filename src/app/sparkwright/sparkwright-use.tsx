@@ -105,28 +105,22 @@ export default function SparkwrightUse() {
         <div className="mt-6 max-w-[720px]">
           <Callout tone="orange">
             <p>
-              <strong>New codebase or existing one.</strong> The path above
-              is greenfield — one guided command bootstraps the repo.
-              Adopting into an <em>existing</em> codebase is a guided
-              procedure instead: merge the kit in, bring failing gates up to
-              the bar on a tracked ramp, and keep every safeguard you already
-              have. Any developer comfortable with git and CI can follow
-              it — the one deliberately hand-performed step, merging the
-              runtime guard so agents never operate on a live system
-              unprotected, is where care matters most.
+              <strong>An existing codebase won&rsquo;t pass on day one
+              &mdash; and doesn&rsquo;t have to.</strong> Brownfield adoption
+              merges the kit into the repo you already have and lets a failing
+              gate run on a <em>time-boxed waiver</em>: tracked, owned,
+              ratified, and capped at 90 days. Never a silently disabled check.
+              Secret-scan and branch protection can never be waived at all.
             </p>
           </Callout>
         </div>
 
         <p className="mt-[30px] text-[17.5px] text-muted max-w-[720px] leading-relaxed">
-          <strong>The shape, in one line:</strong> a project is{" "}
-          <em>born</em> through Inception and <em>evolves</em>{" "}
-          through a
-          closed loop, with humans as a thin layer of judgment at the gates
-          and agents doing the volume between them. In a typical feature —
-          say, &ldquo;add CSV export&rdquo; — humans touch it at exactly
-          three points (spec, merge, acceptance); agents run continuously in
-          between.
+          <strong>And every function has a door.</strong> Product, design, QA,
+          DevOps, security and engineering each start at their own row, with
+          their own artifact &mdash; but routing by role changes which document
+          you open, never which gate applies. Non-builders get the rigor
+          carried, not waived.
         </p>
       </Wrap>
     </Section>

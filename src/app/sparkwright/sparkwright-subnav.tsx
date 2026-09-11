@@ -20,12 +20,11 @@ import SparkwrightMark from "./sparkwright-mark";
 
 const SECTIONS = [
   { id: "what", label: "What it is" },
-  { id: "stacks", label: "Stacks" },
-  { id: "use", label: "Use it" },
-  { id: "principles", label: "Foundations" },
+  { id: "process", label: "How you work" },
+  { id: "stacks", label: "Fit" },
   { id: "team", label: "Team" },
+  { id: "bar", label: "The bar" },
   { id: "guardrails", label: "Guardrails" },
-  { id: "honesty", label: "Honesty" },
   { id: "enterprise", label: "Enterprise" },
 ] as const;
 

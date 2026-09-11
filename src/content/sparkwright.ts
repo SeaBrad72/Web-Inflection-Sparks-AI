@@ -7,21 +7,19 @@ const harnessSchema = z.object({
 });
 
 /**
- * A stack profile the kit ships. `tier` mirrors the kit's own parity fence
- * (conformance/profile-parity.sh): "service" profiles are its FILLED set and
- * must ship the full Definition-of-Done capability set; "specialist" profiles
- * are EXEMPT with a stated reason, because they have no service surface.
- * The kit's PENDING set — a tracked gap — is empty as of the reviewed release;
- * if it ever isn't, that profile needs a third tier here rather than a quiet
- * promotion to "service".
+ * A stack profile the kit ships as a worked reference.
+ *
+ * Deliberately flat, with NO maturity tier: the kit is explicit that "the
+ * stack axis carries no maturity tier — all profiles are copy-and-adapt
+ * references held to one bar" (docs/adoption/neutrality-by-construction.md).
+ * An earlier version of this file ranked them service/specialist, which
+ * imposed exactly the hierarchy the kit refuses. These ten are a starting set,
+ * not the supported set — `scripts/new-profile.sh` generates one for any stack.
  */
 const stackSchema = z.object({
   name: z.string().min(1),
-  tier: z.enum(["service", "specialist"]),
   /** Stack-native tooling the templated CI runs for this profile. */
   tools: z.string().min(1),
-  /** Specialist profiles only: why the kit exempts them, in its own terms. */
-  exemptReason: z.string().min(1).optional(),
 });
 
 const statSchema = z.object({
@@ -78,31 +76,16 @@ export const SPARKWRIGHT = {
     },
   ],
   stacks: [
-    { name: "TypeScript / Node", tier: "service", tools: "tsc · ESLint · Vitest · npm audit" },
-    { name: "Python", tier: "service", tools: "ruff · mypy · pytest · uv · pip-audit" },
-    { name: "Go", tier: "service", tools: "golangci-lint · gosec · govulncheck" },
-    { name: "Rust", tier: "service", tools: "cargo · clippy" },
-    { name: "Java / Spring", tier: "service", tools: "Maven · SpotBugs · Semgrep" },
-    { name: "Kotlin", tier: "service", tools: "Gradle · detekt" },
-    { name: ".NET", tier: "service", tools: "dotnet · Trivy · Syft" },
-    {
-      name: "ML",
-      tier: "specialist",
-      tools: "ruff · mypy · pytest · uv",
-      exemptReason: "ships its own evals-harness obligation",
-    },
-    {
-      name: "Data engineering",
-      tier: "specialist",
-      tools: "ruff · mypy · pytest · uv",
-      exemptReason: "pipeline + data-quality obligations of its own design",
-    },
-    {
-      name: "Terraform",
-      tier: "specialist",
-      tools: "tflint · Checkov",
-      exemptReason: "plan/validate/policy obligations of its own design",
-    },
+    { name: "TypeScript / Node", tools: "tsc · ESLint · Vitest · npm audit" },
+    { name: "Python", tools: "ruff · mypy · pytest · uv · pip-audit" },
+    { name: "Go", tools: "golangci-lint · gosec · govulncheck" },
+    { name: "Rust", tools: "cargo · clippy" },
+    { name: "Java / Spring", tools: "Maven · SpotBugs · Semgrep" },
+    { name: "Kotlin", tools: "Gradle · detekt" },
+    { name: ".NET", tools: "dotnet · Trivy · Syft" },
+    { name: "ML", tools: "ruff · mypy · pytest · uv" },
+    { name: "Data engineering", tools: "ruff · mypy · pytest · uv" },
+    { name: "Terraform", tools: "tflint · Checkov" },
   ],
   universalTools: ["gitleaks", "CycloneDX SBOM", "signed build provenance"],
   stats: [

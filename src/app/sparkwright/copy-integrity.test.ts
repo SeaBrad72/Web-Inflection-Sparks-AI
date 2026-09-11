@@ -55,22 +55,23 @@ describe("page copy integrity", () => {
     expect(why).toMatch(/not Sparkwright&rsquo;s results/);
   });
 
-  it("keeps build-provenance in the required gates and SAST in the contextual ones", () => {
-    const guardrails = readFileSync(join(DIR, "sparkwright-guardrails.tsx"), "utf8");
-    // Measured against the kit at v3.226.0: `gate-provenance` is present in
-    // all ten stack profiles, `gate-sast` in only two (typescript-node and
-    // java-spring). The page had these swapped — claiming SAST as universal
-    // and demoting SLSA provenance to "activates by context" — which
-    // overstated the security posture of eight profiles and undersold the
-    // fact a compliance reviewer actually wants. Re-verify against
-    // profiles/*/ci.yml before editing this sentence.
-    const required = guardrails.slice(
-      guardrails.indexOf("Eight required CI quality gates"),
-      guardrails.indexOf("activate by context")
+  it("states the seven-gate contract with provenance in and SAST out", () => {
+    const bar = readFileSync(join(DIR, "sparkwright-bar.tsx"), "utf8");
+    // Measured against kit v3.226.0. DEVELOPMENT-STANDARDS.md §14: the contract
+    // is SEVEN required gates; the eight gate-IDs exist only because
+    // supply-chain integrity expands to gate-sbom + gate-provenance. `provenance`
+    // is present in all ten stack profiles; `gate-sast` in two, and the kit
+    // lists SAST among the five CONDITIONAL gates. The page previously had
+    // these swapped and claimed "eight", which both overstated eight profiles'
+    // static-analysis posture and quoted an implementation count as a contract.
+    const required = bar.slice(
+      bar.indexOf("Seven required gates"),
+      bar.indexOf("And the rest arrive")
     );
-    const beforeDash = required.slice(0, required.indexOf("— plus"));
-    expect(beforeDash).toMatch(/build-provenance \(SLSA\)/);
-    expect(beforeDash).not.toMatch(/SAST/);
+    expect(required).toMatch(/build provenance/);
+    expect(required).not.toMatch(/SAST/);
+    // SAST must still appear — as one of the conditional five.
+    expect(bar).toMatch(/conditional[\s\S]{0,160}SAST/);
   });
 
   it("does not reintroduce an advisory or consulting CTA", () => {

@@ -13,10 +13,11 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>The guard</strong> — a <Kbd>PreToolUse</Kbd> deny-matrix
-              that intercepts destructive actions, and changes to the rules
-              governing the agents themselves, before they land: a fast first layer in front of the real boundary,
-              the git + CI chokepoints below.
+              <strong>A guard that holds on any harness</strong> &mdash; a
+              CLI, a git pre-push hook, and a CI gate, verified to block
+              destructive and control-plane actions whichever agent you run.
+              Where your harness supports it, the same rules also intercept
+              in-editor, before a bad write ever lands.
             </p>
           </li>
           <li className="relative pl-6 text-[15.5px] text-muted">
@@ -29,21 +30,7 @@ export default function SparkwrightGuardrails() {
             <Kbd>sparkwright explain &lt;topic&gt;</Kbd>. A guardrail nobody
             can justify becomes bureaucracy.
           </li>
-          <li className="flex gap-3">
-            <span
-              aria-hidden="true"
-              className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
-            />
-            <p className="text-sm text-muted leading-relaxed">
-              <strong>Eight required CI quality gates</strong> on every push
-              — nothing merges without them, in every stack profile. Lint,
-              type-check, test + coverage, build, secret-scan,
-              dependency-scan, SBOM, and build-provenance (SLSA) — plus
-              container scanning, SAST, license-policy, and AI-eval gates that
-              activate by context.
-            </p>
-          </li>
-          <li className="flex gap-3">
+                    <li className="flex gap-3">
             <span
               aria-hidden="true"
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
@@ -78,7 +65,10 @@ export default function SparkwrightGuardrails() {
             <p className="text-sm text-muted leading-relaxed">
               <strong>Autonomy tiers (L1/L2/L3)</strong> — how much an agent
               may do without sign-off, from suggest-only to act-then-report,
-              keyed on risk × reversibility. Autonomy is earned by metrics.
+              keyed on risk × reversibility &mdash; reversibility being the master
+              variable. Irreversible work (deploying, deleting data, rotating
+              secrets, spending money) stays human-gated at every tier, and a
+              team raises a tier only when its own metrics earn it.
             </p>
           </li>
           <li className="flex gap-3">
