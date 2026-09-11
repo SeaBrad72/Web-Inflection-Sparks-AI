@@ -16,12 +16,12 @@ const SEATS = [
   {
     name: "Orchestrator",
     hat: "Lead / EM",
-    body: "Slices the epic, assigns each task its model tier, spawns the builders, integrates the results. It assigns the work — it never reviews or ratifies its own output.",
+    body: "Slices an epic into disjoint, independently testable increments, composes the team for the job, fans the engineers out, then integrates what comes back. It assigns the work — it never reviews or ratifies its own output.",
   },
   {
-    name: "Engineer",
-    hat: "Builds",
-    body: "Takes one slice, builds it test-first inside its own worktree, and never touches another slice's files. Returns a diff and a self-verify report.",
+    name: "Engineers",
+    hat: "Build, in parallel",
+    body: "One per slice, each test-first in its own isolated worktree, none able to touch another slice's files. Each returns a diff and a self-verify report.",
   },
   {
     name: "Reviewer",
@@ -42,8 +42,9 @@ export default function SparkwrightTeam() {
         <Eyebrow>The team you get</Eyebrow>
         <H2>Four seats, and a governor on the whole run.</H2>
         <Lead>
-          A small standing team does the building between the gates. Four
-          seats, each with a job that another seat cannot quietly absorb.
+          A small standing team does the building between the gates &mdash;
+          four seats, each with a job another seat cannot quietly absorb, and
+          as many engineers running at once as the work splits into.
         </Lead>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -57,17 +58,32 @@ export default function SparkwrightTeam() {
           ))}
         </div>
 
-        <div className="mt-10">
+        <div className="mt-8">
           <Callout>
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Runs are metered, not trusted.</strong> Engineers fan out
-              into isolated git worktrees so two slices cannot collide on the
-              same file, each comes back through an independent review, and
-              integration is a serial merge queue rather than a free-for-all.
-              The whole run sits under a kill-switch with token, step, and
-              agent ceilings &mdash; and{" "}
+              <strong>One team, more than one model.</strong> Seats bind to
+              abstract tiers, not model names, so the orchestrator composes a
+              build team rather than picking a single model for everything
+              &mdash; judgment and review seats on your strongest model,
+              engineers on whatever the slice actually warrants, sometimes a
+              mix within the same run. High-stakes work is floored back to the
+              top regardless. You own the tier-to-model map, so this is a
+              config change when the model landscape moves, not a rewrite.
+            </p>
+          </Callout>
+        </div>
+
+        <div className="mt-4">
+          <Callout>
+            <p className="text-sm text-muted leading-relaxed">
+              <strong>Parallel, because nothing escapes the rails.</strong>{" "}
+              Engineers fan out into isolated worktrees so two slices cannot
+              collide, and integration is a serial merge queue rather than a
+              free-for-all. The whole run is metered by a kill-switch with
+              token, step and agent ceilings &mdash; and{" "}
               <strong>raising one is itself a ratified act</strong>, so an
-              agent cannot vote itself more rope.
+              agent cannot vote itself more rope. The guardrails are precisely
+              what let you floor it.
             </p>
           </Callout>
         </div>

@@ -15,7 +15,15 @@ import { Section, Wrap, Eyebrow, H2, Lead } from "./sparkwright-ui";
 const FOUNDATIONS = [
   {
     name: "Test-driven by default",
-    body: "Tests written with the code, never after — 80% floor, 100% on critical paths. For AI features, evals gate the same way.",
+    body: "Tests written with the code, never after — 80% floor, 100% on critical paths.",
+  },
+  {
+    name: "The whole test pyramid",
+    body: "Unit, property-based, integration, API contract, end-to-end, smoke, load and stress, and security tests against every auth and data boundary — each with a defined point in the lifecycle where it starts being owed.",
+  },
+  {
+    name: "Evals as tests for AI",
+    body: "Model and prompt quality, regression, and red-team sets — written alongside the feature, run in CI, and gating exactly like tests.",
   },
   {
     name: "15-factor architecture",
@@ -56,6 +64,10 @@ const FOUNDATIONS = [
   {
     name: "AI governance",
     body: "An AI system card per feature — risk classified, human oversight named — plus prompt-injection defense and schema-validated output.",
+  },
+  {
+    name: "Agent budget governance",
+    body: "Token, step and agent ceilings halt a runaway flow, with a declared, attested spend posture behind them — the platform holds the hard ceiling, and the kit says so rather than pretending otherwise.",
   },
   {
     name: "Methodology as skills",
