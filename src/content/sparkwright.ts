@@ -6,6 +6,22 @@ const harnessSchema = z.object({
   note: z.string().min(1),
 });
 
+/**
+ * A stack profile the kit ships as a worked reference.
+ *
+ * Deliberately flat, with NO maturity tier: the kit is explicit that "the
+ * stack axis carries no maturity tier — all profiles are copy-and-adapt
+ * references held to one bar" (docs/adoption/neutrality-by-construction.md).
+ * An earlier version of this file ranked them service/specialist, which
+ * imposed exactly the hierarchy the kit refuses. These ten are a starting set,
+ * not the supported set — `scripts/new-profile.sh` generates one for any stack.
+ */
+const stackSchema = z.object({
+  name: z.string().min(1),
+  /** Stack-native tooling the templated CI runs for this profile. */
+  tools: z.string().min(1),
+});
+
 const statSchema = z.object({
   figure: z.string().min(1),
   label: z.string().min(1),
@@ -22,6 +38,9 @@ export const sparkwrightSchema = z.object({
   lastReleaseAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   lastReviewed: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   harnesses: z.array(harnessSchema).min(1),
+  stacks: z.array(stackSchema).min(1),
+  /** Tooling every profile runs, regardless of stack. */
+  universalTools: z.array(z.string().min(1)).min(1),
   stats: z.array(statSchema).min(1),
 });
 
@@ -56,6 +75,19 @@ export const SPARKWRIGHT = {
       note: "Routing + a pre-push hook + a CI backstop. Experimental until exercised.",
     },
   ],
+  stacks: [
+    { name: "TypeScript / Node", tools: "tsc · ESLint · Vitest · npm audit" },
+    { name: "Python", tools: "ruff · mypy · pytest · uv · pip-audit" },
+    { name: "Go", tools: "golangci-lint · gosec · govulncheck" },
+    { name: "Rust", tools: "cargo · clippy" },
+    { name: "Java / Spring", tools: "Maven · SpotBugs · Semgrep" },
+    { name: "Kotlin", tools: "Gradle · detekt" },
+    { name: ".NET", tools: "dotnet · Trivy · Syft" },
+    { name: "ML", tools: "ruff · mypy · pytest · uv" },
+    { name: "Data engineering", tools: "ruff · mypy · pytest · uv" },
+    { name: "Terraform", tools: "tflint · Checkov" },
+  ],
+  universalTools: ["gitleaks", "CycloneDX SBOM", "signed build provenance"],
   stats: [
     {
       figure: "+30%",

@@ -21,10 +21,9 @@ export default function SparkwrightUse() {
                 Create your project <em>from</em> the kit
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                Clone a throwaway copy and run one script that produces a
-                clean, CI-ready project of your own — pruned of the
-                kit&rsquo;s internal scaffolding, but keeping every stack
-                profile so your stack stays a decision, not a default.
+                One script turns a throwaway clone into a clean, CI-ready
+                project of your own — with every stack profile still on the
+                table, so your stack stays a decision, not a default.
               </p>
             </div>
           </li>
@@ -35,17 +34,12 @@ export default function SparkwrightUse() {
                 Let it guide you through Inception (Phase 0)
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                Open the project in your AI coding tool and say{" "}
-                <Kbd>&ldquo;Walk me through START-HERE.&rdquo;</Kbd> You
-                write a charter, <strong>
-                  choose your stack and record it as ADR-000
-                </strong>{" "}
-                — the one step that decides what you build it with — stand up
-                CI, and get a{" "}
-                <strong>
-                  green pipeline on the empty project before any feature work
-                </strong>
-                . You build on working software, not an empty repo.
+                Open it in your AI tool and say{" "}
+                <Kbd>&ldquo;Walk me through START-HERE.&rdquo;</Kbd> A charter,{" "}
+                <strong>your stack decision recorded as an ADR</strong>, CI
+                stood up &mdash; and a{" "}
+                <strong>green pipeline before any feature work</strong>, so you
+                build on working software, not an empty repo.
               </p>
             </div>
           </li>
@@ -56,10 +50,8 @@ export default function SparkwrightUse() {
                 Enter the loop
               </h3>
               <p className="text-sm text-muted leading-relaxed">
-                Each backlog item flows through the delivery cycle. You, the
-                human, sit on the gates — approve the design, make the
-                go/no-go at release, accept the increment. The agents do the
-                building between the gates, at machine speed.
+                Every backlog item runs the loop, and your team holds the
+                three gates.
               </p>
             </div>
           </li>
@@ -76,7 +68,7 @@ export default function SparkwrightUse() {
           </div>
           <code className="block font-mono text-[13.5px] leading-[1.7] text-foreground/85">
             <span className="text-muted-foreground">
-              # Clone a throwaway copy — used only to create your project
+              # A throwaway clone — used only to create your project
             </span>
             {"\n"}
             <span className="text-teal-light">
@@ -84,7 +76,7 @@ export default function SparkwrightUse() {
             </span>
             {"\n\n"}
             <span className="text-muted-foreground">
-              # Create your new project from it — name it whatever you like
+              # Your new project
             </span>
             {"\n"}
             <span className="text-teal-light">
@@ -106,29 +98,22 @@ export default function SparkwrightUse() {
         <div className="mt-6 max-w-[720px]">
           <Callout tone="orange">
             <p>
-              <strong>New codebase or existing one.</strong> The path above
-              is greenfield — one guided command bootstraps the repo.
-              Adopting into an <em>existing</em> codebase (brownfield) is a
-              guided procedure instead: merge the kit into the repo you
-              already have, bring any failing gates up to the bar on a
-              tracked, time-boxed waiver ramp, and keep every existing
-              safeguard. Any developer comfortable with git and CI can follow
-              it — the one deliberately hand-performed step, merging the
-              runtime guard so agents never operate on a live system
-              unprotected, is where care matters most.
+              <strong>An existing codebase won&rsquo;t pass on day one
+              &mdash; and doesn&rsquo;t have to.</strong> Brownfield adoption
+              merges the kit into the repo you already have and lets a failing
+              gate run on a <em>time-boxed waiver</em>: tracked, owned,
+              ratified, and capped at 90 days. Never a silently disabled check.
+              Secret-scan and branch protection can never be waived at all.
             </p>
           </Callout>
         </div>
 
         <p className="mt-[30px] text-[17.5px] text-muted max-w-[720px] leading-relaxed">
-          <strong>The shape, in one line:</strong> a project is{" "}
-          <em>born</em> through Inception and <em>evolves</em>{" "}
-          through a
-          closed loop, with humans as a thin layer of judgment at the gates
-          and agents doing the volume between them. In a typical feature —
-          say, &ldquo;add CSV export&rdquo; — humans touch it at exactly
-          three points (spec, merge, acceptance); agents run continuously in
-          between.
+          <strong>And every function has a door.</strong> Product, design, QA,
+          DevOps, security and engineering each start at their own row, with
+          their own artifact &mdash; but routing by role changes which document
+          you open, never which gate applies. Non-builders get the rigor
+          carried, not waived.
         </p>
       </Wrap>
     </Section>

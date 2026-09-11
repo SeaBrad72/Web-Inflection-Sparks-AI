@@ -28,7 +28,17 @@ export default function SparkwrightEnterprise() {
             <p className="text-sm text-muted leading-relaxed">
               Vendor-neutral, stack-neutral, model-neutral, POSIX-clean. It
               sits alongside your internal developer platform and CI, not
-              instead of them.
+              instead of them. GitHub Actions throughout, plus a verified
+              GitLab pipeline for TypeScript/Node.
+            </p>
+          </Card>
+          <Card title="Runs on your toolchain">
+            <p className="text-sm text-muted leading-relaxed">
+              Drives <strong>Jira</strong>, <strong>GitHub Issues &amp;
+              Projects</strong>, <strong>Azure DevOps</strong>,{" "}
+              <strong>Linear</strong>, <strong>GitLab</strong>, or a file in
+              the repo. On Jira it goes furthest &mdash; a server-side
+              condition makes double-claiming a work item impossible.
             </p>
           </Card>
           <Card title="A staged rollout">

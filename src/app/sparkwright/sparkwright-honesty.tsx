@@ -10,40 +10,32 @@ export default function SparkwrightHonesty() {
           advisory, or <span className="text-orange">declared</span>.
         </H2>
         <Lead>
-          The rarest thing the kit does is tell you exactly how strong each
-          guarantee is — a live gate that blocks, a nudge that doesn&rsquo;t, or
-          an attestation it can&rsquo;t observe at runtime. That candor is the
-          differentiator, and the safety story is drawn as a layered defense,
-          not a disclaimer.
+          Most tools let you assume a green check means more than it does. This
+          one tells you exactly how strong each guarantee is — and draws the
+          safety story as a layered defense rather than a disclaimer.
         </Lead>
 
         <div className="mt-8 space-y-5">
           <Callout>
             <p>
-              <strong>Defense in layers.</strong> The inline guard is a fast{" "}
-              <em>honest-mistake</em> speed bump — it intercepts destructive
-              and control-plane actions before they land. The{" "}
-              <strong>
-                real, harness-equal boundary is the git + CI chokepoints
-              </strong>
-              : nothing merges unsafely, on any harness, and what shipped is
-              proven equal to what was approved (<Kbd>shipped == approved</Kbd>,
-              by tree equality &mdash; the merged tree matches the reviewed one). Containment — an egress allowlist, a
-              sandboxed filesystem, scoped tokens — is the platform boundary,
-              which the kit ships references for and verifies is wired. Each
-              layer does one job; the load-bearing one is real enforcement.
+              <strong>Defense in layers.</strong> The inline guard catches
+              honest mistakes &mdash; it intercepts destructive actions before
+              they land. The{" "}
+              <strong>real boundary is the git and CI chokepoints</strong>,
+              which hold on any harness: nothing merges unsafely, and what
+              shipped is proven equal to what was approved
+              (<Kbd>shipped == approved</Kbd>). Containment &mdash; egress
+              allowlist, sandboxed filesystem, scoped tokens &mdash; is the
+              platform&rsquo;s job, and the kit verifies it is wired.
             </p>
           </Callout>
 
           <Callout>
             <p>
               <strong>Green &ne; verified.</strong> A passing check proves
-              only what it actually tests, never more — so the kit labels
-              every capability <em>enforced</em> (a live gate blocks it),{" "}
-              <em>advisory</em> (a nudge that doesn&rsquo;t), or{" "}
-              <em>declared</em>{" "}
-              (an attestation it can&rsquo;t observe at
-              runtime). You always know what blocks and what merely nudges.
+              only what it actually tests, never more. So every capability
+              carries its label, and you always know what blocks and what
+              merely nudges.
             </p>
           </Callout>
 
@@ -57,16 +49,10 @@ export default function SparkwrightHonesty() {
               in-process (real enforcement, by tool name). The kit publishes
               its own <strong>threat model</strong> — its real posture, not a
               template — naming the guard&rsquo;s deny set and the residual
-              risks it has <em>not</em> closed. One
-              check was built and withdrawn on the grounds that shipping a
-              check whose claim register was demonstrably false is worse than
-              shipping none. A kit that tells you precisely what&rsquo;s
-              enforced versus advisory versus declared is more trustworthy
-              than one that claims magic. And it does not ask you to take that
-              on faith: <strong>the kit&rsquo;s own headline claims are a
-              registry</strong>, each one backed by an executable verifier and
-              pinned so a claim cannot quietly disappear. The claims on this
-              page are checkable in the repository &mdash; run them.
+              risks it has <em>not</em> closed. One check was built and then
+              withdrawn, on the grounds that shipping a check whose claims were
+              demonstrably false is worse than shipping none. The claims on
+              this page are checkable in the repository &mdash; run them.
             </p>
           </Callout>
         </div>

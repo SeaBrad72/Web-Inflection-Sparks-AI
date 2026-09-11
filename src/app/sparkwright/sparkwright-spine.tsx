@@ -33,27 +33,20 @@ export default function SparkwrightSpine() {
         </div>
         <p className="mt-[30px] text-[17.5px] text-muted max-w-[720px] leading-relaxed">
           The kit <strong>dictates the contract and offers the implementation</strong>:
-          rewrite the reference however you like, as long as the conformance
-          check still passes. The checks <em>run</em>, on the kit&rsquo;s own
-          tree, on every push — and the kit is built with the very loop it
-          prescribes, holding itself to the same Definition of Done it gives
-          you.
+          rewrite the reference however you like, as long as conformance still
+          passes. That is why nothing here is a catalogue &mdash; and why the
+          kit can be built with the very loop it prescribes.
         </p>
         <Callout>
           <p>
-            <strong>It tests its own tests.</strong>{" "}
-            Every check registered in
-            the kit&rsquo;s control set is itself{" "}
-            <strong>mutation-tested</strong>{" "}
-            &mdash; a green that cannot be
-            made to go red is caught and fixed, and checks <em>outside</em>{" "}
-            that control set are surfaced as uncovered rather than silently
-            counted. Most tooling never proves its own gates are capable of
-            failing. That is the difference between a gate and a decoration.
-            And it publishes the limit of that proof rather than leaving you to
-            find it: the sweep proves a check <em>can</em> fail, not that it
-            catches everything. You are told the shape of the guarantee, not
-            sold the strongest reading of it.
+            <strong>It tests its own tests.</strong> Every check in the
+            kit&rsquo;s control set is <strong>mutation-tested</strong> &mdash;
+            a green that cannot be made to go red is caught and fixed. Most
+            tooling never proves its own gates are capable of failing, and that
+            is the difference between a gate and a decoration. The kit&rsquo;s
+            headline claims are a registry of{" "}
+            <strong>72 rows, each with an executable verifier</strong>, pinned
+            so a claim cannot quietly disappear.
           </p>
         </Callout>
       </Wrap>
