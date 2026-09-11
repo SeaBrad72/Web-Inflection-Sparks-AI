@@ -6,7 +6,7 @@ export default function SparkwrightUse() {
     <Section id="use">
       <Wrap>
         <Eyebrow>What you actually do with it</Eyebrow>
-        <H2>From an empty repo to a green pipeline, then into the loop.</H2>
+        <H2>A new repo, or the one you already have.</H2>
         <Lead>
           Sparkwright is the execution engine that takes you from a{" "}
           <em>Ready</em> backlog to operating, monitored software, with the
