@@ -74,6 +74,25 @@ describe("page copy integrity", () => {
     expect(bar).toMatch(/conditional[\s\S]{0,160}SAST/);
   });
 
+  it("points every in-page anchor at a section that exists", () => {
+    // The hero CTA read "See how it works" but pointed at #use, which a
+    // section reorder had moved to second-from-last — so the primary call to
+    // action scrolled the reader past the entire page. Nothing caught it,
+    // because a dead-but-well-formed anchor breaks silently.
+    const ids = new Set<string>();
+    const targets: { file: string; id: string }[] = [];
+    for (const file of sourceFiles()) {
+      const src = readFileSync(join(DIR, file), "utf8");
+      for (const m of src.matchAll(/<Section id="([a-z-]+)"/g)) ids.add(m[1]);
+      for (const m of src.matchAll(/\bid="([a-z-]+)"/g)) ids.add(m[1]);
+      for (const m of src.matchAll(/href="#([a-z-]+)"/g))
+        targets.push({ file, id: m[1] });
+    }
+    expect(targets.length).toBeGreaterThan(0);
+    const dead = targets.filter((t) => !ids.has(t.id));
+    expect(dead, `anchors with no matching id: ${JSON.stringify(dead)}`).toEqual([]);
+  });
+
   it("does not reintroduce an advisory or consulting CTA", () => {
     // Deliberately removed: the owner holds a full-time role elsewhere and this
     // page must not read as soliciting business. See spec §4.2.
