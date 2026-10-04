@@ -34,11 +34,13 @@ export default function SparkwrightEnterprise() {
           </Card>
           <Card title="Runs on your toolchain">
             <p className="text-sm text-muted leading-relaxed">
-              Drives <strong>Jira</strong>, <strong>GitHub Issues &amp;
-              Projects</strong>, <strong>Azure DevOps</strong>,{" "}
-              <strong>Linear</strong>, <strong>GitLab</strong>, or a file in
-              the repo. On Jira it goes furthest &mdash; a server-side
-              condition makes double-claiming a work item impossible.
+              Run the loop from the board you already use &mdash; templates
+              and guidance cover <strong>Jira</strong>, <strong>GitHub Issues
+              &amp; Projects</strong>, <strong>Azure DevOps</strong>,{" "}
+              <strong>Linear</strong> and <strong>GitLab</strong>, or a board
+              file in the repo. <strong>Jira</strong> is the flagship: a built
+              adapter that enforces the board gates against your project and
+              can run inside your own network, with more to follow.
             </p>
           </Card>
           <Card title="A staged rollout">

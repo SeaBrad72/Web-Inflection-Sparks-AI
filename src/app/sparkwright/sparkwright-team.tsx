@@ -79,8 +79,10 @@ export default function SparkwrightTeam() {
               <strong>Parallel, because nothing escapes the rails.</strong>{" "}
               Engineers fan out into isolated worktrees so two slices cannot
               collide, and integration is a serial merge queue rather than a
-              free-for-all. The whole run is metered by a kill-switch with
-              token, step and agent ceilings &mdash; and{" "}
+              free-for-all; every claim is serialized at the forge, so two
+              sessions can never pick up the same work. The whole run is
+              metered by a kill-switch with token and agent ceilings &mdash;
+              and{" "}
               <strong>raising one is itself a ratified act</strong>, so an
               agent cannot vote itself more rope. The guardrails are precisely
               what let you floor it.
