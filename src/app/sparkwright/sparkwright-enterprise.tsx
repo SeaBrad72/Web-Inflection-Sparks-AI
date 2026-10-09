@@ -40,7 +40,9 @@ export default function SparkwrightEnterprise() {
               <strong>Linear</strong> and <strong>GitLab</strong>, or a board
               file in the repo. <strong>Jira</strong> is the flagship: a built
               adapter that enforces the board gates against your project and
-              can run inside your own network, with more to follow.
+              can run inside your own network, with more to follow. Already
+              working from a board in the repo? One command moves it into
+              Jira &mdash; with a dry run first, and nothing retyped.
             </p>
           </Card>
           <Card title="A staged rollout">

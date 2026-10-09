@@ -42,7 +42,7 @@ const KEPT = [
   },
   {
     name: "Adversarial, multi-lens review",
-    why: "A spec reviewed in parallel by product, architecture, test, and security lenses. Nearly free agentically — so use it.",
+    why: "A spec reviewed in parallel by product, architecture, test, and security lenses — and every design answers the same twelve questions, scaled to the size of the change. Nearly free agentically — so use it.",
   },
   {
     name: "Spikes",
