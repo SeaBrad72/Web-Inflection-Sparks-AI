@@ -36,10 +36,8 @@ export default function SparkwrightMaturity() {
           <strong>built with its own loop</strong>, holding itself to the
           same Definition of Done and mutation-tested gates it gives you — on
           every change, run end-to-end to build and deploy real software.
-          Where it cannot hold itself to a standard, it says so. On its own
-          repository <Kbd>agent &ne; ratifier</Kbd> is enforced. Two-person
-          human review is not &mdash; the kit is maintained solo, and that gap
-          is declared rather than hidden.
+          Where it cannot hold itself to a standard, it says so &mdash; in a
+          public maturity ledger, not the fine print.
         </p>
         <Callout tone="orange">
           <p>
