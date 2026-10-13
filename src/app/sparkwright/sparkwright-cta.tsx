@@ -1,4 +1,4 @@
-import { Section, Wrap, Eyebrow, H2, Kbd } from "./sparkwright-ui";
+import { Section, Wrap, Eyebrow, Kbd } from "./sparkwright-ui";
 import { SPARKWRIGHT } from "@/content/sparkwright";
 
 export default function SparkwrightCTA() {
@@ -9,9 +9,12 @@ export default function SparkwrightCTA() {
           <div className="flex justify-center">
             <Eyebrow>Get started</Eyebrow>
           </div>
-          <div className="mx-auto max-w-[20ch]">
-            <H2>Bring the idea. The kit brings the guardrails.</H2>
-          </div>
+          {/* Two deliberate lines on sm+, natural wrap on phones. Not the shared
+              H2: its 26ch cap (plus the old 20ch wrapper) broke this onto four. */}
+          <h2 className="mx-auto text-3xl sm:text-4xl font-bold tracking-tight leading-[1.12]">
+            Bring the idea.<br className="hidden sm:inline" />{" "}
+            The kit brings the guardrails.
+          </h2>
           <p className="mt-4 text-[17.5px] text-muted max-w-[720px] mx-auto leading-relaxed">
             Create a project from the kit, let it walk you through Inception,
             and enter the loop. Engineers start at <Kbd>START-HERE.md</Kbd>;
