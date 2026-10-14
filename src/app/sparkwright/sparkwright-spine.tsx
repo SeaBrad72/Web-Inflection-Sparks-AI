@@ -34,7 +34,7 @@ export default function SparkwrightSpine() {
         <p className="mt-[30px] text-[17.5px] text-muted max-w-[720px] leading-relaxed">
           The kit <strong>dictates the contract and offers the implementation</strong>:
           rewrite the reference however you like, as long as conformance still
-          passes. That is why nothing here is a catalogue &mdash; and why the
+          passes. That is why nothing here is a catalog &mdash; and why the
           kit can be built with the very loop it prescribes.
         </p>
         <Callout>

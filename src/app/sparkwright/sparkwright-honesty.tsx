@@ -6,7 +6,7 @@ export default function SparkwrightHonesty() {
       <Wrap>
         <Eyebrow>Honesty as a feature</Eyebrow>
         <H2>
-          Every control labelled: <span className="text-teal-light">enforced</span>,
+          Every control labeled: <span className="text-teal-light">enforced</span>,
           advisory, or <span className="text-orange">declared</span>.
         </H2>
         <Lead>

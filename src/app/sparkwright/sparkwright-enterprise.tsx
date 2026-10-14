@@ -70,7 +70,7 @@ export default function SparkwrightEnterprise() {
           </summary>
           <div className="border-t border-border-subtle px-6 pb-6 pt-3">
             <p className="text-sm text-muted leading-relaxed">
-              Each row is honestly labelled <em>Kit-enforced / Kit-assisted /
+              Each row is honestly labeled <em>Kit-enforced / Kit-assisted /
               Org-owned</em>, and a drift-guard holds the assurance tiers in
               place so the labels can&rsquo;t quietly shift.
             </p>

@@ -1,4 +1,4 @@
-import { Section, Wrap, Eyebrow, Kbd } from "./sparkwright-ui";
+import { Section, Wrap, Eyebrow } from "./sparkwright-ui";
 import { SPARKWRIGHT } from "@/content/sparkwright";
 
 export default function SparkwrightCTA() {
@@ -17,8 +17,16 @@ export default function SparkwrightCTA() {
           </h2>
           <p className="mt-4 text-[17.5px] text-muted max-w-[720px] mx-auto leading-relaxed">
             Create a project from the kit, let it walk you through Inception,
-            and enter the loop. Engineers start at <Kbd>START-HERE.md</Kbd>;
-            leaders at the{" "}
+            and enter the loop. Engineers start at{" "}
+            <a
+              href={`${SPARKWRIGHT.repoUrl}/blob/main/START-HERE.md`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-light hover:underline"
+            >
+              Start Here
+            </a>
+            ; leaders at the{" "}
             <a
               href={`${SPARKWRIGHT.repoUrl}/blob/main/docs/enterprise/EXEC-BRIEF.md`}
               target="_blank"
