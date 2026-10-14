@@ -18,8 +18,16 @@ export default function SparkwrightCTA() {
           <p className="mt-4 text-[17.5px] text-muted max-w-[720px] mx-auto leading-relaxed">
             Create a project from the kit, let it walk you through Inception,
             and enter the loop. Engineers start at <Kbd>START-HERE.md</Kbd>;
-            new adopters at <Kbd>ONBOARDING.md</Kbd>; leaders at the
-            Executive Brief.
+            leaders at the{" "}
+            <a
+              href={`${SPARKWRIGHT.repoUrl}/blob/main/docs/enterprise/EXEC-BRIEF.md`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-light hover:underline"
+            >
+              Executive Brief
+            </a>
+            .
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

@@ -54,8 +54,9 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Autonomy tiers (L1/L2/L3)</strong> — how much an agent
-              may do without sign-off, from suggest-only to act-then-report,
+              <strong>Autonomy tiers (L0&ndash;L3)</strong> &mdash; how much
+              an agent may do without sign-off, from propose-only to autonomous
+              within explicitly defined safe lanes,
               keyed on risk × reversibility &mdash; reversibility being the master
               variable. Irreversible work (deploying, deleting data, rotating
               secrets, spending money) stays human-gated at every tier, and a
