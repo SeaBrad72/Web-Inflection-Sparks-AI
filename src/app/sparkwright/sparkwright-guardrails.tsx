@@ -36,11 +36,16 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Separation of duties, enforced</strong> &mdash; the
+              {/* "by design", not "enforced": since kit v3.238.0 the kit's own
+                  repo runs agent sessions under the owner's admin login until
+                  its identity switch lands (SWAS-172, SWAS-173). Restoring
+                  "enforced" then is expected — check MATURITY.md first. */}
+              <strong>Separation of duties, by design</strong> &mdash; the
               merge is bound to the commit that was actually reviewed
               (<Kbd>shipped == approved</Kbd>), and branch protection carries
               it to the merge button: the last hand on the code is never the
-              hand that approves it.
+              hand that approves it. And the kit checks that an agent&rsquo;s
+              login can push but never administer.
             </p>
           </li>
                     <li className="flex gap-3">
@@ -49,8 +54,9 @@ export default function SparkwrightGuardrails() {
               className="mt-2 h-1.5 w-1.5 flex-none rounded-[2px] bg-gradient-to-br from-teal-light to-teal"
             />
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Autonomy tiers (L1/L2/L3)</strong> — how much an agent
-              may do without sign-off, from suggest-only to act-then-report,
+              <strong>Autonomy tiers (L0&ndash;L3)</strong> &mdash; how much
+              an agent may do without sign-off, from propose-only to autonomous
+              within explicitly defined safe lanes,
               keyed on risk × reversibility &mdash; reversibility being the master
               variable. Irreversible work (deploying, deleting data, rotating
               secrets, spending money) stays human-gated at every tier, and a
