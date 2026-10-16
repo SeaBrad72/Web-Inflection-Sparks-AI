@@ -73,7 +73,7 @@ export default function SparkwrightBar() {
             Seven required gates, on every pull request
           </strong>{" "}
           &mdash; lint, type-check, test and coverage, build, secret-scan across
-          your full commit history, dependency scan, and supply-chain integrity
+          commit history, not just the latest code, dependency scan, and supply-chain integrity
           (an SBOM, plus signed build provenance). They are declared by gate ID,
           so the contract is the gate, never the vendor: the same seven run on
           GitHub Actions or GitLab CI.
