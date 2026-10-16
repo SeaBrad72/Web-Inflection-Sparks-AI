@@ -59,7 +59,7 @@ const FOUNDATIONS = [
   },
   {
     name: "Supply-chain integrity",
-    body: "Full-history secret scanning, dependency scanning, an SBOM per build, signed provenance on releases.",
+    body: "History-aware secret scanning, dependency scanning, an SBOM per build, signed provenance on releases.",
   },
   {
     name: "AI governance",

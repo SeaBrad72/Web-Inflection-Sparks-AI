@@ -18,12 +18,16 @@ export default function SparkwrightHonesty() {
         <div className="mt-8 space-y-5">
           <Callout>
             <p>
+              {/* "bound", not "proven equal": as of kit v3.239.0 the post-merge
+                  trunk check (trace --recent) runs only in the kit's own CI and
+                  is not shipped to adopters (release Known issues). Restore
+                  "proven" once adopter-gates.yml ships it. */}
               <strong>Defense in layers.</strong> The inline guard catches
               honest mistakes &mdash; it intercepts destructive actions before
               they land. The{" "}
               <strong>real boundary is the git and CI chokepoints</strong>,
-              which hold on any harness: nothing merges unsafely, and what
-              shipped is proven equal to what was approved
+              which hold on any harness: nothing merges unsafely, and the
+              merge is bound to the exact commit that was approved
               (<Kbd>shipped == approved</Kbd>). Containment &mdash; egress
               allowlist, sandboxed filesystem, scoped tokens &mdash; is the
               platform&rsquo;s job, and the kit verifies it is wired.
