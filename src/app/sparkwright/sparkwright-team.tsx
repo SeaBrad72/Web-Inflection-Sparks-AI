@@ -26,7 +26,7 @@ const SEATS = [
   {
     name: "Reviewer",
     hat: "Independent",
-    body: "Correctness and standards review of the diff, by a seat that did not write it. This is where builder ≠ reviewer stops being a policy and becomes structure.",
+    body: "Correctness and standards review of the diff, by a seat that did not write it. Builder ≠ reviewer gets a seat of its own, and every review record has to name it.",
   },
   {
     name: "Security",
@@ -64,11 +64,13 @@ export default function SparkwrightTeam() {
               <strong>One team, more than one model.</strong> Seats bind to
               abstract tiers, not model names, so the orchestrator composes a
               build team rather than picking a single model for everything
-              &mdash; judgment and review seats on your strongest model,
-              engineers on whatever the slice actually warrants, sometimes a
-              mix within the same run. High-stakes work is floored back to the
-              top regardless. You own the tier-to-model map, so this is a
-              config change when the model landscape moves, not a rewrite.
+              &mdash; judgment and review seats on the model you choose for
+              judgment, engineers on whatever the slice actually warrants,
+              sometimes a mix within the same run. The kit ships no vendor
+              default and no forced tier for any class of change &mdash; you
+              own the map from tier to model, and you can floor any change
+              class to your top tier if you choose. When the model landscape
+              moves, that is a config change, not a rewrite.
             </p>
           </Callout>
         </div>
