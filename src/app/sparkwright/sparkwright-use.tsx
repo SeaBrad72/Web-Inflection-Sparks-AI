@@ -51,7 +51,7 @@ export default function SparkwrightUse() {
               </h3>
               <p className="text-sm text-muted leading-relaxed">
                 Every backlog item runs the loop, and your team holds the
-                three gates.
+                gates.
               </p>
             </div>
           </li>

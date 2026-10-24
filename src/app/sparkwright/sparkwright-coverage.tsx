@@ -62,9 +62,12 @@ export default function SparkwrightCoverage() {
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           <Callout>
             <p className="text-sm text-muted leading-relaxed">
-              <strong>Humans hold three gates.</strong> The spec, before
-              anything is built. The merge, as a recorded go/no-go. And
-              acceptance, which asks whether it was the right thing at all
+              <strong>Humans hold the decisions that matter.</strong> The plan
+              is put in front of you before anything is built &mdash; change any
+              part of it &mdash; and any change of medium size or larger, or one
+              touching security or the kit&rsquo;s own controls, needs a
+              recorded design go-ahead first. The merge is a recorded
+              go/no-go. And acceptance, which asks whether it was the right thing at all
               &mdash; a different question from review, failed differently, so
               it stays a separate gate. Agents run at machine speed in between,
               and a gate is also an autonomy boundary: it is exactly how far an
