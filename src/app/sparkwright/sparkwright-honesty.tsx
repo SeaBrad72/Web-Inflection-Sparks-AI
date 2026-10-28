@@ -22,15 +22,23 @@ export default function SparkwrightHonesty() {
                   trunk check (trace --recent) runs only in the kit's own CI and
                   is not shipped to adopters (release Known issues). Restore
                   "proven" once adopter-gates.yml ships it. */}
+              {/* Sandbox layer per kit v3.242.0: shipped on for Claude Code
+                  only (every other harness is UNVERIFIED in
+                  docs/operations/agent-boundary-contract.md), and egress is
+                  open until the per-machine strictAllowlist step — keep "On
+                  Claude Code" and "once you set it" until that changes. */}
               <strong>Defense in layers.</strong> The inline guard catches
-              honest mistakes &mdash; it intercepts destructive actions before
-              they land. The{" "}
-              <strong>real boundary is the git and CI chokepoints</strong>,
-              which hold on any harness: nothing merges unsafely, and the
-              merge is bound to the exact commit that was approved
-              (<Kbd>shipped == approved</Kbd>). Containment &mdash; egress
-              allowlist, sandboxed filesystem, scoped tokens &mdash; is the
-              platform&rsquo;s job, and the kit verifies it is wired.
+              honest mistakes. The <strong>agent sandbox</strong> is what
+              stops an injected agent: on Claude Code the kit ships it switched
+              on &mdash; secret paths unreadable to the agent, its own hooks
+              and your start-up files write-protected, and network egress
+              locked to an allowlist once you set it for your machine &mdash;
+              and turning any of it off is a committed, visible declaration. A
+              harness-neutral boundary contract states what any other harness
+              must provide, and marks the ones not yet measured. And the{" "}
+              <strong>git and CI chokepoints</strong> hold on any harness:
+              nothing merges unsafely, and the merge is bound to the exact
+              commit that was approved (<Kbd>shipped == approved</Kbd>).
             </p>
           </Callout>
 
