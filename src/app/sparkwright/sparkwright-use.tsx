@@ -23,7 +23,11 @@ export default function SparkwrightUse() {
               <p className="text-sm text-muted leading-relaxed">
                 One script turns a throwaway clone into a clean, CI-ready
                 project of your own — with every stack profile still on the
-                table, so your stack stays a decision, not a default.
+                table, so your stack stays a decision, not a default. Your
+                tree gets only what your project uses &mdash; the kit&rsquo;s
+                own development machinery stays behind &mdash; and each later
+                release arrives as a patch you review and apply, never a
+                silent overwrite.
               </p>
             </div>
           </li>
