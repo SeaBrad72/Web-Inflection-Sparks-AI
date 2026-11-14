@@ -18,10 +18,11 @@ export default function SparkwrightHonesty() {
         <div className="mt-8 space-y-5">
           <Callout>
             <p>
-              {/* "bound", not "proven equal": as of kit v3.239.0 the post-merge
-                  trunk check (trace --recent) runs only in the kit's own CI and
-                  is not shipped to adopters (release Known issues). Restore
-                  "proven" once adopter-gates.yml ships it. */}
+              {/* "bound", not "proven equal": since kit v3.247.0 the post-merge
+                  trunk check ships to adopters (profiles/adopter-trunk-trace.yml,
+                  observe mode by default), but the release says its binding of
+                  a squash merge is "proven by fixtures only", not yet on a live
+                  repository. Restore "proven" once a release says it has. */}
               {/* Sandbox layer per kit v3.242.0: shipped on for Claude Code
                   only (every other harness is UNVERIFIED in
                   docs/operations/agent-boundary-contract.md), and egress is
@@ -38,7 +39,9 @@ export default function SparkwrightHonesty() {
               must provide, and marks the ones not yet measured. And the{" "}
               <strong>git and CI chokepoints</strong> hold on any harness:
               nothing merges unsafely, and the merge is bound to the exact
-              commit that was approved (<Kbd>shipped == approved</Kbd>).
+              commit that was approved (<Kbd>shipped == approved</Kbd>)
+              &mdash; and a trunk check reads that back on your main branch
+              after every merge.
             </p>
           </Callout>
 
