@@ -110,10 +110,13 @@ export default function SparkwrightUse() {
             <p>
               <strong>An existing codebase won&rsquo;t pass on day one
               &mdash; and doesn&rsquo;t have to.</strong> One command composes
-              the kit&rsquo;s guard and entry contract into a single patch you
-              read and apply, and your agent can draft the charter, stack
-              decision, runbook and backlog gaps from the code you already
-              have, for a person to ratify. A failing gate runs on a{" "}
+              the kit&rsquo;s guard, its entry contract and a CI pipeline
+              fitted to your repository into a single patch you read and
+              apply &mdash; adding only files you don&rsquo;t already have,
+              and writing the description for your adoption pull request.
+              Your agent can draft the charter, stack decision, runbook and
+              backlog gaps from the code you already have, for a person to
+              ratify. A failing gate runs on a{" "}
               <em>time-boxed waiver</em>: tracked, owned,
               ratified, and capped at 90 days. Never a silently disabled check.
               Secret-scan and branch protection can never be waived at all.
